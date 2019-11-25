@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+{{ partial "head.html" . }}
+
+<body>
+	<div class="container wrapper">
+		{{ partial "header.html" . }}
+		{{ partial "home/introduction.html" . }}
+		{{ partial "home/publications.html" . }}
+		{{ partial "home/talks.html" . }}
+		{{ partial "home/softwares.html" . }}
+	</div>
+	<div>
+		{{ partial "home/citation.html" . }}
+	</div>
+	{{ partial "footer.html" . }}
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<div class="section">
+	<h4>Softwares / Tools</h4>
+
+	<div class="sectionlist">
+		{{ range where .Site.Pages ".Type" "software" }}
+		<div class="softitem">
+			<div class="pubbadges">
+				<div class="pubtitle">
+					<a href="{{ .Params.url_github }}" class="link-normal" target="_blank"> {{ .Title }} </a>
+				</div>
+
+				<div class="pubmeta">
+					<div class="badge-normal">
+						{{ .Params.date | dateFormat "Jan 2, 2006" }}
+					</div>
+					<!--
+					-->
+					<div class="badge-normal">
+						{{ .Params.language }}
+					</div>
+				</div>
+			</div>
+
+			<div class="softdesc">
+				{{ .Params.description | markdownify }}
+			</div>
+
+		</div>
+		{{ end }}
+
+	</div>
+
+</div>

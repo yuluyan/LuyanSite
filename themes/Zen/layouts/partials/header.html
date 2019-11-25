@@ -1,0 +1,61 @@
+<div class="language-select">
+	<a class="badge-normal">English</a>
+	<a href="#" class="btn-normal tooltip">中文
+		<div class="bottom">
+			<p>Chinese site under construction.</p>
+			<i></i>
+		</div></a>
+</div>
+
+<div class="header">
+
+	<div class="header-left">
+		<div class="site-title">
+			{{ with .Site.Params.personal }}
+			<a href="/" class="name link-normal">
+				<span class="firstname initial">{{ slicestr .firstname 0 1 }}</span>
+				<!--
+				--><span class="rest">{{ slicestr .firstname 1 }}</span>
+				<span class="lastname initial">{{ slicestr .lastname 0 1 }}</span>
+				<!--
+				--><span class="rest">{{ slicestr .lastname 1 }}</span>
+			</a>
+			{{ end }}
+		</div>
+
+		<div class="site-links">
+			{{- range $index, $key := .Site.Params.Social -}}
+			<div class="linksep">|</div>
+			<a href="{{ $key.url }}" class="btn-normal {{ if (eq $key.name "Blog") }} tooltip {{ end }}" target="{{ if not (eq $key.name "Blog") }} _blank {{ end }}"><i
+					data-feather="{{ $key.icon }}"></i>{{ $key.name }}
+				{{ if (eq $key.name "Blog") }}
+				<div class="right">
+					<p>Blog under construction.</p>
+					<i></i>
+				</div></a>
+				{{ end }}
+				</a>
+			{{- end -}}
+		</div>
+	</div>
+
+	<div class="header-right">
+		<ul class="personal-info">
+			{{ with .Site.Params.personal }}
+			<li class="institute"><a href="{{ .institutelink }}" class="link-normal"
+					target="_blank">{{ .institute }}</a></li>
+			<li class="institute-item">{{ .position }} in <a href="{{ .departmentlink }}" class="link-normal"
+					target="_blank">{{ .department }}</a></li>
+			<li class="institute-item center"><a href="{{ .centerlink }}" class="link-normal"
+					target="_blank">{{ .center }}</a></li>
+			<li class="contact">Contact Information</li>
+			<!--<li class="contact-item">Phone: {{ .Site.Params.affiliation.phone }}</li>-->
+			<li class="contact-item"><span class="email">{{ .email }}</span></li>
+			{{ range $addr := .address }}
+			<li class="contact-item">{{ $addr }}</li>
+			{{ end }}
+			{{ end }}
+		</ul>
+	</div>
+
+</div>

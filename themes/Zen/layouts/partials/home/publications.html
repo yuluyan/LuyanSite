@@ -1,0 +1,96 @@
+<div class="section">
+	<h4>Publications</h4>
+
+	<div class="sectionlist">
+		{{ range where .Site.Pages ".Type" "publication"}}
+		<div class="pubitem">
+			<div class="pubbadges">
+				<div class="publinks">
+					{{ $resource := .Resources.GetMatch "citation.bib" }}
+					{{ with $resource }}
+					<a herf="#" target="_blank" class="bibtex-btn btn-reverse"
+						data-filename="{{ .RelPermalink }}">BibTex</a>
+					{{ end }}
+					{{ if .Params.url_pdf }}
+					<a href="{{ .Params.url_pdf }}" class="btn-reverse" target="_blank">PDF</a>
+					{{ end }}
+					{{ if .Params.url_arxiv }}
+					<a href="{{ .Params.url_arxiv }}" class="btn-reverse" target="_blank">arXiv</a>
+					{{ end }}
+					{{ if .Params.url_publisher }}
+					<a href="{{ .Params.url_publisher }}" class="btn-reverse" target="_blank">Publisher</a>
+					{{ end }}
+					{{ if .Params.url_code }}
+					<a href="{{ .Params.url_code }}" class="btn-reverse" target="_blank">Code</a>
+					{{ end }}
+					{{ if .Params.url_dataset }}
+					<a href="{{ .Params.url_dataset }}" class="btn-reverse" target="_blank">Dataset</a>
+					{{ end }}
+					{{ if .Params.url_poster }}
+					<a href="{{ .Params.url_poster }}" class="btn-reverse" target="_blank">Poster</a>
+					{{ end }}
+					{{ if .Params.url_project }}
+					<a href="{{ .Params.url_project }}" class="btn-reverse" target="_blank">Project</a>
+					{{ end }}
+					{{ if .Params.url_slides }}
+					<a href="{{ .Params.url_slides }}" class="btn-reverse" target="_blank">Slides</a>
+					{{ end }}
+					{{ if .Params.url_source }}
+					<a href="{{ .Params.url_source }}" class="btn-reverse" target="_blank">Source</a>
+					{{ end }}
+					{{ if .Params.url_video }}
+					<a href="{{ .Params.url_video }}" class="btn-reverse" target="_blank">Video</a>
+					{{ end }}
+				</div>
+
+				<div class="pubmeta">
+					<div class="badge-normal">
+						{{ .Params.date | dateFormat "Jan 2, 2006" }}
+					</div>
+					<!--
+					-->{{ if .Params.publication_types }}<div class="badge-normal">
+						{{ .Params.publication_types }}
+					</div>{{ end }}
+					<!--
+					-->{{ if .Params.publication }}
+					<div class="badge-normal longshort" data-short="{{ .Params.publication_short }}"
+						data-long="{{ .Params.publication }}" title="{{ .Params.publication }}"></div>
+					{{ end }}
+				</div>
+			</div>
+
+
+			<div class="pubtitle">
+				<a href="{{ .Params.url_arxiv }}" class="link-normal" target="_blank"> {{ .Title }} </a>
+			</div>
+
+			<div class="collaborators">
+				{{ range $index, $author := .Params.authors }}
+				{{ if $index }}<div class="authorsep">,</div>{{ end }}
+				{{ if eq $author "me"}}
+				<div class="author me">
+					<a href="{{ $.Site.Params.personal.googleScholar }}" class="link-normal" target="_blank">
+						{{ $.Site.Title | markdownify }}
+					</a>
+					{{ else }}
+					<div class="author">
+						{{ $author | markdownify }}
+						{{ end }}
+					</div>
+					{{ end }}
+				</div>
+
+				<div class="abstract">
+					<div class="read-more-box" data-absheight=68>
+						<p>{{ .Params.abstract | markdownify }}</p>
+						<p class="read-more-mask"></p>
+						<div class="read-more-btn"><a href="#" class="btn-normal">+ Abstract</a></div>
+					</div>
+				</div>
+
+			</div>
+			{{ end }}
+
+		</div>
+
+	</div>

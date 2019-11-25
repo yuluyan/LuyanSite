@@ -1,0 +1,47 @@
+baseURL = "https://yuluyan.com/"
+languageCode = "en-us"
+title = "Luyan Yu"
+theme = "Zen"
+googleAnalytics = "UA-77181423-1"
+timeout = 3000
+
+[params]
+  abstractLength = 200
+  sedescription = "All about Luyan Yu, research, life and more."
+[params.personal]
+  firstname = "Luyan"
+  lastname = "Yu"
+  position = "Ph.D. Candidate"
+  department = "Department of Physics"
+  departmentLink = "https://ph.utexas.edu/"
+  center = "Center for Theoretical and Computational Neuroscience"
+  centerLink = "https://ctcn.utexas.edu/"
+  institute = "University of Texas at Austin"
+  instituteLink = "https://www.utexas.edu/"
+  phone = "+1 (737) 346-7295"
+  email = "luyan.yu [at] utexas.edu"
+  address = [
+	  "NHB 4.362, 100 E 24TH ST",
+	  "Austin, Texas 78712, USA"
+  ]
+  googleScholar = "https://scholar.google.com/citations?user=zOTPApkAAAAJ"
+
+[[params.social]]
+  name = "Blog"
+  icon = "file-text"
+  url = "#"
+
+[[params.social]]
+  name = "Résumé"
+  icon = "user"
+  url = "https://yuluyan.com/Luyan_Yu_CV.pdf"
+
+[[params.social]]
+  name = "GitHub"
+  icon = "github"
+  url = "https://github.com/yuluyan/"
+
+[[params.social]]
+  name = "LinkedIn"
+  icon = "linkedin"
+  url = "https://linkedin.com/in/luyanyu/"

@@ -1,0 +1,73 @@
+<div class="section">
+	<h4>Talks / Presentations</h4>
+
+	<div class="sectionlist">
+		{{ range where .Site.Pages ".Type" "talk" }}
+		<div class="pubitem">
+			<div class="pubbadges">
+				<div class="publinks">
+					{{- if eq .Params.talk_types "Conference" -}}
+					<a href="{{ .Params.url_conference }}" class="btn-reverse longshort" data-short="{{ .Params.conference_short }}"
+						data-long="{{ .Params.conference_name }}" target="_blank"> </a>
+					{{ else }}
+					<a href="{{ .Params.url_title }}" class="btn-reverse" target="_blank">{{- .Params.talk_types -}}</a>
+					{{ end }}
+
+					{{- if .Params.url_slides -}}
+					{{- $resource := .Resources.GetMatch .Params.url_slides -}}
+					<a href="{{ $resource.RelPermalink }}" class="btn-reverse" target="_blank">Slides</a>
+					{{ end }}
+
+					{{- if .Params.url_poster -}}
+					{{- $resource := .Resources.GetMatch .Params.url_poster -}}
+					<a href="{{ $resource.RelPermalink }}" class="btn-reverse" target="_blank">Poster</a>
+					{{ end }}
+
+					{{- if .Params.url_video -}}
+					{{- $resource := .Resources.GetMatch .Params.url_video -}}
+					<a href="{{ $resource.RelPermalink }}" class="btn-reverse" target="_blank">Video</a>
+					{{- end -}}
+				</div>
+
+				<div class="pubmeta">
+					<div class="badge-normal">
+						{{- .Params.date | dateFormat "Jan 2, 2006" -}}
+					</div>
+
+					{{- if .Params.publication_types -}}
+					<div class="badge-normal">{{- .Params.publication_types -}}</div>
+					{{- end -}}
+
+					<div class="badge-normal longshort" data-short="{{ .Params.location_short }}"
+						data-long="{{ .Params.location }}" title="{{ .Params.location }}"></div>
+				</div>
+			</div>
+
+
+			<div class="pubtitle">
+				{{ .Title }} 
+			</div>
+
+			{{- if .Params.show_author -}}
+			<div class="collaborators">
+			{{ range $index, $author := .Params.authors }}
+				{{ if $index }}<div class="authorsep">,</div>{{ end }}
+				{{ if eq $author "me"}}
+					<div class="author me">
+					<a href="{{ $.Site.Params.personal.googleScholar }}" class="link-normal" target="_blank">
+						{{- $.Site.Title | markdownify -}}
+					</a>
+				{{ else }}
+					<div class="author">
+						{{- $author | markdownify -}}
+				{{ end }}
+					</div>
+			{{ end }}
+			</div>
+			{{ end }}
+
+		</div>
+		{{ end }}
+
+	</div>
+</div>

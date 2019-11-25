@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    {{- partial "head.html" . -}}
+    <body>
+        <div class="container wrapper">
+            {{- partial "header.html" . -}}
+            <div class="introduction">
+                {{ .Content | markdownify}}
+            </div>
+            <div class="returnhome">
+                <a href="/" class="btn-normal"><i data-feather="arrow-left-circle"></i>Return to homepage</a>
+            </div>
+        </div>
+        {{- partial "footer.html" . -}}
+    </body>
+</html>
