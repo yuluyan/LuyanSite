@@ -1,7 +1,7 @@
 <div class="footer wrapper">
 	<div>
 		{{ if (fileExists "commit_id.txt") }}
-		{{ $commit_id := readFile "commit_id.txt" }}
+		{{ $commit_id := trim (readFile "commit_id.txt") "\n" }}
 		Github commit: <a class="github-commit-sha"
 			href="https://github.com/yuluyan/LuyanSite/commit/{{- $commit_id -}}">{{ substr $commit_id 0 7 }}</a>
 		{{ end }}
