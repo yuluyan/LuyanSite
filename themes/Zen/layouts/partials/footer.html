@@ -1,16 +1,24 @@
 <div class="footer wrapper">
 	<div>
-		Last update: {{ now.Format "January 2, 2006"}}
+		{{ if (fileExists "commit_id.txt") }}
+		{{ $commit_id := readFile "commit_id.txt" }}
+		Github commit: <a class="github-commit-sha"
+			href="https://github.com/yuluyan/LuyanSite/commit/{{- $commit_id -}}">{{ substr $commit_id 0 7 }}</a>
+		{{ end }}
+		Updated on {{ now.Format "January 2, 2006"}}
 	</div>
+
 	<div class="footer-sep"></div>
-	<div>
+	<div class="has-icon">
 		Site by <a href="https://gohugo.io" class="link-normal" target="_blank">Hugo</a>
 		<i data-feather="smile"></i>
 		Theme <a href="https://gohugo.io" class="link-normal" target="_blank">Zen</a> created by Luyan Yu
 	</div>
 </div>
 
+{{ if ne (printf "%v" $.Site.BaseURL) "http://localhost:1313/" }}
 {{ template "_internal/google_analytics_async.html" . }}
+{{ end }}
 {{- with .Site.Params.Social -}}
 <script> feather.replace() </script>
 {{- end -}}
