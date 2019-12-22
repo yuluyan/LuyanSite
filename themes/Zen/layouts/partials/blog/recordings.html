@@ -1,0 +1,59 @@
+<div class="blog-section">
+
+	{{ range $index, $element := where .Site.Pages "Type" "recordings" }}
+	{{ $vid := .Resources.GetMatch (printf "**%s" .Params.filename) }}
+	{{ $poster := .Resources.GetMatch (printf "**%s" .Params.poster) }}
+	{{ with .Params }}
+	<div class="recording-item">
+		{{ $date := dateFormat "2006-01-02" .date }}
+		<div class="recording-title">
+			<a href="{{ $element.Permalink }}" class="link-normal"> {{ $element.Title | markdownify }} </a>
+		</div>
+		{{ if ne .subtitle ""}}
+		<div class="recording-subtitle">
+			{{ .subtitle | markdownify }}
+		</div>
+		{{ end }}
+
+		<div class="recording-meta meta-break">
+			<span class="meta-text">Composed by</span>
+			<span class="meta-emph">{{ .composer | markdownify }}</span>
+		</div>
+		<div class="recording-meta meta-break">
+			{{ if ne .arranger ""}}
+			<span class="meta-text longshort" data-long="and arranged by" data-short="Arranged by"></span>
+			<span class="meta-emph">{{ .arranger | markdownify }}</span>
+			{{ end }}
+		</div>
+
+		<div class="recording-meta">
+			<span class="meta-text">Posted in</span>
+			<span class="meta-emph">
+				{{ range $index, $author := .genres }}
+				{{ if $index }},{{ end }}
+				<a href="{{ "genres/" | absURL}}{{ . | urlize }}">{{ . }}</a>
+				{{ end }}
+			</span>
+			<span class="meta-text">on</span>
+			<span class="meta-emph longshort" data-short="{{- .date | dateFormat "Jan 2" -}}"
+				data-long="{{- .date | dateFormat "January 2, 2006" -}}">
+			</span>
+			<span class="meta-text longshort" data-short="" data-long="by">
+			</span>
+			<span class="meta-emph longshort" data-short="" data-long="Luyan Yu">
+			</span>
+		</div>
+
+		<figure class="recordings-recording" data-date="{{- $date -}}" data-tags="{{- delimit .genres "," -}}">
+			<a href="{{- $element.Permalink -}}">
+				<img class="video-js-poster" src="{{- $poster.RelPermalink -}}">
+			</a>
+		</figure>
+	</div>
+
+	{{ end }}
+	{{ end }}
+	<div class="more-to-come">
+		More to come...
+	</div>
+</div>

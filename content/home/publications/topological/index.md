@@ -39,8 +39,6 @@ abstract: Magnetism in topological insulators (TIs) opens a topologically nontri
 # Summary. An optional shortened abstract.
 summary: ''
 
-tags: ''
-
 # links:
 url_pdf: https://arxiv.org/pdf/1612.01661
 url_arxiv: https://arxiv.org/abs/1612.01661

@@ -1,0 +1,113 @@
+{{ $paginator := $.Paginator }}
+
+{{ $adjacent_links := 1 }}
+{{ $max_links := (add (mul $adjacent_links 2) 1) }}
+{{ $lower_limit := (add $adjacent_links 1) }}
+{{ $upper_limit := (sub $paginator.TotalPages $adjacent_links) }}
+
+{{ if gt $paginator.TotalPages 1 }}
+<ul class="pagination">
+    <div class="page-prev">
+        <li class="page-item">
+            {{ if $paginator.HasPrev }}
+            <a {{ if $paginator.HasPrev }}href="{{ $paginator.Prev.URL }}" {{ end }} class="btn-normal"
+                aria-label="Previous">
+                <span class="has-icon" aria-hidden="true">
+                    <i data-feather="arrow-left-circle"></i>
+                    <span class="longshort" data-short="" data-long="Prev page"></span>
+                </span>
+            </a>
+            {{ end }}
+        </li>
+    </div>
+
+    <div class="page-nums">
+        <!-- First page. -->
+        {{ if and (gt $paginator.PageNumber (add 1 $adjacent_links)) (gt $paginator.TotalPages 3) }}
+        <li class="page-num">
+            <a class="btn-normal" href="{{ $paginator.First.URL }}">
+                1
+            </a>
+        </li>
+        {{ end }}
+        {{ if and (gt $paginator.PageNumber (add 2 $adjacent_links)) (gt $paginator.TotalPages 4)}}
+        <li class="page-num page-num-sep">...</li>
+        {{ end }}
+
+        <!-- Page numbers. -->
+        {{ range $paginator.Pagers }}
+        {{ $.Scratch.Set "page_number_flag" false }}
+        <!-- Advanced page numbers. -->
+        {{ if gt $paginator.TotalPages $max_links }}
+        <!-- Lower limit pages. -->
+        <!-- If the user is on a page which is in the lower limit.  -->
+        {{ if le $paginator.PageNumber $lower_limit }}
+        <!-- If the current loop page is less than max_links. -->
+        {{ if le .PageNumber $max_links }}
+        {{ $.Scratch.Set "page_number_flag" true }}
+        {{ end }}
+        <!-- Upper limit pages. -->
+        <!-- If the user is on a page which is in the upper limit. -->
+        {{ else if ge $paginator.PageNumber $upper_limit }}
+        <!-- If the current loop page is greater than total pages minus $max_links -->
+        {{ if gt .PageNumber (sub $paginator.TotalPages $max_links) }}
+        {{ $.Scratch.Set "page_number_flag" true }}
+        {{ end }}
+        <!-- Middle pages. -->
+        {{ else }}
+        {{ if and ( ge .PageNumber (sub $paginator.PageNumber $adjacent_links) ) ( le .PageNumber (add $paginator.PageNumber $adjacent_links) ) }}
+        {{ $.Scratch.Set "page_number_flag" true }}
+        {{ end }}
+        {{ end }}
+
+        <!-- Simple page numbers. -->
+        {{ else }}
+        {{ $.Scratch.Set "page_number_flag" true }}
+        {{ end }}
+
+        <!-- Output page numbers. -->
+        {{ if eq ($.Scratch.Get "page_number_flag") true }}
+        <li class="page-num">
+            {{ if ne .PageNumber $paginator.PageNumber }}
+            <a href="{{ .URL }}" class="btn-normal">
+                {{ .PageNumber }}
+            </a>
+            {{ else }}
+            <span class="page-num-current">
+                {{ .PageNumber }}
+            </span>
+            {{ end }}
+        </li>
+        {{ end }}
+        {{ end }}
+
+
+        {{ if and (lt $paginator.PageNumber (sub $paginator.TotalPages (add 1 $adjacent_links))) (gt $paginator.TotalPages 4) }}
+        <li class="page-num page-num-sep">...</li>
+        {{ end }}
+        <!-- Last page. -->
+        {{ if and (lt $paginator.PageNumber (sub $paginator.TotalPages 1)) (gt $paginator.TotalPages 3) }}
+        <li class="page-num">
+            <a class="btn-normal" href="{{ $paginator.Last.URL }}">
+                {{ $paginator.TotalPages }}
+            </a>
+        </li>
+        {{ end }}
+    </div>
+
+    <div class="page-next">
+        <li class="page-item">
+            {{ if $paginator.HasNext }}
+            <a {{ if $paginator.HasNext }}href="{{ $paginator.Next.URL }}" {{ end }} class="btn-normal"
+                aria-label="Next">
+                <span class="has-icon" aria-hidden="true">
+                        <span class="longshort" data-short="" data-long="Next page"></span>
+                    <i data-feather="arrow-right-circle"></i>
+                </span>
+            </a>
+            {{ end }}
+        </li>
+    </div>
+
+</ul>
+{{ end }}

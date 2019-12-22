@@ -1,4 +1,4 @@
-<div class="introduction">
+<div class="markdown-body">
 	{{ range $index, $key := .Site.Pages }}
 		{{ if eq $key.Type "introduction" }}
 			<p>{{- $key.Content  | markdownify -}}</p>

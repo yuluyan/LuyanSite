@@ -1,0 +1,21 @@
+<head>
+    <!-- Core CSS file -->
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/photoswipe.css"> 
+
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/default-skin/default-skin.css"> 
+    
+    {{ $scss := resources.Get "sass/gallery.scss" }}
+    {{ $style := $scss | resources.ToCSS | resources.PostCSS | resources.Minify}}
+    <link rel="stylesheet" href="{{ $style.Permalink }}"> 
+    
+
+    <!-- Core JS file -->
+    <script src="{{ .Site.BaseURL }}js/photoswipe.min.js"></script> 
+    <script src="{{ .Site.BaseURL }}js/default-skin/photoswipe-ui-default.min.js"></script> 
+
+    {{ $js := resources.Get "js/gallery.js" }}
+    {{ $js_min := $js | resources.Minify}}
+    <script src="{{ $js_min.Permalink }}"></script> 
+    
+
+</head>

@@ -1,0 +1,19 @@
+<head>
+    {{ $scss := resources.Get "sass/blog.scss" }}
+    {{ $style := $scss | resources.ToCSS | resources.PostCSS | resources.Minify}}
+    <link rel="stylesheet" href="{{ $style.Permalink }}">
+
+    {{ $css := resources.Get "css/syntax-highlight.css" }}
+    {{ $stylesyntax := $css | resources.PostCSS | resources.Minify}}
+    <link rel="stylesheet" href="{{ $stylesyntax.Permalink }}">
+
+    {{ $js := resources.Get "js/blog.js" }}
+    {{ $js_min := $js | resources.Minify}}
+    <script src="{{ $js_min.Permalink }}"></script>
+
+    <script src="{{ .Site.BaseURL }}js/wolfram-notebook-embedder.min.js"></script>
+
+    {{ $js_mma := resources.Get "js/mma.js" }}
+    {{ $js_mma_min := $js_mma | resources.Minify}}
+    <script src="{{ $js_mma_min.Permalink }}"></script>
+</head>

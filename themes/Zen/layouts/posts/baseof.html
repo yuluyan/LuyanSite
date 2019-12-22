@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    {{- partial "head.html" . -}}
+    {{- partial "mathjax.html" . -}}
+    {{- partial "blog/head.html" . -}}
+
+    <body>
+        <div class="container wrapper">
+            {{- partial "blog/header.html" (dict "context" . "page_type" "Postbody") -}}
+            
+            {{- block "main" . }}{{- end }}
+        </div>
+        {{- partial "footer.html" . -}}
+    </body>
+</html>

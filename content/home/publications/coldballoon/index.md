@@ -25,8 +25,6 @@ abstract: "A balloon will cool down as air escapes from inside. This article est
 # Summary. An optional shortened abstract.
 summary: ''
 
-tags: ''
-
 # links:
 url_pdf: ''
 url_arxiv: ''

@@ -1,0 +1,97 @@
+{{ partial "language-select.html" . }}
+
+{{ with .context.Site.Params }}
+<div class="blog-header">
+
+	<div class="blog-title">
+		<a href="/posts">{{- .blog.title -}}</a>
+	</div>
+
+	<div class="blog-quote">
+		<p class="quote"></p>
+		<div class="quote-name"></div>
+	</div>
+
+	<div class="blog-links">
+		<div class="sep-horizon"></div>
+		{{- range $index, $key := .bloglink -}}
+		{{ if not (eq $index 0) }}
+		<div class="linksep">|</div>
+		{{ end }}
+		<a href="{{ $key.url }}"
+			class="{{ if (eq $key.name $.page_type) }} current-page-indi {{ else }} btn-normal {{ end }}">
+
+			{{ if (and (eq $key.name "Post") (eq $.page_type "Postbody"))}}
+			<div class="page-indi-arr has-icon">
+				<!--<i data-feather="arrow-left-circle"></i>-->
+			</div>
+			{{ end }}
+
+			{{ if (eq $key.name $.page_type) }}
+			<!--<div class="page-indi-arr">&rarr;</div>-->
+			{{ end }}
+
+
+			<span  class="{{ if (eq $key.name $.page_type) }} badge-reverse {{ end}} has-icon">
+				<i data-feather="{{ $key.icon }}"></i>
+				{{- $key.name -}}
+			</span>
+
+			{{ if (eq $key.name $.page_type)}}
+			<!--<div class="page-indi-arr">&larr;</div>-->
+			{{ end }}
+		</a>
+		{{- end -}}
+		<div class="sep-horizon"></div>
+
+		{{ if or (eq $.page_type "Postbody") (eq $.page_type "Post")}}
+		<ul class="taglist">
+			{{ range $.context.Site.Taxonomies.tags }}
+			<li>
+				{{ if (eq $.page_tag .Page.Title)}}
+				<span class="badge-reverse">{{ .Page.Title }}</span>
+				{{ else }}
+				<a class="btn-normal" href="{{ .Page.Permalink }}">{{ .Page.Title }}</a>
+				{{ end }}
+			</li>
+			{{ end }}
+		</ul>
+		<div class="sep-horizon"></div>
+		{{ end }}
+
+		{{ if (eq $.page_type "Gallery") }}
+		<ul class="taglist">
+			<li class="label">Categories: </li>
+			<li>
+				<div class="badge-reverse gallery-selector" data-category="All">All</div>
+			</li>
+			{{ range $.context.Site.Params.blog.photoCategories }}
+			<li>
+				<div class="btn-normal gallery-selector" data-category="{{ . }}">{{ . }}</div>
+			</li>
+			{{ end }}
+		</ul>
+		<ul id="gallery-taglist" class="taglist">
+			<li class="label">Tags: </li>
+		</ul>
+		<div class="sep-horizon"></div>
+		{{ end }}
+
+		{{ if or (eq $.page_type "Recordbody") (eq $.page_type "Recording")}}
+		<ul class="taglist">
+			{{ range $.context.Site.Taxonomies.genres }}
+			<li>
+				{{ if (eq $.page_tag .Page.Title)}}
+				<span class="badge-reverse">{{ .Page.Title }}</span>
+				{{ else }}
+				<a class="btn-normal" href="{{ .Page.Permalink }}">{{ .Page.Title }}</a>
+				{{ end }}
+			</li>
+			{{ end }}
+		</ul>
+		<div class="sep-horizon"></div>
+		{{ end }}
+	</div>
+
+</div>
+{{ end }}

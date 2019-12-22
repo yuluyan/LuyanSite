@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
 {{ partial "head.html" . }}
+{{ partial "home/head.html" . }}
+{{ partial "mathjax.html" . }}
 
 <body>
 	<div class="container wrapper">
-		{{ partial "header.html" . }}
+		{{ partial "home/header.html" . }}
 		{{ partial "home/introduction.html" . }}
 		{{ partial "home/publications.html" . }}
 		{{ partial "home/talks.html" . }}

@@ -21,8 +21,6 @@ abstract: "The set of ultrametrics that are $l^\\infty$-nearest to a given dissi
 # Summary. An optional shortened abstract.
 summary: ''
 
-tags: ''
-
 # links:
 url_pdf: https://arxiv.org/pdf/1612.01661
 url_arxiv: https://arxiv.org/abs/1612.01661

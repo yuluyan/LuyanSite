@@ -1,9 +1,9 @@
 <div class="section">
 	<h4>Softwares / Tools</h4>
 
-	<div class="sectionlist">
+	<div class="section-list">
 		{{ range where .Site.Pages ".Type" "software" }}
-		<div class="softitem">
+		<div class="pubitem">
 			<div class="pubbadges">
 				<div class="pubtitle">
 					<a href="{{ .Params.url_github }}" class="link-normal" target="_blank"> {{ .Title }} </a>

@@ -1,0 +1,408 @@
+/* Define global colors, fonts, etc. */
+
+:root {
+  --primary-color: #1976d2;
+  --primary-color-light: #97c2ff6c;
+  --primary-color-dark: #004ba0;
+  --secondary-color: #cfd8dc;
+  --secondary-color-light: #f4f4f4;
+  --secondary-color-dark: #999;
+  --primary-text-color: #fff;
+  --secondary-text-color: #000;
+  --primary-font: myriad-pro, sans-serif;
+  --primary-font-weight-light: 300;
+  --primary-font-weight: 400;
+  --primary-font-weight-semibold: 600;
+  --primary-font-weight-bold: 700;
+  --primary-font-size: 16px;
+  --primary-font-size-tiny: 12px;
+  --primary-font-size-small: 14px;
+  --primary-font-size-big: 18px;
+  --primary-font-size-huge: 24px;
+  --secondary-font: benton-modern-display, sans-serif;
+}
+
+/* General objects */
+
+.btn-reverse {
+  transition-property: background-color, color;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-out;
+  cursor: pointer;
+  background-color: var(--primary-color-light);
+  color: var(--secondary-text-color);
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 1px;
+  padding-bottom: 2.5px;
+  border-radius: 20px;
+  text-decoration: none;
+  &:hover {
+    transition-property: background-color, color;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-out;
+    text-decoration: none;
+    background-color: var(--primary-color);
+    color: var(--primary-text-color);
+    border: 0;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.btn-normal {
+  transition-property: background-color, color;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-out;
+  cursor: pointer;
+  color: var(--primary-color);
+  border-radius: 20px;
+  border: 0;
+  padding: 2px 6px;
+  text-decoration: none;
+  &:hover {
+    transition-property: background-color, color;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-out;
+    background: var(--primary-color);
+    color: var(--primary-text-color);
+    border: 0;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.link-normal,
+a {
+  text-decoration: none;
+  outline: 0;
+  border-bottom: solid 0.7px transparent;
+  transition: color 0.3s ease-out, border-bottom-color 0.3s ease-out;
+  color: var(--primary-color);
+  &:hover {
+    text-decoration: none;
+    border-bottom: solid 0.7px;
+    border-bottom-color: inherit;
+  }
+}
+
+.link-black {
+  text-decoration: none;
+  outline: 0;
+  border-bottom: solid 1px transparent;
+  transition: color 0.3s ease-out, border-bottom-color 0.3s ease-out;
+  color: var(--secondary-text-color);
+  :hover {
+    text-decoration: none;
+    border-bottom: solid 1px;
+    border-bottom-color: inherit;
+  }
+}
+
+.badge-normal,
+.badge-normal:hover {
+  cursor: default;
+  color: var(--secondary-text-color);
+  border: 0.7px var(--secondary-color) solid;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 1px;
+  padding-bottom: 2.5px;
+  margin-right: 5px;
+  border-radius: 20px;
+  text-decoration: none;
+}
+
+.badge-reverse {
+  cursor: default;
+  background-color: var(--primary-color);
+  color: var(--primary-text-color);
+  padding-left: 6px;
+  padding-right: 6px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  border-radius: 20px;
+  text-decoration: none;
+}
+
+/* Tooltip */
+
+.my-tooltip {
+  display: inline-block;
+  position: relative;
+  p {
+    text-align: center;
+  }
+  .my-tooltip-target {
+    text-decoration: none;
+    border-bottom: solid 0.7px;
+    border-bottom-color: inherit;
+  }
+  .my-tooltip-bubble {
+    position: relative;
+    top: -6px;
+    background: var(--primary-color);
+    color: var(--primary-text-color);
+    font-size: var(--primary-font-size-tiny);
+    width: 50px;
+    height: 20px;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 50%;
+    padding: 0px 5px;
+  }
+  .bottom,
+  .right {
+    min-width: 150px;
+    max-width: 300px;
+    padding: 5px 10px;
+    color: black;
+    background-color: var(--secondary-color-light);
+    font-weight: var(--primary-font-weight);
+    font-size: var(--primary-font-size-small);
+    border-radius: 5px;
+    position: absolute;
+    z-index: 9999;
+    box-sizing: border-box;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.8s;
+    i {
+      position: absolute;
+      overflow: hidden;
+      &::after {
+        content: "";
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        background-color: var(--secondary-color-light);
+        box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+  &:hover {
+    .bottom,
+    .right {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+  .bottom {
+    top: 40px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    i {
+      bottom: 100%;
+      left: 50%;
+      margin-left: -12px;
+      width: 24px;
+      height: 12px;
+      &::after {
+        left: 50%;
+        transform: translate(-50%, 50%) rotate(45deg);
+      }
+    }
+  }
+  .right {
+    top: 50%;
+    left: 100%;
+    margin-left: 20px;
+    transform: translate(0, -50%);
+    i {
+      top: 50%;
+      right: 100%;
+      margin-top: -12px;
+      width: 12px;
+      height: 24px;
+      &::after {
+        left: 0;
+        top: 50%;
+        transform: translate(50%, -50%) rotate(-45deg);
+      }
+    }
+  }
+}
+
+/* Selection style */
+
+::selection {
+  background: var(--secondary-color);
+  text-shadow: none;
+}
+
+/* Page body style */
+
+body {
+  font-family: var(--primary-font);
+  font-weight: var(--primary-font-weight);
+  font-style: normal;
+  color: var(--secondary-text-color);
+  line-height: 1.5;
+  font-size: var(--primary-font-size);
+  margin-left: 5%;
+  margin-right: 5%;
+  min-width: 300px;
+}
+
+.wrapper {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.container {
+  margin-top: 40px;
+  max-width: 800px;
+}
+
+/* Page head style */
+
+.language-select {
+  display: block;
+  user-select: none;
+  a {
+    font-size: var(--primary-font-size-small);
+  }
+}
+
+.linksep {
+  color: var(--secondary-color-dark);
+  position: relative;
+  display: inline-block;
+  font-size: 10px;
+  bottom: 3px;
+  @media (min-width: 440px) {
+    margin-left: 3px;
+  }
+  @media (max-width: 440px) {
+    margin-left: -0px;
+    margin-right: -2.5px;
+  }
+}
+
+.longshort:after {
+  @media (min-width: 440px) {
+    content: attr(data-long);
+  }
+  @media (max-width: 440px) {
+    content: attr(data-short);
+  }
+}
+
+/* for footer*/
+
+.footer {
+  user-select: none;
+  text-align: right;
+  font-size: 0.75em;
+  color: var(--secondary-color-dark);
+  margin-top: 40px;
+  max-width: 800px;
+  margin-bottom: 50px;
+}
+
+.footer-sep {
+  border-top: 1px solid var(--secondary-color-light);
+  margin-top: 2px;
+}
+
+/* return home buttom */
+.returnhome {
+  text-align: right;
+}
+
+/* For 404 page */
+.image404 {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+}
+
+.text404 {
+  text-align: center;
+  font-family: var(--primary-font);
+  margin-bottom: 30px;
+  @media (min-width: 440px) {
+    font-size: 30pt;
+  }
+  @media (max-width: 440px) {
+    font-size: 15pt;
+  }
+}
+
+/* svg icon */
+.has-icon svg {
+  width: 15px;
+  height: 15px;
+  margin-right: 4px;
+  position: relative;
+  top: 2.5px;
+}
+
+/* For mma */
+.mma {
+  color: #d21c00;
+}
+.mma-func {
+  font-family: monospace, sans-serif;
+  background: #eff0f1;
+  padding: 1px 5px;
+  white-space: nowrap;
+  a {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+}
+.mma-notebook {
+  margin-top: 5px;
+  text-align: center;
+  .mma-notebook-trigger {
+    user-select: none;
+    transition-duration: 0.3s;
+    transition-property: background-color, color;
+    transition-timing-function: ease-out;
+    cursor: pointer;
+    color: var(--primary-color);
+    border-radius: 20px;
+    border: 0;
+    padding: 0px 7px 1px 6px;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 5px;
+    &:hover {
+      background: #d21c0049;
+    }
+    .logo-img {
+      position: relative;
+      top: 3.5px;
+      left: 1px;
+      width: 15px;
+    }
+    .trigger-text {
+      margin-left: 1.5px;
+      font-size: var(--primary-font-size-small);
+      &:hover {
+        color: rgb(216, 57, 32);
+      }
+    }
+  }
+  .mma-notebook-container {
+    & > div > div:nth-child(2) {
+      display: none;
+    }
+  }
+}
+
+.github-commit-sha {
+  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+  color: var(--primary-color);
+  padding: 0.1em 0.4em;
+  font-size: 90%;
+  font-weight: 400;
+  background-color: #f6f8fa;
+  border: 1px solid #eaecef;
+  border-radius: 0.2em;
+  &:hover {
+    border: 1px solid #eaecef;
+  }
+}

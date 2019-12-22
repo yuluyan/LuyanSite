@@ -1,0 +1,103 @@
+.recording-item {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.recording-item:last-of-type {
+  margin-bottom: 50px;
+}
+.recording-item .recording-title {
+  font-size: var(--primary-font-size-huge);
+  font-weight: var(--primary-font-weight-light);
+  color: var(--primary-color);
+  margin-bottom: 8px;
+}
+.recording-item .recording-subtitle {
+  font-size: var(--primary-font-size);
+  font-weight: var(--primary-font-weight-light);
+  color: var(--primary-color);
+  margin-bottom: 12px;
+}
+.recording-item .recording-meta {
+  user-select: none;
+  font-style: italic;
+  color: var(--secondary-color-dark);
+}
+.recording-item .recording-meta .meta-text {
+  opacity: 0.6;
+}
+.recording-item .recording-meta .meta-emph {
+  display: inline-block;
+  opacity: 1;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+.recording-item .recording-meta .meta-emph a {
+  margin-right: -2px;
+  display: inline-block;
+  color: var(--secondary-color-dark);
+}
+@media (min-width: 440px) {
+  .recording-item .recording-meta.meta-break {
+    display: inline-block;
+  }
+}
+@media (max-width: 440px) {
+  .recording-item .recording-meta.meta-break {
+    display: block;
+  }
+}
+.recording-item .recordings-recording a:hover {
+  border: 0;
+}
+.recording-item figure {
+  text-align: center;
+  margin-inline-start: auto;
+  margin-inline-end: auto;
+}
+.recording-item .video-js,
+.recording-item .video-js-poster {
+  outline: none;
+  text-align: center;
+  display: inline-block;
+}
+.recording-item .video-js .vjs-tech,
+.recording-item .video-js-poster .vjs-tech {
+  outline: none;
+}
+@media (min-width: 685px) {
+  .recording-item .video-js,
+  .recording-item .video-js-poster {
+    width: 500px;
+    height: 281.25px;
+  }
+}
+@media (max-width: 685px) and (min-width: 560px) {
+  .recording-item .video-js,
+  .recording-item .video-js-poster {
+    width: 400px;
+    height: 225px;
+  }
+}
+@media (max-width: 560px) and (min-width: 440px) {
+  .recording-item .video-js,
+  .recording-item .video-js-poster {
+    width: 320px;
+    height: 180px;
+  }
+}
+@media (max-width: 440px) {
+  .recording-item .video-js,
+  .recording-item .video-js-poster {
+    width: 280px;
+    height: 157.5px;
+  }
+}
+.more-to-come {
+  text-align: center;
+  font-size: 250%;
+  font-weight: bolder;
+  color: var(--secondary-color-dark);
+  opacity: 0.5;
+  margin-top: 100px;
+  margin-bottom: 100px;
+}

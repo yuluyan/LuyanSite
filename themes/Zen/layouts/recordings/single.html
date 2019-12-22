@@ -1,0 +1,64 @@
+{{ define "main" }}
+
+{{ $vid := .Resources.GetMatch (printf "**%s" .Params.filename) }}
+<div class="recording-item">
+  {{ $date := dateFormat "2006-01-02" .Params.date }}
+  <div class="recording-title">
+    {{ .Title | markdownify }}
+  </div>
+  {{ if ne .Params.subtitle ""}}
+  <div class="recording-subtitle">
+    {{ .Params.subtitle | markdownify }}
+  </div>
+  {{ end }}
+
+  <div class="recording-meta meta-break">
+    <span class="meta-text">Composed by</span>
+    <span class="meta-emph">{{ .Params.composer | markdownify }}</span>
+  </div>
+  <div class="recording-meta meta-break">
+    {{ if ne .Params.arranger ""}}
+    <span class="meta-text longshort" data-long="and arranged by" data-short="Arranged by"></span>
+    <span class="meta-emph">{{ .Params.arranger | markdownify }}</span>
+    {{ end }}
+  </div>
+
+  <div class="recording-meta">
+    <span class="meta-text">Posted in</span>
+    <span class="meta-emph">
+      {{ range $index, $author := .Params.genres }}
+      {{ if $index }},{{ end }}
+      <a href="{{ "genres/" | absURL}}{{ . | urlize }}">{{ . }}</a>
+      {{ end }}
+    </span>
+    <span class="meta-text">on</span>
+    <span class="meta-emph longshort" data-short="{{- .Params.date | dateFormat "Jan 2" -}}"
+      data-long="{{- .Params.date | dateFormat "January 2, 2006" -}}">
+    </span>
+    <span class="meta-text longshort" data-short="" data-long="by">
+    </span>
+    <span class="meta-emph longshort" data-short="" data-long="Luyan Yu">
+    </span>
+  </div>
+
+  <figure class="recordings-recording" data-date="{{- $date -}}" data-tags="{{- delimit .Params.genres "," -}}">
+    <video id="recording-video" poster="{{- .Params.poster -}}"
+				class='video-js vjs-default-skin' controls preload='auto' data-setup='{}'>
+				<source src="{{ $vid.RelPermalink }}" type='video/mp4' label='1080p' res='1080'>
+				<source src="{{ $vid.RelPermalink }}" type='video/mp4' label='720p' res='720'>
+				<p class='vjs-no-js'>
+					To view this video please enable JavaScript, and consider upgrading to a web browser that
+					<a href='https://videojs.com/html5-video-support/' target='_blank'>supports HTML5 video</a>
+				</p>
+			</video>
+  </figure>
+  <script>
+    videojs('recording-video').videoJsResolutionSwitcher()
+  </script>
+
+  {{ .Content | markdownify }}
+
+</div>
+
+
+{{ end }}

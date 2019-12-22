@@ -1,0 +1,108 @@
+{{ define "main" }}
+<section class="postitem">
+  <div id="post-title" class="posttitle">
+    {{ .Title | markdownify }}
+  </div>
+  {{ if ne .Params.subtitle ""}}
+  <div class="postsubtitle">
+    {{ .Params.subtitle | markdownify}}
+  </div>
+  {{ end }}
+
+  <div class="postmeta">
+    <span class="metatext">
+      Posted in
+    </span>
+    <span class="metaitem">
+      {{ range $index, $author := .Params.tags }}
+      {{ if $index }},{{ end }}
+      <a href="{{ "tags/" | absURL}}{{ . | urlize }}">{{ . }}</a>
+      {{ end }}
+    </span>
+    <span class="metatext">
+      on
+    </span>
+    <span class="metaitem longshort" data-short="{{- .Params.date | dateFormat "Jan 2" -}}"
+      data-long="{{- .Params.date | dateFormat "January 2, 2006" -}}">
+    </span>
+    <span class="metatext longshort" data-short="" data-long="by">
+    </span>
+    <span class="metaitem longshort" data-short="" data-long="
+            {{ range $index, $author := .Params.authors }}
+              {{ if $index }},{{ end }}
+              {{ if eq $author "me"}}
+                {{- $.Site.Title | markdownify -}}
+              {{ else }}
+                {{- $author | markdownify -}}
+              {{ end }}
+            {{ end }}
+          ">
+    </span>
+  </div>
+
+  <div class="post-body markdown-body">
+    <p>
+      {{- .Content | markdownify -}}
+    </p>
+  </div>
+
+  <ul class="pagination pagination-in-post">
+    <div class="page-prev">
+      <li class="page-item">
+        {{ with .PrevInSection }}
+        <a class="btn-normal" href="{{.Permalink}}" title="{{.Title}}">
+          <span class="has-icon" aria-hidden="true">
+            <i data-feather="arrow-left-circle"></i>
+            <span class="longshort" data-short="" data-long="Prev post"></span>
+          </span>
+        </a>
+        {{ end }}
+      </li>
+    </div>
+
+    <div class="page-next">
+      <li class="page-item">
+        {{ with .NextInSection }}
+        <a class="btn-normal" href="{{.Permalink}}" title="{{.Title}}">
+          <span class="has-icon" aria-hidden="true">
+            <span class="longshort" data-short="" data-long="Next post"></span>
+            <i data-feather="arrow-right-circle"></i>
+          </span>
+        </a>
+        {{ end }}
+      </li>
+    </div>
+  </ul>
+
+
+  <div id="disqus_thread" class="disqus"></div>
+  <script>
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function () { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://yuluyan.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+{{ if (findRE "<pre" .Content 1) }}
+{{ $js := resources.Get "js/code-copy.js" }}
+{{ $copycode := $js | resources.Minify}}
+<script src="{{ $copycode.Permalink }}"></script>
+{{ end }}
+
+
+
+{{ end }}

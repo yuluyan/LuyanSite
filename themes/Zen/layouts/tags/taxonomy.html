@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+{{- partial "head.html" . -}}
+{{- partial "blog/head.html" . -}}
+
+<body>
+  <div class="container wrapper">
+    {{- partial "blog/header.html" (dict "context" . "page_type" "Postbody" "page_tag" .Title) -}}
+
+    {{ $this_tag := .Title }}
+
+    <div class="blog-section">
+      {{ $paginator := .Paginate (where .Pages "Type" "posts") .Site.Params.blog.postsPerPage }}
+      {{ range $paginator.Pages }}
+      <div class="postitem">
+        <div class="posttitle">
+          <a href="{{ .Permalink }}" class="link-normal"> {{ .Title | markdownify }} </a>
+        </div>
+        {{ if ne .Params.subtitle ""}}
+        <div class="postsubtitle">
+          {{ .Params.subtitle | markdownify}}
+        </div>
+        {{ end }}
+        
+        <div class="postmeta">
+          <span class="metatext">
+            Posted in
+          </span>
+          <span class="metaitem">
+            {{ range $index, $tag := .Params.tags }}
+            {{ if $index }},{{ end }}
+            {{ if (eq $tag $this_tag)}}
+            <span class="badge-reverse">{{ $tag }}</span>
+            {{ else }}
+            <a href="{{ "tags/" | absURL}}{{ . | urlize }}">{{ $tag }}</a>
+            {{ end }}
+            {{ end }}
+          </span>
+          <span class="metatext">
+            on
+          </span>
+          <span class="metaitem longshort" data-short="{{- .Params.date | dateFormat "Jan 2" -}}"
+            data-long="{{- .Params.date | dateFormat "January 2, 2006" -}}">
+          </span>
+          <span class="metatext longshort" data-short="" data-long="by">
+          </span>
+          <span class="metaitem longshort" data-short="" data-long="
+                              {{ range $index, $author := .Params.authors }}
+                                {{ if $index }},{{ end }}
+                                {{ if eq $author "me"}}
+                                  {{- $.Site.Title | markdownify -}}
+                                {{ else }}
+                                  {{- $author | markdownify -}}
+                                {{ end }}
+                              {{ end }}
+                            ">
+          </span>
+        </div>
+
+        <div class="post-summary">
+          {{ range .Params.preview }}
+          <p>{{- . | markdownify -}}</p>
+          {{ end }}
+          <div class="cont-read has-icon">
+            <a href="{{ .Permalink }}" class="btn-normal">
+              Continue reading
+              <i data-feather="arrow-right-circle"></i></a>
+          </div>
+        </div>
+        
+        <div class="post-sep">
+          <img src="/post-sep.png" />
+        </div>
+        
+      </div>
+      {{ end }}
+      {{ template "partials/paginator.html" . }}
+    </div>
+  </div>
+  {{- partial "footer.html" . -}}
+</body>
+
+</html>

@@ -21,8 +21,6 @@ abstract: "The set of ultrametrics on $[n]$ nodes that are $\\ell^\\infty$-neare
 # Summary. An optional shortened abstract.
 summary: ''
 
-tags: ''
-
 # links:
 url_pdf: https://authors.elsevier.com/a/1a1c95YnCbeFP
 url_arxiv: https://arxiv.org/abs/1907.10521

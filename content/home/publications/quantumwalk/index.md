@@ -23,8 +23,6 @@ abstract: We systematically study the localization effect in discrete-time quant
 # Summary. An optional shortened abstract.
 summary: ''
 
-tags: ''
-
 # links:
 url_pdf: https://arxiv.org/pdf/1509.03919
 url_arxiv: https://arxiv.org/abs/1509.03919

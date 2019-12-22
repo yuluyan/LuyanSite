@@ -1,31 +1,31 @@
 <!-- Citation modal -->
 <div id="modal" class="modal">
-<div class="modal-dialog">
-    <div class="modal-content">
-        <div class="modal-head">
-            <div class="modal-title">BibTex :</div>
-            <a class="close-bibtex" href="#">
-                <i data-feather="x"></i>
-            </a>    
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-head">
+                <div class="modal-title">BibTex :</div>
+                <a class="close-bibtex has-icon" href="#">
+                    <i data-feather="x"></i>
+                </a>
+            </div>
+            <textarea cols="60" rows="15" class="code-bibtex" readonly></textarea>
+            <div class="modal-buttons">
+                <a class="copy-bibtex btn-reverse has-icon" href="#" target="_blank">
+                    <i data-feather="copy"></i>Copy to clipboard
+                </a>
+                <a class="download-bibtex btn-reverse has-icon" href="#" target="_blank">
+                    <i data-feather="download"></i>Download
+                </a>
+            </div>
+            <div class="modal-error"></div>
         </div>
-        <textarea cols="60" rows="15" class="code-bibtex" readonly></textarea>
-        <div class="modal-buttons">
-            <a class="copy-bibtex btn-reverse" href="#" target="_blank">
-            <i data-feather="copy"></i>Copy to clipboard
-            </a>
-            <a class="download-bibtex btn-reverse" href="#" target="_blank">
-            <i data-feather="download"></i>Download
-            </a>
-        </div>
-        <div class="modal-error"></div>
     </div>
-</div>
 </div>
 
 <div id="modal-copied" class="modal">
-<div class="modal-copied">
-    <div class="modal-content">
-        <div>Copied!</div>
+    <div class="modal-copied">
+        <div class="modal-content">
+            <div>Copied!</div>
+        </div>
     </div>
-</div>
 </div>

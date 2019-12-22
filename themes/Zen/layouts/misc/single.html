@@ -1,0 +1,8 @@
+{{ define "main" }}
+<div class="markdown-body">
+    {{ .Content | markdownify}}
+</div>
+<div class="returnhome">
+    <a href="/" class="btn-normal has-icon"><i data-feather="arrow-left-circle"></i>Return to homepage</a>
+</div>
+{{ end }}

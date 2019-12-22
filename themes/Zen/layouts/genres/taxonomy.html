@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+{{- partial "head.html" . -}}
+{{- partial "blog/head.html" . -}}
+{{- partial "recordings/head.html" . -}}
+
+<body>
+  <div class="container wrapper">
+    {{- partial "blog/header.html" (dict "context" . "page_type" "Recordbody" "page_tag" .Title) -}}
+
+    {{ $this_tag := .Title }}
+    <div class="blog-section">
+
+      {{ range where .Pages "Type" "recordings" }}
+      {{ $vid := .Resources.GetMatch (printf "**%s" .Params.filename) }}
+      {{ with .Params }}
+      <div class="recording-item">
+        {{ $date := dateFormat "2006-01-02" .date }}
+        <div class="recording-title">
+          {{ .title }}
+        </div>
+        {{ if ne .subtitle ""}}
+        <div class="recording-subtitle">
+          {{ .subtitle }}
+        </div>
+        {{ end }}
+
+        <div class="recording-meta meta-break">
+          <span class="meta-text">Composed by</span>
+          <span class="meta-emph">{{ .composer | markdownify }}</span>
+        </div>
+        <div class="recording-meta meta-break">
+          {{ if ne .arranger ""}}
+          <span class="meta-text longshort" data-long="and arranged by" data-short="Arranged by"></span>
+          <span class="meta-emph">{{ .arranger | markdownify }}</span>
+          {{ end }}
+        </div>
+
+        <div class="recording-meta">
+          <span class="meta-text">Posted in</span>
+          <span class="meta-emph">
+            {{ range $index, $genre := .genres }}
+            {{ if $index }},{{ end }}
+            {{ if (eq $genre $this_tag)}}
+            <span class="badge-reverse">{{ $genre }}</span>
+            {{ else }}
+            <a href="{{ "genres/" | absURL}}{{ . | urlize }}">{{ $genre }}</a>
+            {{ end }}
+            {{ end }}
+          </span>
+          <span class="meta-text">on</span>
+          <span class="meta-emph longshort" data-short="{{- .date | dateFormat "Jan 2" -}}"
+            data-long="{{- .date | dateFormat "January 2, 2006" -}}">
+          </span>
+          <span class="meta-text longshort" data-short="" data-long="by">
+          </span>
+          <span class="meta-emph longshort" data-short="" data-long="Luyan Yu">
+          </span>
+        </div>
+
+        <figure class="recordings-recording" data-date="{{- $date -}}" data-tags="{{- delimit .genres "," -}}">
+          <video class='video-js' controls preload='auto' data-setup='{}'>
+            <source src="{{ $vid.RelPermalink }}">
+            <p class='vjs-no-js'>
+              To view this video please enable JavaScript, and consider upgrading to a web browser that
+              <a href='https://videojs.com/html5-video-support/' target='_blank'>supports HTML5 video</a>
+            </p>
+          </video>
+
+        </figure>
+      </div>
+
+      {{ end }}
+      {{ end }}
+    </div>
+
+  </div>
+  {{- partial "footer.html" . -}}
+</body>
+
+</html>

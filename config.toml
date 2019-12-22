@@ -4,10 +4,15 @@ title = "Luyan Yu"
 theme = "Zen"
 googleAnalytics = "UA-77181423-1"
 timeout = 3000
+disqusShortname = "luyanyu"
 
+pygmentsUseClasses=true
+PygmentsCodeFences = true
 [params]
   abstractLength = 200
   sedescription = "All about Luyan Yu, research, life and more."
+  githubRepo = "https://github.com/yuluyan/LuyanSite/commit"
+
 [params.personal]
   firstname = "Luyan"
   lastname = "Yu"
@@ -29,7 +34,7 @@ timeout = 3000
 [[params.social]]
   name = "Blog"
   icon = "file-text"
-  url = "#"
+  url = "/blog/"
 
 [[params.social]]
   name = "Résumé"
@@ -45,3 +50,32 @@ timeout = 3000
   name = "LinkedIn"
   icon = "linkedin"
   url = "https://linkedin.com/in/luyanyu/"
+
+[params.blog]
+  title = "Cornucopia"
+  photoCategories = ["Travel", "Daily"]
+  postsPerPage = 5
+
+[[params.bloglink]]
+  name = "Home"
+  icon = "home"
+  url = "/"
+
+[[params.bloglink]]
+  name = "Post"
+  icon = "file-text"
+  url = "/blog"
+
+[[params.bloglink]]
+  name = "Gallery"
+  icon = "aperture"
+  url = "/gallery"
+
+[[params.bloglink]]
+  name = "Recording"
+  icon = "headphones"
+  url = "/recordings"
+
+[taxonomies]
+  tag = "tags"
+  genre = "genres"
