@@ -15,7 +15,7 @@ PygmentsCodeFences = true
 [params]
   abstractLength = 200
   sedescription = "All about Luyan Yu, research, life and more."
-  githubRepo = "https://github.com/yuluyan/LuyanSite/commit"
+  githubRepo = "https://github.com/yuluyan/LuyanSite"
 
 [params.personal]
   firstname = "Luyan"

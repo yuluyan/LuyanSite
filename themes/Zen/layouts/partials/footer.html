@@ -3,7 +3,7 @@
 		{{ if (fileExists "commit_id.txt") }}
 		{{ $commit_id := trim (readFile "commit_id.txt") "\n" }}
 		Github commit: <a class="github-commit-sha"
-			href="{{- .Site.Params.githubRepo -}}/{{- $commit_id -}}" target="_blank">{{ substr $commit_id 0 7 }}</a>
+			href="{{- .Site.Params.githubRepo -}}/commit/{{- $commit_id -}}" target="_blank">{{ substr $commit_id 0 7 }}</a>
 		{{ end }}
 		Updated on {{ now.Format "January 2, 2006"}}
 	</div>
