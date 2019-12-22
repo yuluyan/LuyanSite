@@ -1,7 +1,7 @@
 module.exports = {
     plugins: {
         autoprefixer: {
-            browsers: [
+            Browserslist: [
                 "Android 2.3",
                 "Android >= 4",
                 "Chrome >= 20",
