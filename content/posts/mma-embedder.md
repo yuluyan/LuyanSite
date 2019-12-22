@@ -33,7 +33,7 @@ Note that the {{< mmaf Permissions >}} should include {{< mmaf "\"Interact\"" fa
 And we will get a {{< mmaf CloudObject >}} with some id looks like {{< mmaf 10d6bb97-84b8-4a0d-8a3a-d210b7a3e783 false >}}. 
 
 * **STEP 1:** Now let's can install the required javascript file by npm:
-{{< highlight script >}}
+{{< highlight plaintext >}}
 npm install wolfram-notebook-embedder
 {{< /highlight >}}
 

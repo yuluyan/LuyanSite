@@ -25,18 +25,18 @@ What I want to achieve here is to run a python script on the server whenever a c
 
 ## Prerequisites
 Upgrade the system:
-{{< highlight script >}}
+{{< highlight plaintext >}}
 sudo apt update
 sudo apt upgrade
 {{< /highlight >}}
 
 Install C compiler and Python
-{{< highlight script >}}
+{{< highlight plaintext >}}
 apt install build-essential python-dev python-pip
 {{< /highlight >}}
 
 Install uWSGI through {{< mmaf pip false >}}
-{{< highlight script >}}
+{{< highlight plaintext >}}
 pip install uwsgi
 {{< /highlight >}}
 
@@ -53,7 +53,7 @@ Save it as {{< mmaf "helloworld.py" false >}}.
 
 ## Configuration
 Change the config file inside {{< mmaf "/etc/nginx/" false >}}. The following is a minimal example:
-{{< highlight script >}}
+{{< highlight plaintext >}}
 location /app/ {
     include uwsgi_params;
     uwsgi_pass 127.0.0.1:3905;
@@ -61,17 +61,17 @@ location /app/ {
 {{< /highlight >}}
 It means: whenever the URL {{< mmaf "yuluyan.com/app/" false >}} is requested, it is passed to uWSGI. 
 Now restart Nginx
-{{< highlight script >}}
+{{< highlight plaintext >}}
 sudo service nginx restart
 {{< /highlight >}}
 
 Start uWSGI (the port should match)
-{{< highlight script >}}
+{{< highlight plaintext >}}
 uwsgi --socket 127.0.0.1:3905 --wsgi-file ~/helloworld.py --master --processes 1 --threads 1
 {{< /highlight >}}
 
 or run it using screen:
-{{< highlight script >}}
+{{< highlight plaintext >}}
 screen -dmS uwsgi uwsgi --socket 127.0.0.1:3905 --wsgi-file ~/helloworld.py --master --processes 1 --threads 1
 {{< /highlight >}}
 
@@ -96,7 +96,7 @@ threads = 1
 {{< /highlight >}}
 
 and run with it
-{{< highlight script >}}
+{{< highlight plaintext >}}
 screen -dmS uwsgi uwsgi --ini config.ini
 {{< /highlight >}}
 
@@ -117,8 +117,8 @@ def application (env, start_response):
 
 When the URL {{< mmaf "yuluyan.com/app/func?x=1&y=2" false >}} is requested, the content of the environment variable is set correspondingly.
 The following shows the keys that are important to us. 
-{{< highlight no-copy "hl_lines=5-6" >}}
-Content in environment variable
+{{< highlight plaintext "hl_lines=5-6" >}}
+[nc]Content in environment variable
 CONTENT_LENGTH:
 CONTENT_TYPE:
 ... ...
@@ -153,13 +153,13 @@ def application (env, start_response):
 {{< /highlight >}}
 
 If we enter the URL
-{{< highlight no-copy >}}
-yuluyan.com/app/path1/path2/path3/func?x=1&y=2&z=3&x=4
+{{< highlight plaintext >}}
+[nc]yuluyan.com/app/path1/path2/path3/func?x=1&y=2&z=3&x=4
 {{< /highlight >}}
 
 we will get the following result:
-{{< highlight no-copy "hl_lines=5-6" >}}
-PATH_INFO
+{{< highlight plaintext "hl_lines=5-6" >}}
+[nc]PATH_INFO
 [app, path1, path2, path3, func]
 QUERY_STRING
 y: [2] x: [1, 4] z: [3]
@@ -223,8 +223,8 @@ class Dispatcher():
 {{< /highlight >}}
 
 Let's test it!
-{{< highlight no-copy >}}
-yuluyan.com/app/func1?t=some+text
+{{< highlight plaintext >}}
+[nc]yuluyan.com/app/func1?t=some+text
 # The result is You've input some text
 
 yuluyan.com/app/func1?x=some+text

@@ -2,7 +2,13 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
     var addCopyButtons = function (clipboard) {
         document.querySelectorAll('.highlight > :first-child').forEach(function (codeBlock) {
-            if (codeBlock.firstElementChild.getAttribute("data-lang") !== "no-copy") {
+            if (
+                (codeBlock.firstElementChild.getAttribute("data-lang") !== "plaintext") ||
+                (
+                    codeBlock.firstElementChild.getAttribute("data-lang") == "plaintext" &&
+                    codeBlock.firstElementChild.innerText.substr(0, 4) !== "[nc]"
+                )
+            ) {
 
                 var code = ""
 
@@ -36,6 +42,10 @@ document.addEventListener('DOMContentLoaded', function (event) {
                     });
                 });
                 codeBlock.parentNode.parentNode.insertBefore(button, codeBlock.parentNode);
+            } else {
+                if (codeBlock.firstElementChild.innerText.substr(0, 4) == "[nc]") {
+                    codeBlock.firstElementChild.innerText = codeBlock.firstElementChild.innerText.substr(4)
+                }
             }
         })
 

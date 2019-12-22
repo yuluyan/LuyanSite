@@ -22,30 +22,30 @@ This post takes notes of a Complete process of setting up Shadowsocks and Shadow
 
 ## Preparation
 Start from an fresh installed Ubuntu 16.04. First do an update:
-{{< highlight script >}}
+{{< highlight plaintext >}}
 sudo apt update
 sudo apt upgrade
 {{< /highlight>}}
 
 Install screen
-{{< highlight script >}}
+{{< highlight plaintext >}}
 sudo apt install screen
 {{< /highlight>}}
 
 Install Node.js
-{{< highlight script >}}
+{{< highlight plaintext >}}
 curl -sL https://deb.nodesource.com/setup_11.x | sudo -E bash -
 sudo apt install nodejs
 {{< /highlight>}}
 
 Install Redis
-{{< highlight script >}}
+{{< highlight plaintext >}}
 sudo apt install redis-server
 {{< /highlight>}}
 
 Install Shadowsocks. The branch I choose is [Shadowsocks-libev](https://github.com/shadowsocks/shadowsocks-libev).
 Note that Shadowsocks-manager does not support ShadowsocksR.
-{{< highlight script >}}
+{{< highlight plaintext >}}
 sudo apt install software-properties-common -y
 sudo add-apt-repository ppa:max-c-lv/shadowsocks-libev -y
 sudo apt update
@@ -53,7 +53,7 @@ sudo apt install shadowsocks-libev
 {{< /highlight>}}
 
 Install Shadowsocks-manager
-{{< highlight script >}}
+{{< highlight plaintext >}}
 npm i -g shadowsocks-manager --unsafe-perm
 {{< /highlight>}}
 
@@ -62,12 +62,12 @@ npm i -g shadowsocks-manager --unsafe-perm
 
 ### Setup Redis
 Check installation
-{{< highlight script >}}
+{{< highlight plaintext >}}
 redis-server
 {{< /highlight>}}
 
 Set Redis password
-{{< highlight script >}}
+{{< highlight plaintext >}}
 redis-cli
 > config set requirepass PWD
 > auth PWD
@@ -132,7 +132,7 @@ redis:
 
 ## Run Shadowsocks and Shadowsocks-manager
 Use the following command to run them
-{{< highlight script "hl_lines=4">}}
+{{< highlight plaintext "hl_lines=4">}}
 screen -dmS ssserver ss-manager -m chacha20-ietf-poly1305 -u --manager-address 127.0.0.1:6001
 screen -dmS ssmanager ssmgr -c ss.yml
 screen -dmS ssgui ssmgr -c webgui.yml

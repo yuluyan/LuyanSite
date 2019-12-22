@@ -6,8 +6,12 @@ googleAnalytics = "UA-77181423-1"
 timeout = 3000
 disqusShortname = "luyanyu"
 
-pygmentsUseClasses=true
+pygmentsUseClasses = true
 PygmentsCodeFences = true
+
+[markup]
+  defaultMarkdownHandler = "blackfriday"
+
 [params]
   abstractLength = 200
   sedescription = "All about Luyan Yu, research, life and more."
@@ -52,9 +56,9 @@ PygmentsCodeFences = true
   url = "https://linkedin.com/in/luyanyu/"
 
 [params.blog]
-  title = "Cornucopia"
+  title = "Playground"
   photoCategories = ["Travel", "Daily"]
-  postsPerPage = 5
+  postsPerPage = 4
 
 [[params.bloglink]]
   name = "Home"

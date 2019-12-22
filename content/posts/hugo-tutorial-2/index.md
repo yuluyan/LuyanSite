@@ -40,30 +40,30 @@ A running web server with uWSGI configured. See my [other post]({{< ref "posts/u
 
 ## Server side setup
 Update and upgrade the server
-{{< highlight script >}}
+{{< highlight plaintext >}}
 apt update
 apt upgrade
 {{< /highlight >}}
 
 Install Hugo on the server
-{{< highlight script >}}
+{{< highlight plaintext >}}
 snap install hugo --channel=extended
 {{< /highlight >}}
 
 
 Generate an ssh key pair for later use by
-{{< highlight script >}}
+{{< highlight plaintext >}}
 ssh-keygen
 {{< /highlight >}}
 
 Here I name it {{< mmaf "github_sync" false >}}.
 Print the public key and copy it (change the dir if you didn't keep the default).
-{{< highlight script >}}
+{{< highlight plaintext >}}
 cat ~/.ssh/github_sync.pub
 {{< /highlight >}}
 
 Create or modify the ssh config file {{< mmaf "~/.ssh/config" false >}} to specify which key to use for the git command.
-{{< highlight script >}}
+{{< highlight plaintext >}}
 # ~/.ssh/config
 Host github.com
   User git
@@ -97,44 +97,44 @@ Give the key a name and paste the just copied public key to the textbox.
 ## Server side setup, again
 ### Clone the repo
 Test the connection to GitHub by
-{{< highlight script >}}
+{{< highlight plaintext >}}
 ssh -T git@github.com
 {{< /highlight>}}
 
 If you see something like this, your connect is good.
-{{< highlight no-copy >}}
-Hi username! You've successfully authenticated, but GitHub does not provide shell access.
+{{< highlight plaintext >}}
+[nc]Hi username! You've successfully authenticated, but GitHub does not provide shell access.
 {{< /highlight >}}
 
 Make a folder to be your application folder
-{{< highlight script >}}
+{{< highlight plaintext >}}
 mkdir ~/uwsgi_apps/github_sync
 cd ~/uwsgi_apps/github_sync
 {{< /highlight>}}
 
 Clone the GitHub repo the the server (change the name for your case)
-{{< highlight script >}}
+{{< highlight plaintext >}}
 git clone git@github.com:username/YourSite.git
 {{< /highlight>}}
 
 Move the repo into a folder called {{< mmaf "build" false >}}
-{{< highlight script >}}
+{{< highlight plaintext >}}
 mv YourSite build
 {{< /highlight>}}
 
 ### Store the GitHub secret as environment variable
 Create a file to store the GitHub secret string you just set.
-{{< highlight script >}}
+{{< highlight plaintext >}}
 vim ~/uwsgi_apps/github_sync/github_sync_secret
 {{< /highlight>}}
 
 Write the following content in to the file
-{{< highlight script >}}
+{{< highlight plaintext >}}
 export GITHUB_SYNC_SECRET="your_github_sync_secret"
 {{< /highlight>}}
 
 Evaluate it
-{{< highlight script >}}
+{{< highlight plaintext >}}
 source ~/uwsgi_apps/github_sync/github_sync_secret
 {{< /highlight>}}
 
@@ -142,7 +142,7 @@ source ~/uwsgi_apps/github_sync/github_sync_secret
 ### uWSGI application
 Now we create a python script called {{< mmaf "github_sync.py" false >}} that parses the GitHub request. You can download it [here](github_sync.py). 
 The lines with highlight should be changed according to your configuration.
-{{< highlight python "hl_lines=8 11 14" >}}
+{{< highlight python >}}
 # ~/uwsgi_apps/github_sync/github_sync.py
 import hmac, hashlib
 import os, json, re
@@ -161,11 +161,9 @@ build_dir = '/root/uwsgi_apps/github_sync/build'
 build_public_dir = build_dir + '/public'
 
 def application(env, start_response):
-
-    response_status = '200 OK'
-    response_body = 'Receive github push event.\n'
-
-    # Check if it's POST and if the request path is correct
+  response_status = '200 OK'
+  response_body = 'Receive github push event.\n'
+  # Check if it's POST and if the request path is correct
     if env.get('REQUEST_METHOD', 0) != 'POST' or env.get('PATH_INFO', 0) != request_path:
         # not POST or not correct path
         response_status = 'Forbidden 403'
@@ -313,7 +311,7 @@ processes = 1
 {{< /highlight>}}
 
 Use uWSGI with the config file using the command
-{{< highlight script >}}
+{{< highlight plaintext >}}
 uwsgi --ini github_sync.ini
 {{< /highlight>}}
 
@@ -322,8 +320,8 @@ Make some commit on your repo. If you want to run hugo with certain options, you
 {{< figure src="commit.png#center" width="560">}}
 
 If everything is configured correctly, you should see messages like this on your server
-{{< highlight nocopy >}}
-Fetching origin
+{{< highlight plaintext >}}
+[nc]Fetching origin
 remote: Enumerating objects: 5, done.
 remote: Counting objects: 100% (5/5), done.
 remote: Compressing objects: 100% (2/2), done.

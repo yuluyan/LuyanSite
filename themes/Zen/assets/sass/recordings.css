@@ -46,8 +46,17 @@
     display: block;
   }
 }
+.recording-item .recordings-recording a {
+  border: 0;
+}
 .recording-item .recordings-recording a:hover {
   border: 0;
+}
+.recording-item .recordings-recording a img {
+  transition-duration: 0.3s;
+}
+.recording-item .recordings-recording a img:hover {
+  opacity: 0.7;
 }
 .recording-item figure {
   text-align: center;

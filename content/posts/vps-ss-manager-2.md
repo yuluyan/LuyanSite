@@ -21,7 +21,7 @@ tags:
 This is the continuation of the last post and is about the security and optimizations.
 ## Security
 Use {{< mmaf iptables false >}} to allow only necessary ports:
-{{< highlight script >}}
+{{< highlight plaintext >}}
 # Delete all rules
 iptables --flush
 iptables --delete-chain
@@ -58,24 +58,24 @@ echo "/sbin/iptables-restore < /etc/iptables_rules" >> /etc/rc.local
 
 ### Update 12-15-2019
 Enable BBR optimization:
-{{< highlight script >}}
+{{< highlight plaintext >}}
 git clone https://github.com/yuluyan/ss-fly.git
 ss-fly/ss-fly.sh -bbr
 {{< /highlight>}}
 
 Test if it works:
-{{< highlight script >}}
+{{< highlight plaintext >}}
 sysctl net.ipv4.tcp_available_congestion_control
 {{< /highlight>}}
 
 The return value should be 
-{{< highlight script >}}
+{{< highlight plaintext >}}
 net.ipv4.tcp_available_congestion_control = bbr cubic reno
 {{< /highlight>}}
 
 
 ## Other
 The webgui front-end is in directory
-{{< highlight script >}}
+{{< highlight plaintext >}}
 /usr/local/node/lib/node_modules/shadowsocks-manager/plugins/webgui/public
 {{< /highlight>}}

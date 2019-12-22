@@ -10,30 +10,10 @@ authors:
   - me
 
 preview:
-  - This will be a series of posts explaining the Hugo static site generator. A In this first post, I will cover the basic installation and usage of Hugo.
+  - This will be a series of posts explaining the Hugo static site generator. A In this first post, I will cover the basic usage of Hugo, as well as some templating.
 
 tags:
   - Web
 ---
 
-
-## Install hugo on server
-{{< highlight script >}}
-apt update
-apt upgrade
-{{< /highlight>}}
-
-~/.ssh/config
-Host github.com
-  User git
-  IdentityFile /root/.ssh/github_sync
-  IdentitiesOnly yes
-
-
-  git clone git@github.com:yuluyan/LuyanSite.git
-
-
-
-  pip install python-dateutil==1.4
-
-  snap install hugo --channel=extended
+This will be a series of posts explaining the Hugo static site generator. A In this first post, I will cover the basic usage of Hugo, as well as some templating.

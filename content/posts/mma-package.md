@@ -23,8 +23,8 @@ I came across a [discussion](https://mathematica.stackexchange.com/questions/176
 on Stackexchange about the modern style of organizing code for Mathematica packages. This style is still *'undocumented and should be used at your own risk'*. But I've noticed more and more Mathematica internal packages start to use it. This new style improves the modularity compared with the old package style(, albeit not as good as those ones in python). This post is some notes about it.
 
 Suppose the name of the package is {{< mmaf MMAPackage false >}}. The file structure is pretty much the same:
-{{< highlight no-copy >}}
-MMAPackage
+{{< highlight plaintext >}}
+[nc]MMAPackage
 -- Kernel
    -- init.m
 -- MMAPackage.m

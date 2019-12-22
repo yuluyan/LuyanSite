@@ -30,8 +30,8 @@ The usage of LibraryLink falls mainly into two categories.
 ## Prerequisites
 We need three files {{< mmaf "WolframLibrary.h" false >}}, {{< mmaf "dllexport.h" false >}} and {{< mmaf "extern.h" false >}}. They can be downloaded from Wolfram or [here]({{< ref "posts/mma-library-function" >}}/LibraryLink.zip). 
 For better management of the code files, let's organize files as follows. (Any other structures applies. Just change the code accordingly.)
-{{< highlight no-copy >}}
-/
+{{< highlight plaintext >}}
+[nc]/
 -- /src
    -- dllexport.h
    -- extern.h
