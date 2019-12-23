@@ -1,6 +1,8 @@
 {{ define "main" }}
 
 {{ $vid := .Resources.GetMatch (printf "**%s" .Params.filename) }}
+{{ $poster := .Resources.GetMatch (printf "**%s" .Params.poster) }}
+{{ $posterthumb := $poster.Resize "600x q100"}}
 <div class="recording-item">
   {{ $date := dateFormat "2006-01-02" .Params.date }}
   <div class="recording-title">
@@ -42,7 +44,7 @@
   </div>
 
   <figure class="recordings-recording" data-date="{{- $date -}}" data-tags="{{- delimit .Params.genres "," -}}">
-    <video id="recording-video" poster="{{- .Params.poster -}}" class='video-js vjs-default-skin' controls
+    <video id="recording-video" poster="{{- $posterthumb.RelPermalink -}}" class='video-js vjs-default-skin' controls
       preload='auto' data-setup='{}'>
       <source src="{{ replace $vid.RelPermalink ".mp4" "-1080p.m4v" }}" type='video/mp4' label='1080p' res='1080'>
       <source src="{{ replace $vid.RelPermalink ".mp4" "-720p.m4v" }}" type='video/mp4' label='720p' selected="true" res='720'>
