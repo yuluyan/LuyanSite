@@ -3,6 +3,7 @@
 	{{ range $index, $element := where .Site.Pages "Type" "recordings" }}
 	{{ $vid := .Resources.GetMatch (printf "**%s" .Params.filename) }}
 	{{ $poster := .Resources.GetMatch (printf "**%s" .Params.poster) }}
+	{{ $posterthumb := $poster.Resize "600x q100"}}
 	{{ with .Params }}
 	<div class="recording-item">
 		{{ $date := dateFormat "2006-01-02" .date }}
@@ -46,7 +47,7 @@
 
 		<figure class="recordings-recording" data-date="{{- $date -}}" data-tags="{{- delimit .genres "," -}}">
 			<a href="{{- $element.Permalink -}}">
-				<img class="video-js-poster" src="{{- $poster.RelPermalink -}}">
+				<img class="video-js-poster" src="{{- $posterthumb.RelPermalink -}}">
 			</a>
 		</figure>
 	</div>
