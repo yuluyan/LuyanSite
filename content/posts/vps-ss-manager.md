@@ -13,7 +13,6 @@ preview:
   - This post takes notes of a Complete process of setting up Shadowsocks and Shadowsocks-manager on Ubuntu 16.04. The first post is about the basic installation and setup process.
 
 tags:
-  - code
   - VPS
 ---
 {{< oldpostflag >}}

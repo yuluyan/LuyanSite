@@ -13,7 +13,6 @@ preview:
   - This is the continuation of the last post and is about the security and optimizations.
 
 tags:
-  - code
   - VPS
 ---
 {{< oldpostflag >}}
