@@ -245,6 +245,7 @@
   background-color: #fafafa;
   max-height: 380px;
   overflow: auto;
+  white-space: nowrap;
 }
 .postitem .post-summary .highlight pre,
 .postitem .post-body .highlight pre {
