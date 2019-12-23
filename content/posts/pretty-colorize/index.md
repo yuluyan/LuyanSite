@@ -19,7 +19,7 @@ tags:
 {{< oldpostflag >}}
 
 # PrettyColorize
-Tools for customizing the colors of your figures in Mathematica. Based on [PrettyRandomColor](https://github.com/yuluyan/PrettyRandomColor).
+Tools for customizing the colors of your figures in Mathematica. You can download it from [GitHub](https://github.com/yuluyan/PrettyColorize). 
 
 # Installation
 1. Install {{< mmaf "PrettyRandomColor" false >}} following instructions [here](https://github.com/yuluyan/PrettyRandomColor#installation).
