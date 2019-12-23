@@ -26,7 +26,7 @@ tags:
 However, if updating the site is kind of a daily thing, you definitely don't want to do the FTP uploading every time. Let along the inconvenience it brings, you are uploading many redundant files to the server and it will take a long time if your site gets big. Using GitHub's [webhook](https://developer.github.com/webhooks/), we can achieve something like this:
 {{< figure src="after_github.png#center" width="450">}}
 
-1. Create a GitHub repo for you Hugo site;
+1. Create a GitHub repo for your Hugo site;
 2. **Commit a change to the repo;**
 3. GitHub sends an message through HTTP request to your server;
 4. Your server receives the message and fetch the newest GitHub repo of your site;

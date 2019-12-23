@@ -11,17 +11,18 @@
     {{ $this_tag := .Title }}
     <div class="blog-section">
 
-      {{ range where .Pages "Type" "recordings" }}
+      {{ range $element := where .Pages "Type" "recordings" }}
       {{ $vid := .Resources.GetMatch (printf "**%s" .Params.filename) }}
+      {{ $poster := .Resources.GetMatch (printf "**%s" .Params.poster) }}
       {{ with .Params }}
       <div class="recording-item">
         {{ $date := dateFormat "2006-01-02" .date }}
         <div class="recording-title">
-          {{ .title }}
+          <a href="{{ $element.Permalink }}" class="link-normal"> {{ $element.Title | markdownify }} </a>
         </div>
         {{ if ne .subtitle ""}}
         <div class="recording-subtitle">
-          {{ .subtitle }}
+          {{ .subtitle | markdownify }}
         </div>
         {{ end }}
 
@@ -58,16 +59,13 @@
           </span>
         </div>
 
-        <figure class="recordings-recording" data-date="{{- $date -}}" data-tags="{{- delimit .genres "," -}}">
-          <video class='video-js' controls preload='auto' data-setup='{}'>
-            <source src="{{ $vid.RelPermalink }}">
-            <p class='vjs-no-js'>
-              To view this video please enable JavaScript, and consider upgrading to a web browser that
-              <a href='https://videojs.com/html5-video-support/' target='_blank'>supports HTML5 video</a>
-            </p>
-          </video>
 
+        <figure class="recordings-recording" data-date="{{- $date -}}" data-tags="{{- delimit .genres "," -}}">
+          <a href="{{- $element.Permalink -}}">
+            <img class="video-js-poster" src="{{- $poster.RelPermalink -}}">
+          </a>
         </figure>
+
       </div>
 
       {{ end }}

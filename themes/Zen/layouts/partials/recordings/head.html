@@ -1,15 +1,13 @@
 <head>
     <!-- For Video.js -->
     <link href="https://vjs.zencdn.net/7.6.5/video-js.css" rel="stylesheet">
-    <!--<link rel="stylesheet" href="{{ .Site.BaseURL }}css/videojs-mobile-ui.css" /> -->
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/videojs-mobile-ui.css" />
 
     {{ $scss := resources.Get "sass/recordings.scss" }}
     {{ $style := $scss | resources.ToCSS | resources.PostCSS | resources.Minify}}
     <link rel="stylesheet" href="{{ $style.Permalink }}">
 
-    {{ $css := resources.Get "css/videojs-resolution-switcher.css" }}
-    {{ $style := $css | resources.ToCSS | resources.PostCSS | resources.Minify}}
-    <link rel="stylesheet" href="{{ $style.Permalink }}">
+    <link href="{{ .Site.BaseURL }}css/silvermine-videojs-quality-selector.min.css" rel="stylesheet">
 
 
     <!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
@@ -23,8 +21,5 @@
     {{ $js_min := $js | resources.Minify}}
     <script src="{{ $js_min.Permalink }}"></script>
 
-    {{ $js_switch := resources.Get "js/videojs-resolution-switcher.js" }}
-    {{ $js_switch_min := $js_switch | resources.Minify}}
-    <script src="{{ $js_switch_min.Permalink }}"></script>
-
+    <script src='{{ .Site.BaseURL }}js/silvermine-videojs-quality-selector.min.js'></script>
 </head>
