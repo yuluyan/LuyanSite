@@ -4,7 +4,7 @@ draft: false
 
 title: "Setup uWSGI to run python scripts via HTTP request"
 subtitle: ""
-date: 2019-03-03T18:00:00-06:00
+date: 2019-01-25T18:00:00-06:00
 
 authors:
   - me
@@ -14,6 +14,7 @@ preview:
 
 tags:
   - Web
+  - VPS
 
 ---
 {{< oldpostflag >}}

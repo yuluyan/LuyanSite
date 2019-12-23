@@ -314,7 +314,13 @@ body {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 70%;
+  @media (min-width: 600px) {
+    width: 40%;
+  }
+  @media (max-width: 600px) {
+    width: 240px;
+  }
+  
 }
 
 .text404 {

@@ -4,7 +4,7 @@ draft: false
 
 title: "Linking C++ code with Mathematica using LibraryLink"
 subtitle: ""
-date: 2017-07-17T18:00:00-06:00
+date: 2018-02-13T18:00:00-06:00
 
 authors:
   - me

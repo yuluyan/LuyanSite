@@ -4,7 +4,7 @@ draft: false
 
 title: "Embedding Mathematica notebook in web page"
 subtitle: ""
-date: 2019-11-05T18:00:00-06:00
+date: 2019-10-05T18:00:00-06:00
 
 authors:
   - me

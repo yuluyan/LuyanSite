@@ -3,8 +3,8 @@ type: posts
 draft: false
 
 title: "Find the index of the minimal element using Mathematica"
-subtitle: ""
-date: 2018-09-29T18:00:00-06:00
+subtitle: "Procedure of optimizing Mathematica code"
+date: 2018-08-19T18:00:00-06:00
 
 authors:
   - me

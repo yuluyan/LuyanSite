@@ -10,13 +10,13 @@ authors:
   - me
 
 preview:
-  - Last post talked about how to build a Hugo site from scratch. If you do not plan to update the site very frequently, you can just locally build the site and upload it via command line or any FTP software like WinSCP on Windows or CyberDuck on MacOS. The procedure goes like...
+  - Last post talked about how to build a Hugo site from scratch. If you do not plan to update the site frequently, you can just locally build the site and upload it via command line or any FTP software like WinSCP on Windows or CyberDuck on MacOS. The procedure goes like...
 
 tags:
   - Web
 ---
 
-[Last post]({{< ref "posts/hugo-tutorial" >}}) talked about how to build a Hugo site from scratch. If you do not plan to update the site very frequently, you can just locally build the site and upload it via command line or any FTP software like [WinSCP](https://winscp.net/) on Windows or [CyberDuck](https://cyberduck.io/) on MacOS. The procedure goes like this:
+[Last post]({{< ref "posts/hugo-tutorial" >}}) talked about how to build a Hugo site from scratch. If you do not plan to update the site frequently, you can just locally build the site and upload it via command line or any FTP software like [WinSCP](https://winscp.net/) on Windows or [CyberDuck](https://cyberduck.io/) on MacOS. The procedure goes like this:
 {{< figure src="before_github.png#center" width="270">}}
 
 1. Modify your site (posts, images, etc.) locally;

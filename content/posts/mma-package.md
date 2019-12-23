@@ -4,7 +4,7 @@ draft: false
 
 title: "Modern package style of Mathematica"
 subtitle: ""
-date: 2019-04-21T18:00:00-06:00
+date: 2018-11-03T18:00:00-06:00
 
 authors:
   - me

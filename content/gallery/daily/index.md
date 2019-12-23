@@ -143,12 +143,6 @@
             "date": "2019-11-21T00:00:00",
         },
         {
-            "filename": "not-apple-fanboy.jpeg",
-            "caption": "Trust me I'm not an apple fanboy, but...",
-            "tags": ["abstract"],
-            "date": "2019-11-26T00:00:00",
-        },
-        {
             "filename": "roadhouse-poster.jpeg",
             "caption": "A poster inside the Texas roadhouse",
             "tags": ["abstract"],

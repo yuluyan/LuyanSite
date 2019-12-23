@@ -40,11 +40,19 @@
     </span>
   </div>
 
+
   <div class="post-body markdown-body">
     <p>
       {{- .Content | markdownify -}}
     </p>
   </div>
+
+  <div class="license has-icon">
+    <i data-feather="flag"></i>
+    This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons
+      Attribution 4.0 International License</a>.
+  </div>
+
 
   <ul class="pagination pagination-in-post">
     <div class="page-prev">
@@ -93,7 +101,8 @@
       (d.head || d.body).appendChild(s);
     })();
   </script>
-  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by
+      Disqus.</a></noscript>
 </section>
 
 
