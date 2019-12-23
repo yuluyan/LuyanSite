@@ -76,7 +76,7 @@ Everytime you need a expandable notebook, you put the following block of html wi
 {{< /highlight >}}
 
 Here is the javascript code to handle all the notebooks togglers on a web page.
-{{< highlight javascript "linenos=table">}}
+{{< highlight javascript >}}
 (function () {
   var handles = {}
   var currentEmbeddingId = 0

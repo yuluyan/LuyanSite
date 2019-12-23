@@ -86,7 +86,7 @@ Now it seems we've already pushed things to the extreme and the benefits of usin
 
 ## Using Wolfram LibraryLink
 To this point I have to elaborate about my situation: I need to maintain a list of numbers and frequently retrieve its minimal and the corresponding index but I only do few insertions or deletions. Sounds familiar, right? Yes, we can make use of the indexed min heap data structure to achieve $O(1)$ min-retrival time. But Mathematica doesn't have such built-in functionality. We have to manually implement it in C++ and link it to Mathematica using the method I described in another post. The following is a implementation of min heap in C++.
-{{< highlight cpp "linenos=table" >}}
+{{< highlight cpp >}}
 #"IndexedMinHeap.h"
 #ifndef __INDEXEDMINHEAP__
 #define __INDEXEDMINHEAP__
@@ -408,7 +408,7 @@ inline void IndexedMinHeap<T>::deleteKey(int i)
 
 To have these C++ code work with Mathematica, we need the Wolfram LibraryLink. In order not to make this post too tedius, I just post the glue code here without explanation. For more information about linking C++ code, check {{< mmaf LibraryFunctionLoad >}} or see my other [post]({{< ref "posts/mma-library-function" >}}).
 
-{{< highlight cpp "linenos=table" >}}
+{{< highlight cpp >}}
 #"IndexedMinHeapLink.cpp"
 #include "WolframLibrary.h"
 #include "minheap.h"
@@ -667,7 +667,7 @@ EXTERN_C DLLEXPORT void WolframLibrary_uninitialize(WolframLibraryData libData) 
 {{< /highlight >}}
 
 With all these code, as well as the "WolframLibrary.h", put in the /src directory w.r.t. the notebook, we can compile using the following code:
-{{< highlight mathematica "linenos=table">}}
+{{< highlight mathematica>}}
 (* Code for compiling the source code *)
 Needs["CCompilerDriver`"];
 
