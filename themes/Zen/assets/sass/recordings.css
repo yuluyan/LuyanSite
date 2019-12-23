@@ -101,6 +101,19 @@
     height: 157.5px;
   }
 }
+.recording-item .recording-download {
+  margin-top: 20px;
+}
+@media (min-width: 440px) {
+  .recording-item .recording-download {
+    font-size: var(--primary-font-size);
+  }
+}
+@media (max-width: 440px) {
+  .recording-item .recording-download {
+    font-size: var(--primary-font-size-small);
+  }
+}
 .more-to-come {
   text-align: center;
   font-size: 250%;

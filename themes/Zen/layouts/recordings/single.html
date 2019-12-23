@@ -49,8 +49,8 @@
       <source src="{{ replace $vid.RelPermalink ".mp4" "-1080p.mp4" }}" type='video/mp4' label='1080p'>
       <source src="{{ replace $vid.RelPermalink ".mp4" "-720p.mp4" }}" type='video/mp4' label='720p'>
       <source src="{{ replace $vid.RelPermalink ".mp4" "-480p.mp4" }}" type='video/mp4' label='480p'>
-      <source src="{{ replace $vid.RelPermalink ".mp4" "-360p.mp4" }}" type='video/mp4' label='360p' selected="true">
-      <source src="{{ replace $vid.RelPermalink ".mp4" "-240p.mp4" }}" type='video/mp4' label='240p'>
+      <source src="{{ replace $vid.RelPermalink ".mp4" "-360p.mp4" }}" type='video/mp4' label='360p'>
+      <source src="{{ replace $vid.RelPermalink ".mp4" "-240p.mp4" }}" type='video/mp4' label='240p' selected="true">
       <p class='vjs-no-js'>
         To view this video please enable JavaScript, and consider upgrading to a web browser that
         <a href='https://videojs.com/html5-video-support/' target='_blank'>supports HTML5 video</a>
@@ -61,6 +61,15 @@
     videojs('recording-video').controlBar.addChild('QualitySelector')
     //videojs('recording-video').mobileUi()
   </script>
+
+  <div class="recording-download">
+    <span class="download-label">Download:</span>
+    <a href="{{ replace $vid.RelPermalink ".mp4" "-1080p.mp4" }}" class="btn-normal" download>1080p</a>
+    <a href="{{ replace $vid.RelPermalink ".mp4" "-720p.mp4" }}" class="btn-normal" download>720p</a>
+    <a href="{{ replace $vid.RelPermalink ".mp4" "-480p.mp4" }}" class="btn-normal" download>480p</a>
+    <a href="{{ replace $vid.RelPermalink ".mp4" "-360p.mp4" }}" class="btn-normal" download>360p</a>
+    <a href="{{ replace $vid.RelPermalink ".mp4" "-240p.mp4" }}" class="btn-normal" download>240p</a>
+  </div>
 
   {{ .Content | markdownify }}
 

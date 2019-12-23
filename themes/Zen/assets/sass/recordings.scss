@@ -88,6 +88,17 @@
     }
     display: inline-block;
   }
+
+  .recording-download {
+    margin-top: 20px;
+    @media (min-width: 440px) {
+      font-size: var(--primary-font-size);
+    }
+
+    @media (max-width: 440px) {
+      font-size: var(--primary-font-size-small);
+    }
+  }
 }
 
 .more-to-come {
