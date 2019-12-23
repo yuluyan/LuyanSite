@@ -6,7 +6,7 @@
 			{{ $cat := . }}
 			{{ range .Params.images }}
 			{{ $img := $cat.Resources.GetMatch (printf "**%s" .filename)}}
-			{{ $thumb := $img.Resize "250x q50"}}
+			{{ $thumb := $img.Resize "350x q50"}}
 			{{ $large := $img.Resize "900x q100"}}
 			{{ $date := dateFormat "2006-01-02" (cond (eq $cat.Params.category "Travel") $cat.Params.date .date) }}
 			<figure class="gallery-figure gallery-figure-initial gallery-figure-show"
