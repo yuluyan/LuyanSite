@@ -435,7 +435,11 @@ document.addEventListener('DOMContentLoaded', function (event) {
             accuHeight = 0.0
         }
 
-        return { "before": before, "after": after, "containerHeightAfter": maxColumnHeight + 120 }
+        var containerHeightAfter = maxColumnHeight + 120
+        if (columnCount == 1) {
+            containerHeightAfter += 250
+        }
+        return { "before": before, "after": after, "containerHeightAfter": containerHeightAfter }
     }
 
     var calculateAfterTravel = function (figures) {
@@ -466,7 +470,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
             var location = figures['figures'][firstFigureId].getAttribute("data-location")
             var dateString = new Date(date);
-            dateString = dateString.toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' });
+            dateString = dateString.toLocaleDateString("en-US", { year: 'numeric', month: 'long' });
 
             travelTitle.innerHTML = "<span class='travel-title-location'>" + location + "</span>" + ", " + dateString
             travelTitle.classList.add("travel-title")
