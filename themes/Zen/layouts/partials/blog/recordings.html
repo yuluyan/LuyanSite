@@ -3,7 +3,7 @@
 	{{ range $index, $element := where .Site.Pages "Type" "recordings" }}
 	{{ $vid := .Resources.GetMatch (printf "**%s" .Params.filename) }}
 	{{ $poster := .Resources.GetMatch (printf "**%s" .Params.poster) }}
-	{{ $posterthumb := $poster.Resize "600x q100"}}
+	{{ $posterthumb := $poster.Resize "500x q100"}}
 	{{ with .Params }}
 	<div class="recording-item">
 		{{ $date := dateFormat "2006-01-02" .date }}
