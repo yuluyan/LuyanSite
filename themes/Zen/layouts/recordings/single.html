@@ -2,7 +2,7 @@
 
 {{ $vid := .Resources.GetMatch (printf "**%s" .Params.filename) }}
 {{ $poster := .Resources.GetMatch (printf "**%s" .Params.poster) }}
-{{ $posterthumb := $poster.Resize "500x q90"}}
+{{ $posterthumb := $poster.Resize "500x jpg"}}
 <div class="recording-item">
   {{ $date := dateFormat "2006-01-02" .Params.date }}
   <div class="recording-title">

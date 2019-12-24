@@ -7,7 +7,7 @@
 			{{ range .Params.images }}
 			{{ $img := $cat.Resources.GetMatch (printf "**%s" .filename)}}
 			{{ $thumb := $img.Resize "400x q80"}}
-			{{ $placeholder := $img.Resize "10x q20"}}
+			{{ $placeholder := $img.Resize "40x q30" | images.Filter (images.GaussianBlur 6) }}
 			{{ $large := $img.Resize "900x q100"}}
 			{{ $date := dateFormat "2006-01-02" (cond (eq $cat.Params.category "Travel") $cat.Params.date .date) }}
 			<figure class="gallery-figure gallery-figure-initial gallery-figure-show"
@@ -16,7 +16,7 @@
 				itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
 				<a href="{{- $large.Permalink -}}" itemprop="contentUrl"
 					data-size="{{- $large.Width -}}x{{- $large.Height -}}">
-					<img src="{{- $placeholder.Permalink -}}" data-src="{{- $thumb.Permalink -}}" itemprop="thumbnail"
+					<img src="{{- $placeholder.Permalink -}}" data-src="{{- $placeholder.Permalink -}}" itemprop="thumbnail"
 						alt="{{- .caption -}}" />
 				</a>
 				<figcaption itemprop="caption description">
