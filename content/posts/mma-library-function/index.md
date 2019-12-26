@@ -19,7 +19,7 @@ tags:
 ---
 {{< oldpostflag >}}
 
-Sometimes we want to make our Mathematica code run faster by writing some computationally intensive part of the code using C/C++. If the code itself is simple enough, we can use {{< mmaf Compile >}} to have Mathematica generate compiled C code automatically. But in more complex cases, {{< mmaf Compile >}} will not work and we need {{< mmaf LibraryFunction >}}. This post provides a minimal skeleton for future references. A complete guide can be found in documentation center {{< mmaf "LibraryLink/tutorial/Overview" false >}} or online [here](https://reference.wolfram.com/language/LibraryLink/tutorial/Overview.html).
+Sometimes we want to make our Mathematica code run faster by writing some computationally intensive part of the code using C/C++. If the code itself is simple enough, we can use {{< f Compile mma >}} to have Mathematica generate compiled C code automatically. But in more complex cases, {{< f Compile mma >}} will not work and we need {{< f LibraryFunction mma >}}. This post provides a minimal skeleton for future references. A complete guide can be found in documentation center {{< f "LibraryLink/tutorial/Overview" mma "https://reference.wolfram.com/language/LibraryLink/tutorial/Overview.html" >}} or online [here](https://reference.wolfram.com/language/LibraryLink/tutorial/Overview.html).
 
 ## Overview
 The usage of LibraryLink falls mainly into two categories. 
@@ -28,7 +28,7 @@ The usage of LibraryLink falls mainly into two categories.
 - The second one is to manage C++ objects within Mathematica so that we can fully utilize the power of Mathematica.
 
 ## Prerequisites
-We need three files {{< mmaf "WolframLibrary.h" false >}}, {{< mmaf "dllexport.h" false >}} and {{< mmaf "extern.h" false >}}. They can be downloaded from Wolfram or [here]({{< ref "posts/mma-library-function" >}}/LibraryLink.zip). 
+We need three files {{< f "WolframLibrary.h"  >}}, {{< f "dllexport.h"  >}} and {{< f "extern.h"  >}}. They can be downloaded from Wolfram or [here]({{< ref "posts/mma-library-function" >}}/LibraryLink.zip). 
 For better management of the code files, let's organize files as follows. (Any other structures applies. Just change the code accordingly.)
 {{< highlight plaintext >}}
 [nc]/
@@ -53,7 +53,7 @@ int func1()
 }
 {{< /highlight >}}
 
-To call this function inside Mathematica, we create a C++ file {{< mmaf "link.cpp" false >}} inside {{< mmaf "/src" false >}} folder with the following code:
+To call this function inside Mathematica, we create a C++ file {{< f "link.cpp"  >}} inside {{< f "/src"  >}} folder with the following code:
 {{< highlight cpp >}}
 // link.cpp
 #include "WolframLibrary.h"
@@ -115,31 +115,31 @@ dllPath = FileNameJoin[{
     }];
 {{< /highlight >}}
 
-If this is successful, in the {{< mmaf "/bin" false >}} folder you will find the library with the specified name. To call the function in Mathematica, we can use the following code:
+If this is successful, in the {{< f "/bin"  >}} folder you will find the library with the specified name. To call the function in Mathematica, we can use the following code:
 {{< highlight mathematica >}}
 (* Necessary if re-compile *)
 Quiet @ LibraryUnload[dllPath];
 MMAFunc1 = LibraryFunctionLoad[dllPath, "MMAFunc1", {}, Integer];
 {{< /highlight >}}
 
-Here, the arguments of {{< mmaf LibraryFunctionLoad >}} are:
+Here, the arguments of {{< f LibraryFunctionLoad mma >}} are:
 
 1. The path to the library;
 2. The name of the C/C++ function and it should be the same as in the C++ source file;
-3. The argument types of the C/C++ function (should be enclosed by {{< mmaf "{}" false >}});
+3. The argument types of the C/C++ function (should be enclosed by {{< f "{}"  >}});
 4. The return types of the C/C++ function.
 
 This table includes the most used data types and the corresponding types in C++.
 
 | Mathematica                          | C++         |
 | ------------------------------------ | ----------- | 
-| {{< mmaf "True \| False" false >}}   | mbool       |
-| {{< mmaf "Integer"  >}}              | mint        | 
-| {{< mmaf "Real"  >}}                 | double      |
-| {{< mmaf "Complex"  >}}              | mcomplex    |
-| {{< mmaf "{dtype, r}" false >}}      | MTensor     |
-| {{< mmaf "\"UTF8String\"" false >}}  | char *      |
-| {{< mmaf "Void" false >}}            | void        |
+| {{< f "True | False" mma nolink >}}   | mbool       |
+| {{< f "Integer" mma >}}              | mint        | 
+| {{< f "Real" mma >}}                 | double      |
+| {{< f "Complex" mma >}}              | mcomplex    |
+| {{< f "{dtype, r}" mma nolink >}}      | MTensor     |
+| {{< f "\"UTF8String\"" mma nolink >}}  | char *      |
+| {{< f "Void" mma nolink >}}            | void        |
 
 
 Now we can call the function and get the result:
@@ -175,7 +175,7 @@ private:
 {{< /highlight >}}
 
 Again, we need the following code. I highlighed the parts where the managing interface of the object is implemented.
-{{< mmaf mode false >}} is an variable indicating the operation Mathematica tries to do to the object. When {{< mmaf "mode = 0" false >}}, Mathematica tries to create the object; while if {{< mmaf "mode = 1" false >}}, the object is being destructed.
+{{< f mode  >}} is an variable indicating the operation Mathematica tries to do to the object. When {{< f "mode = 0"  >}}, Mathematica tries to create the object; while if {{< f "mode = 1"  >}}, the object is being destructed.
 {{< highlight cpp "hl_lines=27-42">}}
 // managed.cpp
 #include "WolframLibrary.h"
@@ -317,7 +317,7 @@ MyCalculate =
   LibraryFunctionLoad[dllPath, "MyCalculate", {Integer}, Integer];
 {{< /highlight >}}
 
-Mathematica provides three functions to manage the objects. They are {{< mmaf CreateManagedLibraryExpression >}}, {{< mmaf ManagedLibraryExpressionID >}} and {{< mmaf ManagedLibraryExpressionQ >}}. The following code shows the usage of them.
+Mathematica provides three functions to manage the objects. They are {{< f CreateManagedLibraryExpression mma >}}, {{< f ManagedLibraryExpressionID mma >}} and {{< f ManagedLibraryExpressionQ mma >}}. The following code shows the usage of them.
 {{< highlight mathematica >}}
 obj = CreateManagedLibraryExpression["MyObject", MyObject]
 (* MyObject[1] *)

@@ -22,7 +22,7 @@ tags:
 I came across a [discussion](https://mathematica.stackexchange.com/questions/176434/declaring-package-with-dependencies-in-multiples-files/176489#176489)
 on Stackexchange about the modern style of organizing code for Mathematica packages. This style is still *'undocumented and should be used at your own risk'*. But I've noticed more and more Mathematica internal packages start to use it. This new style improves the modularity compared with the old package style(, albeit not as good as those ones in python). This post is some notes about it.
 
-Suppose the name of the package is {{< mmaf MMAPackage false >}}. The file structure is pretty much the same:
+Suppose the name of the package is {{< f MMAPackage  >}}. The file structure is pretty much the same:
 {{< highlight plaintext >}}
 [nc]MMAPackage
 -- Kernel
@@ -32,14 +32,14 @@ Suppose the name of the package is {{< mmaf MMAPackage false >}}. The file struc
 -- Module2.m
 -- ...
 {{< /highlight >}}
-First you should have a folder {{< mmaf "/MMAPackage" false >}} with the same name as the package in the directory opened by
+First you should have a folder {{< f "/MMAPackage"  >}} with the same name as the package in the directory opened by
 {{< highlight mathematica >}}
 SystemOpen @ FileNameJoin[{$UserBaseDirectory, "Applications"}];
 {{< /highlight >}}
 
 ## Modern style declaratives
 ### Package and PackageExport
-A minimal example would be a single {{< mmaf "MMAPackage.m" false >}} with the following content:
+A minimal example would be a single {{< f "MMAPackage.m"  >}} with the following content:
 {{< highlight mathematica >}}
 (* MMAPackage.m *)
 Package["MMAPackage`"]
@@ -56,10 +56,10 @@ MySuperAdvancedFunction[41]
 (* 42 *)
 {{< /highlight >}}
 
-Perfect! Here {{< mmaf Package false >}} opens the package context. And {{< mmaf "PackageExport[\"func\"]" false >}} exposes the symbol {{< mmaf "func" false >}} to the package user.
+Perfect! Here {{< f Package  >}} opens the package context. And {{< f "PackageExport[\"func\"]" mma nolink >}} exposes the symbol {{< f "func"  >}} to the package user.
 
 ### PackageImport
-It's a common case that we sometimes need to use functionalities from other packages inside our package. To do this, we can use {{< mmaf "PackageImport" false >}}. In the following example, I need to use the {{< mmaf EulerSum false >}} function from package {{< mmaf "NumericalCalculus" false >}}.
+It's a common case that we sometimes need to use functionalities from other packages inside our package. To do this, we can use {{< f "PackageImport" mma nolink >}}. In the following example, I need to use the {{< f EulerSum mma nolink >}} function from package {{< f "NumericalCalculus" mma nolink >}}.
 {{< highlight mathematica "hl_lines=4">}}
 (* MMAPackage.m *)
 Package["MMAPackage`"]
@@ -85,7 +85,7 @@ MMAPackage`exportedSymbol1
 MMAPackage`exportedFunction2
 {{< /highlight >}}
 
-Any other symbols will be in a private context {{< mmaf "PackagePrivate" false >}} of corresponding module file name:
+Any other symbols will be in a private context {{< f "PackagePrivate" mma nolink >}} of corresponding module file name:
 {{< highlight mathematica >}}
 MMAPackage`MMAPackage`PackagePrivate`symbol1
 MMAPackage`MMAPackage`PackagePrivate`func2
@@ -93,14 +93,14 @@ MMAPackage`Module1`PackagePrivate`symbol3
 MMAPackage`Module2`PackagePrivate`func4
 {{< /highlight >}}
 
-And using {{< mmaf PackageScope >}} can give us another context. {{< mmaf "PackageScope[\"func\"]" false >}} will have the {{< mmaf func false >}} setup in context
+And using {{< f PackageScope mma nolink >}} can give us another context. {{< f "PackageScope[\"func\"]" mma nolink >}} will have the {{< f func  >}} setup in context
 {{< highlight mathematica >}}
 MMAPackage`PackageScope`func
 {{< /highlight >}}
 
-## About the {{< mmaf "init.m" false >}} file
+## About the {{< f "init.m"  >}} file
 ### Specify initialization order
-The order of evaluating {{< mmaf "*.m" false >}} file code files is alphabetical after the file with the package name being evaulated. Suppose we have the following {{< mmaf "MMAPackage.m" false >}}, {{< mmaf "Config.m" false >}} and {{< mmaf "Parameters.m" false >}} files.
+The order of evaluating {{< f "*.m"  >}} file code files is alphabetical after the file with the package name being evaulated. Suppose we have the following {{< f "MMAPackage.m"  >}}, {{< f "Config.m"  >}} and {{< f "Parameters.m"  >}} files.
 {{< highlight mathematica >}}
 (* MMAPackage.m *)
 Package["MMAPackage`"]
@@ -127,7 +127,7 @@ Config.m loaded
 Parameters.m loaded
 {{< /highlight >}}
 
-If we want to change the default order for some reason, we can make use of the {{< mmaf "init.m" false >}} file. If there is such a file existing, it will have the highest priority during evaluation. Let's create this file under the {{< mmaf "Kernel" false >}} directory.
+If we want to change the default order for some reason, we can make use of the {{< f "init.m"  >}} file. If there is such a file existing, it will have the highest priority during evaluation. Let's create this file under the {{< f "Kernel"  >}} directory.
 {{< highlight mathematica >}}
 (* init.m *)
 $basePath = DirectoryName[$InputFileName, 2];
@@ -151,7 +151,7 @@ Parameters.m loaded
 {{< /highlight >}}
 
 ### Perform some global instructions
-In this {{< mmaf init.m false >}} file example, we perform some global instructions about the package. The first part checks the version of the Mathematica and abort the evaluation of the package if the required version is not met. Then it specifies a initialization order that we described in last section. In the end, it adds the {{< mmaf Protect >}} attribute onto all the symbols inside the package.
+In this {{< f init.m  >}} file example, we perform some global instructions about the package. The first part checks the version of the Mathematica and abort the evaluation of the package if the required version is not met. Then it specifies a initialization order that we described in last section. In the end, it adds the {{< f Protect mma >}} attribute onto all the symbols inside the package.
 {{< highlight mathematica >}}
 (* Restrict the runnable version number of Mathematica *)
 If[!OrderedQ[{11.0, 0}, {$VersionNumber, $ReleaseNumber}], 
@@ -182,11 +182,11 @@ The parsing of such structure is done during runtime by a static code parser and
 PackageExport["MMAPackage`"];
 {{< /highlight >}}
 
-### DON'T use {{< mmaf Needs >}}
-As just said, the static code parser won't recognize {{< mmaf Needs >}}. If you want to import other packages, use {{< mmaf PackageImport false >}}.
+### DON'T use {{< f Needs mma >}}
+As just said, the static code parser won't recognize {{< f Needs mma >}}. If you want to import other packages, use {{< f PackageImport mma nolink >}}.
 
 ### Module file name should be valid context name
-This basically means no whitespace or {{< mmaf "_" false >}} are allowed.
+This basically means no whitespace or {{< f "_"  >}} are allowed.
 
 ### Need patch works in earlier than 11.0 version Mathematica
 There are some context evaulation issues in earlies version of Mathematica. See [here](https://mathematica.stackexchange.com/questions/176434/declaring-package-with-dependencies-in-multiples-files/176489#176489) and [here](https://mathematica.stackexchange.com/questions/184711/what-to-be-aware-when-using-new-style-package) for more information.

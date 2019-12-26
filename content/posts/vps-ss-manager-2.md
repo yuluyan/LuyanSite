@@ -19,7 +19,7 @@ tags:
 
 This is the continuation of the last post and is about the security and optimizations.
 ## Security
-Use {{< mmaf iptables false >}} to allow only necessary ports:
+Use {{< f iptables  >}} to allow only necessary ports:
 {{< highlight plaintext >}}
 # Delete all rules
 iptables --flush

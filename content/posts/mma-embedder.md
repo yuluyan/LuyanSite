@@ -21,7 +21,7 @@ tags:
 Mathematica now has an official dynamic notebook renderer that enables us embedding notebooks inside a web page. With such renderer, what you can get is basically the style same as in the Wolfram online documentation center. This post describes how it is set up.
 
 ## Basic usage
-* **STEP 0:** First of all, we need to publish our target notebook as a {{< mmaf CloudObject >}}. This can be done in various way, for example
+* **STEP 0:** First of all, we need to publish our target notebook as a {{< f CloudObject mma >}}. This can be done in various way, for example
 {{< highlight mathematica "hl_lines=3" >}}
 CloudPublish[
   Manipulate[Plot[x ^ n, {x, -3, 3}], {n, 0, 5, 1}],
@@ -29,8 +29,8 @@ CloudPublish[
 ]
 {{< /highlight>}}
 {{< mma 10d6bb97-84b8-4a0d-8a3a-d210b7a3e783 false >}}
-Note that the {{< mmaf Permissions >}} should include {{< mmaf "\"Interact\"" false>}} for the rendered notebook to be interactive.
-And we will get a {{< mmaf CloudObject >}} with some id looks like {{< mmaf 10d6bb97-84b8-4a0d-8a3a-d210b7a3e783 false >}}. 
+Note that the {{< f Permissions mma >}} should include {{< f "\"Interact\"" >}} for the rendered notebook to be interactive.
+And we will get a {{< f CloudObject mma >}} with some id looks like {{< f 10d6bb97-84b8-4a0d-8a3a-d210b7a3e783  >}}. 
 
 * **STEP 1:** Now let's can install the required javascript file by npm:
 {{< highlight plaintext >}}
@@ -42,8 +42,8 @@ npm install wolfram-notebook-embedder
 <div id="mma-notebook-container"></div>
 {{< /highlight >}}
 
-* **STEP 3:** Include the downloaded js file {{< mmaf "wolfram-notebook-embedder.min.js" false >}} in the target webpage.
-And then we invoke the dynamic rendering process by the following code. In the function {{< mmaf "WolframNotebookEmbedder.embed" false >}}, the first argument is the target {{< mmaf CloudObject >}} to be embedded; the second argument is the DOM container; and the third argument is optional that specifies some properties of the rendering.
+* **STEP 3:** Include the downloaded js file {{< f "wolfram-notebook-embedder.min.js"  >}} in the target webpage.
+And then we invoke the dynamic rendering process by the following code. In the function {{< f "WolframNotebookEmbedder.embed"  >}}, the first argument is the target {{< f CloudObject mma >}} to be embedded; the second argument is the DOM container; and the third argument is optional that specifies some properties of the rendering.
 {{< highlight javascript >}}
 var container = document.querySelector("#mma-notebook-container")
 var embedding = WolframNotebookEmbedder.embed(
@@ -62,8 +62,8 @@ var embedding = WolframNotebookEmbedder.embed(
 Sometimes we don't want the notebook to load when the page is loaded, since the rendering process takes some time.
 Let's make a simple toggler that can let the user decide whether or not to trigger the rendering process. Just like this one:
 {{< mma 10d6bb97-84b8-4a0d-8a3a-d210b7a3e783 false >}}
-The html goes like this, where the {{< mmaf id false >}} of the outmost div should be the id of the {{< mmaf CloudObject >}}.
-Everytime you need a expandable notebook, you put the following block of html with the corresponding {{< mmaf id false >}}
+The html goes like this, where the {{< f id  >}} of the outmost div should be the id of the {{< f CloudObject mma >}}.
+Everytime you need a expandable notebook, you put the following block of html with the corresponding {{< f id  >}}
 {{< highlight html >}}
 <div class="mma-notebook" id="some-id" data-expand=false>
   <div class="mma-notebook-trigger">
@@ -197,7 +197,7 @@ Here is the scss code for to make it a little bit more Wolfram-y.
 {{< /highlight >}}
 
 ### Serving static notebook
-Wolfram also provides an method for loading static notebook html. It is very easy to use: just replace the url with the form: {{< mmaf "https://www.wolframcloud.com/statichtml/id" false >}}. Request the html from the that url and place it at desired place, or simply use {{< mmaf iframe false >}}. The result will look like this:
+Wolfram also provides an method for loading static notebook html. It is very easy to use: just replace the url with the form: {{< f "https://www.wolframcloud.com/statichtml/id"  >}}. Request the html from the that url and place it at desired place, or simply use {{< f iframe  >}}. The result will look like this:
 
 <iframe style="display:block" src="https://www.wolframcloud.com/statichtml/10d6bb97-84b8-4a0d-8a3a-d210b7a3e783" width="100%" height="380px" frameBorder="0"></iframe>
 

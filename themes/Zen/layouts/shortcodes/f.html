@@ -1,0 +1,42 @@
+{{- .Scratch.Set "has_link" false -}}
+{{- .Scratch.Set "link_href" "" -}}
+{{- if eq (.Get 2) "nolink" -}}
+    {{- .Scratch.Set "has_link" false -}}
+{{- else if eq (.Get 2) "" -}}
+    {{- .Scratch.Set "has_link" true -}}
+    {{- if eq (.Get 1) "mma" -}}
+        {{- .Scratch.Set "link_href" (printf "https://reference.wolfram.com/language/ref/%s.html" (.Get 0)) -}}
+    {{- else if (or (eq (.Get 1) "py") (eq (.Get 1) "python")) -}}
+        {{- .Scratch.Set "link_href" (printf "https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.%s.html" (.Get 0)) -}}
+    {{- else if (or (eq (.Get 1) "pd") (eq (.Get 1) "pandas")) -}}
+        {{- .Scratch.Set "link_href" (printf "https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.%s.html" (.Get 0)) -}}
+    {{- else if (or (eq (.Get 1) "np") (eq (.Get 1) "numpy")) -}}
+        {{- .Scratch.Set "link_href" (printf "https://docs.scipy.org/doc/numpy/reference/generated/numpy.%s.html" (.Get 0)) -}}
+    {{- else if (eq (.Get 1) "link") -}}
+        {{- .Scratch.Set "link_href" (printf "%s" (.Get 2)) -}}
+    {{- else -}}
+        {{- .Scratch.Set "has_link" false -}}
+    {{- end -}}
+{{- else -}}
+    {{- .Scratch.Set "has_link" true -}}
+    {{- .Scratch.Set "link_href" (printf "%s" (.Get 2)) -}}
+{{- end -}}
+{{- .Scratch.Set "link_style" "inline-code-default" -}}
+{{- if eq (.Get 1) "mma" -}}
+    {{- .Scratch.Set "link_style" "inline-code-mma" -}}
+{{- else if (or (eq (.Get 1) "py") (eq (.Get 1) "python")) -}}
+    {{- .Scratch.Set "link_style" "inline-code-python" -}}
+{{- else if (or (eq (.Get 1) "pd") (eq (.Get 1) "pandas")) -}}
+    {{- .Scratch.Set "link_style" "inline-code-python" -}}
+{{- else if (or (eq (.Get 1) "np") (eq (.Get 1) "numpy")) -}}
+    {{- .Scratch.Set "link_style" "inline-code-python" -}}
+{{- end -}}
+<span class="inline-code {{ .Scratch.Get "link_style" }}">
+    {{- if eq (.Scratch.Get "has_link") true -}}
+    <a href="{{- (.Scratch.Get "link_href") -}}" target="_blank">
+        {{- end -}}
+        {{- .Get 0 -}}
+        {{- if eq (.Scratch.Get "has_link") true -}}
+        <i data-feather="external-link"></i></a>
+    {{- end -}}
+</span>

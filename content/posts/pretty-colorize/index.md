@@ -22,21 +22,21 @@ tags:
 Tools for customizing the colors of your figures in Mathematica. You can download it from [GitHub](https://github.com/yuluyan/PrettyColorize). 
 
 # Installation
-1. Install {{< mmaf "PrettyRandomColor" false >}} following instructions [here](https://github.com/yuluyan/PrettyRandomColor#installation).
+1. Install {{< f "PrettyRandomColor"  >}} following instructions [here](https://github.com/yuluyan/PrettyRandomColor#installation).
 2. Open the Mathematica user application folder by 
 {{< highlight mathematica >}}
 SystemOpen @ FileNameJoin[{$UserBaseDirectory, "Applications"}];
 {{< /highlight >}}
 
-1. Create a folder called {{< mmaf "/PrettyColorize" false >}} and place {{< mmaf "PrettyColorize.wl" false >}} and {{< mmaf "/Kernel" false >}} inside.
+1. Create a folder called {{< f "/PrettyColorize"  >}} and place {{< f "PrettyColorize.wl"  >}} and {{< f "/Kernel"  >}} inside.
 
 # Usage
-* Load package using {{< mmaf "<< PrettyColorize`" false >}}.
-* Apply {{< mmaf "PrettyColorize" false >}} to any plotting function, e.g., Plot, ListPlot, Plot3D...
+* Load package using {{< f "<< PrettyColorize`" mma nolink >}}.
+* Apply {{< f "PrettyColorize" mma nolink >}} to any plotting function, e.g., Plot, ListPlot, Plot3D...
 
 # Code example
 ## Minimal example
-Wherever a color directive can be placed, you can instead put a {{< mmaf "Pretty[itemName_String]" false >}} as a placeholder.
+Wherever a color directive can be placed, you can instead put a {{< f "Pretty[itemName_String]" mma nolink >}} as a placeholder.
 {{< highlight mathematica >}}
 PrettyColorize @ Plot[x, {x, -5, 5}, PlotStyle -> Pretty["Line"]]
 {{< /highlight >}}
@@ -44,7 +44,7 @@ PrettyColorize @ Plot[x, {x, -5, 5}, PlotStyle -> Pretty["Line"]]
 The above code generates a color palette shown below. Left-click on colors/storage changes the currently selected target item. Right-click on colors copies the clicked color to storage. Right-click on storage removes the clicked stored color.
 {{< figure src="gPlot.PNG#center" width="500">}}
 
-Pressing Confirm button will generate a runnable cell that replace the {{< mmaf "Pretty" false >}} placeholder to the selected colors:
+Pressing Confirm button will generate a runnable cell that replace the {{< f "Pretty" mma nolink >}} placeholder to the selected colors:
 {{< figure src="confirm.PNG#center" width="280">}}
 
 ## ContourPlot

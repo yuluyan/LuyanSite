@@ -38,7 +38,7 @@ l = RandomReal[{0, 10}, 10^8];
 {{< /highlight >}}
 {{< mma 808ef58c-7dab-48c6-af95-018eff2d1c41 false >}}
 
-Let's see where the bottleneck is. Finding the minimal really takes no time but the {{< mmaf Position >}} function is surprisingly slow. 
+Let's see where the bottleneck is. Finding the minimal really takes no time but the {{< f Position mma >}} function is surprisingly slow. 
 {{< highlight mathematica >}}
 (min = Min[l]) // AbsoluteTiming
 (* {0.031072, 4.91679*10^-8} *)
@@ -48,14 +48,14 @@ Position[l, min][[1, 1]] // AbsoluteTiming
 {{< /highlight >}}
 {{< mma 12a9e740-dd91-4e14-91ad-39194c851c4a false >}}
 
-One reason is that {{< mmaf Position >}} tries to find all occurences but I only need one. We can instead use {{< mmaf FirstPosition >}} to avoid search the entire list. Now the time is 6 seconds. It's still not great.
+One reason is that {{< f Position mma >}} tries to find all occurences but I only need one. We can instead use {{< f FirstPosition mma >}} to avoid search the entire list. Now the time is 6 seconds. It's still not great.
 {{< highlight mathematica >}}
 {#, FirstPosition[l, #][[1]]} &[Min[l]] // AbsoluteTiming
 (* {6.08502, {4.91679*10^-8, 7830224}} *)
 {{< /highlight >}}
 {{< mma cb804f8c-a4c7-4316-97bf-9b3b768ae80d false >}}
 
-We know that both {{< mmaf Position >}} and {{< mmaf FirstPosition >}} are designed for general pattern matching and not specifically for numbers, which means they have to take care of different cases and inevitably bring down the performance. After doing some search, I found the {{< mmaf Ordering >}} function quite useful. Implying the list has an order, i.e., {{< mmaf Sort >}} can be applied to the list, it gives the ordering of the list. Using {{< mmaf Ordering >}} gives a significant boost in the performance, as shown in the example below.
+We know that both {{< f Position mma >}} and {{< f FirstPosition mma >}} are designed for general pattern matching and not specifically for numbers, which means they have to take care of different cases and inevitably bring down the performance. After doing some search, I found the {{< f Ordering mma >}} function quite useful. Implying the list has an order, i.e., {{< f Sort mma >}} can be applied to the list, it gives the ordering of the list. Using {{< f Ordering mma >}} gives a significant boost in the performance, as shown in the example below.
 {{< highlight mathematica >}}
 {l[[#]], #} &[Ordering[l, 1][[1]]] // AbsoluteTiming
 (* {0.37079, {4.91679*10^-8, 7830224}} *)
@@ -63,7 +63,7 @@ We know that both {{< mmaf Position >}} and {{< mmaf FirstPosition >}} are desig
 {{< mma 04dc8bf6-aeb6-4d81-9b0f-66609b15361a false >}}
 
 ## Using CompiledFunction
-OK now it's already 30x faster than what we have at first place. But can we do better? Sure. We can always resort to {{< mmaf Compile >}} when we really want speed. The following is the simple code for finding the minimal. Notice that {{< mmaf Do >}} is used. There is an old saying goes that we should not use {{< mmaf Do >}} in Mathematica, which is true in most cases. But here since we are generating C code but not Mathematica's high level operations, performing a single linear search with {{< mmaf Do >}} in C code will be very efficient. That's another 3x faster.
+OK now it's already 30x faster than what we have at first place. But can we do better? Sure. We can always resort to {{< f Compile mma >}} when we really want speed. The following is the simple code for finding the minimal. Notice that {{< f Do mma >}} is used. There is an old saying goes that we should not use {{< f Do mma >}} in Mathematica, which is true in most cases. But here since we are generating C code but not Mathematica's high level operations, performing a single linear search with {{< f Do mma >}} in C code will be very efficient. That's another 3x faster.
 {{< highlight mathematica >}}
 minAndPosCompiled = Compile[{{list, _Real, 1}},
    	Module[{idx = 1, min = First[list], len = Length[list]},
@@ -406,7 +406,7 @@ inline void IndexedMinHeap<T>::deleteKey(int i)
 #endif
 {{< /highlight >}}
 
-To have these C++ code work with Mathematica, we need the Wolfram LibraryLink. In order not to make this post too tedius, I just post the glue code here without explanation. For more information about linking C++ code, check {{< mmaf LibraryFunctionLoad >}} or see my other [post]({{< ref "posts/mma-library-function" >}}).
+To have these C++ code work with Mathematica, we need the Wolfram LibraryLink. In order not to make this post too tedius, I just post the glue code here without explanation. For more information about linking C++ code, check {{< f LibraryFunctionLoad mma >}} or see my other [post]({{< ref "posts/mma-library-function" >}}).
 
 {{< highlight cpp >}}
 #"IndexedMinHeapLink.cpp"

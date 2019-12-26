@@ -79,7 +79,7 @@ mkdir ~/.ssmgr
 cd ~/.ssmgr
 {{< /highlight>}}
 
-Create a type {{< mmaf s false >}} config file for each proxy server. The address under {{< mmaf shadowsocks false >}} is the port exposed by the shadowsocks. Here it is {{< mmaf "127.0.0.1:6001" false >}}. The port under {{< mmaf manager false >}} is used by shadowsocks-manager to listen control command from the master server. 
+Create a type {{< f s  >}} config file for each proxy server. The address under {{< f shadowsocks  >}} is the port exposed by the shadowsocks. Here it is {{< f "127.0.0.1:6001"  >}}. The port under {{< f manager  >}} is used by shadowsocks-manager to listen control command from the master server. 
 {{< highlight yml "hl_lines=7">}}
 # ss.yml
 type: s
@@ -91,7 +91,7 @@ manager:
 db: 'db.sqlite'
 {{< /highlight>}}
 
-Create a type {{< mmaf m false >}} GUI config file for the master server. The address should be the actual IP address of the master server.
+Create a type {{< f m  >}} GUI config file for the master server. The address should be the actual IP address of the master server.
 {{< highlight yml "hl_lines=4 5 16-18 33" >}}
 # webgui.yml
 type: m
@@ -138,4 +138,4 @@ screen -dmS ssgui ssmgr -c webgui.yml
 {{< /highlight>}}
 
 ## Create another node
-Create a similar {{< mmaf "ss.yml" false >}} file on the node and configure correspondingly in the portal.
+Create a similar {{< f "ss.yml"  >}} file on the node and configure correspondingly in the portal.

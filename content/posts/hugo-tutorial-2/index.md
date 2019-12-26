@@ -21,7 +21,7 @@ tags:
 
 1. Modify your site (posts, images, etc.) locally;
 2. Build the site locally;
-3. Upload the {{< mmaf "/public" false >}} folder to your server.
+3. Upload the {{< f "/public" >}} folder to your server.
 
 However, if updating the site is kind of a daily thing, you definitely don't want to do the FTP uploading every time. Let along the inconvenience it brings, you are uploading many redundant files to the server and it will take a long time if your site gets big. Using GitHub's [webhook](https://developer.github.com/webhooks/), we can achieve something like this:
 {{< figure src="after_github.png#center" width="450">}}
@@ -56,13 +56,13 @@ Generate an ssh key pair for later use by
 ssh-keygen
 {{< /highlight >}}
 
-Here I name it {{< mmaf "github_sync" false >}}.
+Here I name it {{< f "github_sync" >}}.
 Print the public key and copy it (change the dir if you didn't keep the default).
 {{< highlight plaintext >}}
 cat ~/.ssh/github_sync.pub
 {{< /highlight >}}
 
-Create or modify the ssh config file {{< mmaf "~/.ssh/config" false >}} to specify which key to use for the git command.
+Create or modify the ssh config file {{< f "~/.ssh/config" >}} to specify which key to use for the git command.
 {{< highlight plaintext >}}
 # ~/.ssh/config
 Host github.com
@@ -77,12 +77,12 @@ Host github.com
 Create a repo and push all your files of the Hugo sites to it.
 
 ### Add a webhook
-In the Settings tab of your repository, click on the **Webhooks** section on the left side and add a webhook. The **Payload URL** is the URL that GitHub will request your server whenever there is a push event. Here, I it set to {{< mmaf "www.yuluyan.com/app/github_sync" false >}}. 
+In the Settings tab of your repository, click on the **Webhooks** section on the left side and add a webhook. The **Payload URL** is the URL that GitHub will request your server whenever there is a push event. Here, I it set to {{< f "www.yuluyan.com/app/github_sync" >}}. 
 
-Choose the **Content type** to be {{< mmaf "application/json" false >}} so the push event details will be sent to your server in the format of JSON. (You can choose the other one as well and the details will be sent in the format of a form. It's just a matter of different parsing method.)
+Choose the **Content type** to be {{< f "application/json" >}} so the push event details will be sent to your server in the format of JSON. (You can choose the other one as well and the details will be sent in the format of a form. It's just a matter of different parsing method.)
 
 In **Secret**, you should enter a secret string that will be used during the validation process. I will talk about this later. Let's say the secret string you set is
-{{< mmaf "your_github_sync_secret" false >}}.
+{{< f "your_github_sync_secret" >}}.
 
 You can leave all other fields default.
 {{< figure src="github_webhook.png#center" width="560">}}
@@ -117,7 +117,7 @@ Clone the GitHub repo the the server (change the name for your case)
 git clone git@github.com:username/YourSite.git
 {{< /highlight>}}
 
-Move the repo into a folder called {{< mmaf "build" false >}}
+Move the repo into a folder called {{< f "build" >}}
 {{< highlight plaintext >}}
 mv YourSite build
 {{< /highlight>}}
@@ -140,7 +140,7 @@ source ~/uwsgi_apps/github_sync/github_sync_secret
 
 
 ### uWSGI application
-Now we create a python script called {{< mmaf "github_sync.py" false >}} that parses the GitHub request. You can download it [here](github_sync.py). 
+Now we create a python script called {{< f "github_sync.py" >}} that parses the GitHub request. You can download it [here](github_sync.py). 
 The lines with highlight should be changed according to your configuration.
 {{< highlight python >}}
 # ~/uwsgi_apps/github_sync/github_sync.py
@@ -295,12 +295,12 @@ What this script does is outlined here:
 
 1. Check the request URL and method (POST);
 2. Then get the GitHub payload JSON;
-3. Validate the {{< mmaf "sha1" false >}} hash according to the [documentation](https://developer.github.com/webhooks/securing/);
+3. Validate the {{< f "sha1" >}} hash according to the [documentation](https://developer.github.com/webhooks/securing/);
 4. Get the commit message and and look for Hugo command options;
 5. Fetch the repo and build the site.
 
 Then we are ready to run the uWSGI server (See details in my [other post]({{< ref "posts/uwsgi-server" >}})).
-Create an config file {{< mmaf "github_sync.ini" false >}} 
+Create an config file {{< f "github_sync.ini" >}} 
 {{< highlight ini >}}
 # github_sync.ini
 [uwsgi]
@@ -363,17 +363,17 @@ Run command: cd /root/uwsgi_apps/github_sync/build && cp -r /root/uwsgi_apps/git
 {{< /highlight >}}
 
 ## Display the commit id on the page (optional)
-You may have noticed that in the script, I saved the commit id as a text file {{< mmaf "commit_id.txt" false >}} on the server.
+You may have noticed that in the script, I saved the commit id as a text file {{< f "commit_id.txt" >}} on the server.
 This allows Hugo to display the id on the webpage as a nice little detail :) You can scroll to the bottom of this page and see the result.
 
-This is very easy with Hugo template. First you should add to your {{< mmaf "config.toml" false >}} file the address of github
+This is very easy with Hugo template. First you should add to your {{< f "config.toml" >}} file the address of github
 {{< highlight toml >}}
 [params]
   ...
   githubRepo = "https://github.com/username/YourSite"
 {{< /highlight >}}
 
-Assume you have a footer template {{< mmaf "footer.html" false >}}. Add the following HTML will enable Hugo to read the commit id from the text file and show it on the page.
+Assume you have a footer template {{< f "footer.html" >}}. Add the following HTML will enable Hugo to read the commit id from the text file and show it on the page.
 {{< highlight html "hl_lines=3-9" >}}
 <div class="footer wrapper">
   ...

@@ -18,7 +18,7 @@ tags:
 
 ## What is Hugo
 Hugo is a **static site generator** written in [Go](https://golang.org). As its name suggests, it can transform your structured content files into a full-fledged **static** website. 
-For example, this post, as well as all other posts, was originally {{< mmaf ".md" false >}} markdown notes. After going throught the Hugo pipeline, these content were parsed and assembled into this static webpage as you are seeing now. Hugo is not only a markdown renderer. It also has a powerful template system with the inherited Golang syntax that can reduce the amount of work on your side.
+For example, this post, as well as all other posts, was originally {{< f ".md" >}} markdown notes. After going throught the Hugo pipeline, these content were parsed and assembled into this static webpage as you are seeing now. Hugo is not only a markdown renderer. It also has a powerful template system with the inherited Golang syntax that can reduce the amount of work on your side.
 
 Hugo also has hundreds of themes available contributed by the community. Basically, a theme is a collection of templates. You will only need to focus on the content of your website if you don't want to spend too much time on tweaking the style of your website. But if you are a person like me, you can dig into the theme folder and take full control of it.
 
@@ -30,7 +30,7 @@ Let along all this technicalities, the one thing you should think about before c
 
 
 ## Installation
-Install hugo. The {{< mmaf "extended" false >}} flag indicates we need the Sass/SCSS parser.
+Install hugo. The {{< f "extended" >}} flag indicates we need the Sass/SCSS parser.
 {{< highlight plaintext >}}
 # Windows (Use administrative PowerShell)
 Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
@@ -47,7 +47,7 @@ snap install hugo --channel=extended
 ## Basic usage
 The procedure follows the [official documentation](https://gohugo.io/getting-started/quick-start/).
 ### Create your site
-Come up a name for your site. Let's say: {{< mmaf YourSite false >}}. And type
+Come up a name for your site. Let's say: {{< f YourSite >}}. And type
 {{< highlight plaintext >}}
 hugo new site YourSite
 {{< /highlight >}}
@@ -66,7 +66,7 @@ You'll then get a folder with the following structure:
 {{< /highlight >}}
 
 ### Add a theme
-All themes are listed [here](https://themes.gohugo.io/). Once you find the theme you like, you can just download it and put it inside the {{< mmaf "themes" false >}} folder. In the {{< mmaf "config.toml" false >}} file, write the following configuration:
+All themes are listed [here](https://themes.gohugo.io/). Once you find the theme you like, you can just download it and put it inside the {{< f "themes" >}} folder. In the {{< f "config.toml" >}} file, write the following configuration:
 {{< highlight toml >}}
 baseURL = "http://example.org/"
 languageCode = "en-us"
@@ -92,12 +92,12 @@ Your content goes here...
 {{< /highlight >}}
 
 ### Start the server locally
-Use the command with flag {{< mmaf "-D" false >}} means hugo will also render those files with {{< mmaf "draft" false >}} set to {{< mmaf "true" false >}}.
+Use the command with flag {{< f "-D"  >}} means hugo will also render those files with {{< f "draft"  >}} set to {{< f "true"  >}}.
 {{< highlight plaintext >}}
 hugo server -D
 {{< /highlight >}}
 
-Now by default, you can visit your site via {{< mmaf "localhost:1313" false >}}. Basically this will be your testing environment.
+Now by default, you can visit your site via {{< f "localhost:1313"  >}}. Basically this will be your testing environment.
 
 ### Build the site
 When you finish editing your content, you can build you static pages with simply
@@ -111,7 +111,7 @@ There are some useful options:
 --gc    # clean up unused files from previous build
 {{< /highlight >}}
 
-Now you will find your pages inside the {{< mmaf "/public/" false >}} folder inside our project folder.
+Now you will find your pages inside the {{< f "/public/"  >}} folder inside our project folder.
 
 ## Deploy your site
 ### Setup Nginx
@@ -128,7 +128,7 @@ Back up the config file before we make any change
 cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.backup
 {{< /highlight >}}
 
-Let's edit the global config file {{< mmaf "vim /etc/nginx/nginx.conf" false >}} 
+Let's edit the global config file {{< f "vim /etc/nginx/nginx.conf"  >}} 
 
 {{< highlight nginx >}}
 user www-data;
@@ -173,8 +173,8 @@ http {
 }
 {{< /highlight >}}
 
-Then inside the {{< mmaf "/etc/nginx/sites-enabled/" false >}} folder, create a config file specifically for one site.
-Say your domain name is {{< mmaf "yoursite.com" false >}}. Create a file {{< mmaf "yoursite.com.conf" false >}} with the following config:
+Then inside the {{< f "/etc/nginx/sites-enabled/"  >}} folder, create a config file specifically for one site.
+Say your domain name is {{< f "yoursite.com"  >}}. Create a file {{< f "yoursite.com.conf"  >}} with the following config:
 {{< highlight nginx "hl_lines=6">}}
 server {
   listen 80 default_server;

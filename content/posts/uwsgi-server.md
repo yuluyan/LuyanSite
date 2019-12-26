@@ -19,7 +19,7 @@ tags:
 ---
 {{< oldpostflag >}}
 
-What I want to achieve here is to run a python script on the server whenever a certain URL is requested, and possibly with some arguments passed to the python script. For example, when I enter the URL {{< mmaf "yuluyan.com/app?x=1&?y=2" false >}}, the python script will be called with two arguments {{< mmaf "x=1" false >}} and {{< mmaf "y=2" false >}}.
+What I want to achieve here is to run a python script on the server whenever a certain URL is requested, and possibly with some arguments passed to the python script. For example, when I enter the URL {{< f "yuluyan.com/app?x=1&?y=2"  >}}, the python script will be called with two arguments {{< f "x=1"  >}} and {{< f "y=2"  >}}.
 
 [uWSGI](https://uwsgi-docs.readthedocs.io/en/latest/), named after WSGI (Web Server Gateway Interface), is a complete solution for hosting services. But it also works with other servers like Nginx, which is perfect for my case. This post will cover the very basics of setup uWSGI with python on an Nginx server.
 
@@ -36,7 +36,7 @@ Install C compiler and Python
 apt install build-essential python-dev python-pip
 {{< /highlight >}}
 
-Install uWSGI through {{< mmaf pip false >}}
+Install uWSGI through {{< f pip py >}}
 {{< highlight plaintext >}}
 pip install uwsgi
 {{< /highlight >}}
@@ -50,17 +50,17 @@ def application(env, start_response):
     return [b"Hello World"]
 {{< /highlight >}}
 
-Save it as {{< mmaf "helloworld.py" false >}}.
+Save it as {{< f "helloworld.py" py >}}.
 
 ## Configuration
-Change the config file inside {{< mmaf "/etc/nginx/" false >}}. The following is a minimal example:
+Change the config file inside {{< f "/etc/nginx/"  >}}. The following is a minimal example:
 {{< highlight plaintext >}}
 location /app/ {
     include uwsgi_params;
     uwsgi_pass 127.0.0.1:3905;
 }
 {{< /highlight >}}
-It means: whenever the URL {{< mmaf "yuluyan.com/app/" false >}} is requested, it is passed to uWSGI. 
+It means: whenever the URL {{< f "yuluyan.com/app/"  >}} is requested, it is passed to uWSGI. 
 Now restart Nginx
 {{< highlight plaintext >}}
 sudo service nginx restart
@@ -76,7 +76,7 @@ or run it using screen:
 screen -dmS uwsgi uwsgi --socket 127.0.0.1:3905 --wsgi-file ~/helloworld.py --master --processes 1 --threads 1
 {{< /highlight >}}
 
-A better way would be using {{< mmaf ".json" false >}} or {{< mmaf ".ini" false >}} config files:
+A better way would be using {{< f ".json"  >}} or {{< f ".ini"  >}} config files:
 {{< highlight ini >}}
 # config.ini
 [uwsgi]
@@ -101,7 +101,7 @@ and run with it
 screen -dmS uwsgi uwsgi --ini config.ini
 {{< /highlight >}}
 
-Now if you enter URL {{< mmaf "yuluyan.com/app" false >}}, a page with {{< mmaf "Hello World" false >}} will show up.
+Now if you enter URL {{< f "yuluyan.com/app"  >}}, a page with {{< f "Hello World"  >}} will show up.
 
 
 
@@ -116,7 +116,7 @@ def application (env, start_response):
     return [response]
 {{< /highlight >}}
 
-When the URL {{< mmaf "yuluyan.com/app/func?x=1&y=2" false >}} is requested, the content of the environment variable is set correspondingly.
+When the URL {{< f "yuluyan.com/app/func?x=1&y=2"  >}} is requested, the content of the environment variable is set correspondingly.
 The following shows the keys that are important to us. 
 {{< highlight plaintext "hl_lines=5-6" >}}
 [nc]Content in environment variable
@@ -133,9 +133,9 @@ SERVER_NAME: yuluyan.com
 ... ...
 {{< /highlight >}}
 
-For our case, we only need to take care of the two keys {{< mmaf "PATH_INFO" false >}} and {{< mmaf "QUERY_STRING" false >}}.
-{{< mmaf "PATH_INFO" false >}} can be processed by simply {{< mmaf "split" false >}} while {{< mmaf "QUERY_STRING" false >}} can be processed by 
-{{< mmaf "parse_qs" false >}} function from library {{< mmaf "urlparse" false >}}.
+For our case, we only need to take care of the two keys {{< f "PATH_INFO"  >}} and {{< f "QUERY_STRING"  >}}.
+{{< f "PATH_INFO"  >}} can be processed by simply {{< f "split"  >}} while {{< f "QUERY_STRING"  >}} can be processed by 
+{{< f "parse_qs"  >}} function from library {{< f "urlparse"  >}}.
 The following script is an example of how to use them:
 {{< highlight python >}}
 from urlparse import parse_qs
@@ -169,7 +169,7 @@ y: [2] x: [1, 4] z: [3]
 
 ## Dispatch function calls
 Here is a toy implementation of a function dispatcher. 
-In the {{< mmaf config false >}} dictionary, the key is the url path and the value is the function to be called.
+In the {{< f config  >}} dictionary, the key is the url path and the value is the function to be called.
 {{< highlight python >}}
 from urlparse import parse_qs
 

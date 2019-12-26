@@ -18,13 +18,13 @@ tags:
 
 
 ## PostCSS
-Install two useful package PostCSS and autoprefixer. They are part of the Hugo pipeline taking care of minifying CSS and adding cross-browser vendor prefixes. If you used {{< mmaf "snap" false >}} to install hugo, you should first create your site and install these two package locally, i.e., omit the {{< mmaf "-g" false >}} flag.
+Install two useful package PostCSS and autoprefixer. They are part of the Hugo pipeline taking care of minifying CSS and adding cross-browser vendor prefixes. If you used {{< f "snap" >}} to install hugo, you should first create your site and install these two package locally, i.e., omit the {{< f "-g" >}} flag.
 {{< highlight plaintext >}}
 npm install -g postcss-cli
 npm install -g autoprefixer
 {{< /highlight >}}
 
-After installation, create or modify the {{< mmaf "postcss.config.js" false >}} in the root of your site with the following content. Note that if you already have such file, it's highly likely there is a {{< mmaf "browers" false >}} key. This is obsolete and you should change it to {{< mmaf "Browserslist" false >}}.
+After installation, create or modify the {{< f "postcss.config.js" >}} in the root of your site with the following content. Note that if you already have such file, it's highly likely there is a {{< f "browers" >}} key. This is obsolete and you should change it to {{< f "Browserslist" >}}.
 {{< highlight javascript "hl_lines=4">}}
 module.exports = {
     plugins: {
