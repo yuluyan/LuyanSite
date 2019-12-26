@@ -1,0 +1,65 @@
+@font-face {
+  font-family: "myriad-pro-condensed";
+  src: url("font/myriad-pro-condensed.woff") format("woff");
+  font-display: auto;
+  font-style: normal;
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "myriad-pro";
+  src: url("font/myriad-pro-1.woff") format("woff");
+  font-display: auto;
+  font-style: italic;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "myriad-pro";
+  src: url("font/myriad-pro-2.woff") format("woff");
+  font-display: auto;
+  font-style: normal;
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "myriad-pro";
+  src: url("font/myriad-pro-3.woff") format("woff");
+  font-display: auto;
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "myriad-pro";
+  src: url("font/myriad-pro-4.woff") format("woff");
+  font-display: auto;
+  font-style: normal;
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "myriad-pro";
+  src: url("font/myriad-pro-5.woff") format("woff");
+  font-display: auto;
+  font-style: italic;
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "benton-modern-display";
+  src: url("font/benton-modern-display.woff") format("woff");
+  font-display: auto;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.tk-myriad-pro-condensed {
+  font-family: "myriad-pro-condensed", sans-serif;
+}
+.tk-myriad-pro {
+  font-family: "myriad-pro", sans-serif;
+}
+.tk-benton-modern-display {
+  font-family: "benton-modern-display", serif;
+}

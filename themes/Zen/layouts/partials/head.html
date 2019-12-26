@@ -29,7 +29,9 @@
 	{{- template "_internal/opengraph.html" . -}}
 	{{- template "_internal/twitter_cards.html" . -}}
 	<!--<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:500,100,300" rel="stylesheet">-->
-	<link rel="stylesheet" href="https://use.typekit.net/wcn1jgf.css">
+	{{ $fontstyle := resources.Get "css/typekit.css" | resources.ToCSS | resources.PostCSS | resources.Minify}}
+	<link rel="stylesheet" href="{{ $fontstyle.Permalink }}">
+	<!--<link rel="stylesheet" href="https://use.typekit.net/wcn1jgf.css">-->
 
 	{{ $scss := resources.Get "sass/global.scss" }}
 	{{ $style := $scss | resources.ToCSS | resources.PostCSS | resources.Minify}}
