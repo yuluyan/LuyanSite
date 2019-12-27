@@ -140,7 +140,7 @@ source ~/uwsgi_apps/github_sync/github_sync_secret
 
 
 ### uWSGI application
-Now we create a python script called {{< f "github_sync.py" >}} that parses the GitHub request. You can download it [here](github_sync.py). 
+Now we create a python script called {{< f "github_sync.py" py "github_sync.py" >}} that parses the GitHub request. 
 The lines with highlight should be changed according to your configuration.
 {{< highlight python >}}
 # ~/uwsgi_apps/github_sync/github_sync.py

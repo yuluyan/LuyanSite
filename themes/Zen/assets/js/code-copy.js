@@ -26,22 +26,23 @@ document.addEventListener('DOMContentLoaded', function (event) {
                 var button = document.createElement('button');
                 button.className = 'copy-code-button';
                 button.type = 'button';
-                button.innerText = 'Copy';
+                button.innerHTML = '<i data-feather="copy"></i>';
 
                 button.addEventListener('click', function () {
                     clipboard.writeText(code).then(function () {
                         /* Chrome doesn't seem to blur automatically,
                            leaving the button in a focused state. */
-                        //button.blur();
-                        button.innerText = 'Copied!';
-                        setTimeout(function () {
-                            button.innerText = 'Copy';
-                        }, 1200);
+                        button.blur();
+                        //button.innerText = 'Copied!';
+                        //setTimeout(function () {
+                        //    button.innerText = 'Copy';
+                        //}, 1200);
                     }, function (error) {
                         button.innerText = 'Error';
                     });
                 });
-                codeBlock.parentNode.parentNode.insertBefore(button, codeBlock.parentNode);
+                codeBlock.parentNode.insertBefore(button, codeBlock);
+                feather.replace()
             } else {
                 if (codeBlock.firstElementChild.innerText.substr(0, 4) == "[nc]") {
                     codeBlock.firstElementChild.innerText = codeBlock.firstElementChild.innerText.substr(4)

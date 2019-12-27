@@ -72,6 +72,39 @@ The return value should be
 net.ipv4.tcp_available_congestion_control = bbr cubic reno
 {{< /highlight>}}
 
+### Update 12-27-2019
+#### V2ray-plugin
+Install shadowsocks with v2ray-plugin. Script by [@M3chD09](https://github.com/M3chD09/shadowsocks-with-v2ray-plugin-install).
+{{< highlight plaintext >}}
+wget -O ubuntu-ss-install.sh https://github.com/M3chD09/shadowsocks-with-v2ray-plugin-install/raw/master/ubuntu-ss-install.sh
+chmod +x ubuntu-ss-install.sh
+./ubuntu-ss-install.sh
+{{< /highlight>}}
+
+Configuration file at {{< f "/etc/shadowsocks-libev/config.json" >}}
+{{< highlight json >}}
+{
+    "server":"0.0.0.0",
+    "server_port":443,
+    "password":"password",
+    "timeout":300,
+    "method":"aes-256-gcm",
+    "plugin":"v2ray-plugin",
+    "plugin_opts":"server;tls;fastopen;cert=/etc/letsencrypt/live/<DOMAIN.COM>/fullchain.pem;key=/etc/letsencrypt/live/<DOMAIN.COM>/privkey.pem;host=<DOMAIN.COM>;loglevel=none"
+}
+{{< /highlight>}}
+
+#### Add support within shadowsocks-manager
+See the post [here](https://dasmz.com/?p=141). Start with additional command:
+{{< highlight plaintext >}}
+screen -dmS ssserver ss-manager -m aes-256-gcm -u --manager-address 127.0.0.1:4005 --plugin /usr/local/bin/v2ray-plugin --plugin-opt "server;tls;fastopen;cert=/etc/letsencrypt/live/<DOMAIN.COM>/fullchain.pem;key=/etc/letsencrypt/live/<DOMAIN.COM>/privkey.pem;host=<DOMAIN.COM>;loglevel=none"
+screen -dmS ssmgr ssmgr -c ~/.ssmgr/ss.yml -r libev:aes-256-gcm --plugin /usr/local/bin/v2ray-plugin --plugin-opts "server;tls;fastopen;cert=/etc/letsencrypt/live/<DOMAIN.COM>/fullchain.pem;key=/etc/letsencrypt/live/<DOMAIN.COM>/privkey.pem;host=<DOMAIN.COM>;loglevel=none"
+{{< /highlight>}}
+
+Set the config of client side with plugin as {{< f "v2ray-plugin" >}} and plugin opts as {{< f "tls;fast-open;host=DOMAIN.COM" >}}
+
+{{< figure src="ssng-config.png#center" width="470">}}
+
 
 ## Other
 The webgui front-end is in directory

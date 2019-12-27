@@ -36,7 +36,7 @@ Install C compiler and Python
 apt install build-essential python-dev python-pip
 {{< /highlight >}}
 
-Install uWSGI through {{< f pip py >}}
+Install uWSGI through {{< f pip  >}}
 {{< highlight plaintext >}}
 pip install uwsgi
 {{< /highlight >}}
@@ -50,7 +50,7 @@ def application(env, start_response):
     return [b"Hello World"]
 {{< /highlight >}}
 
-Save it as {{< f "helloworld.py" py >}}.
+Save it as {{< f "helloworld.py" py "helloworld.py" >}}.
 
 ## Configuration
 Change the config file inside {{< f "/etc/nginx/"  >}}. The following is a minimal example:
