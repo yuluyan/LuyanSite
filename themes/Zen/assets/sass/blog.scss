@@ -67,7 +67,8 @@
     user-select: none;
     min-width: 320px;
     text-align: center;
-    a {
+    a,
+    span {
       font-weight: var(--primary-font-weight);
       svg {
         top: 1.5px;
@@ -105,6 +106,17 @@
       }
       @media (max-width: 440px) {
         font-size: var(--primary-font-size-small);
+      }
+    }
+
+    .blog-link-more {
+      position: relative;
+      display: inline-block;
+      font-size: 10px;
+      bottom: 3px;
+      @media (min-width: 440px) {
+      }
+      @media (max-width: 440px) {
       }
     }
 
