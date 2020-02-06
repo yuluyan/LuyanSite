@@ -154,6 +154,12 @@
             "tags": ["sea", "scape"],
             "date": "2019-12-11T00:00:00",
         },
+        {
+            "filename": "snow-texas.jpeg",
+            "caption": "It's rare to see snow in Texas.",
+            "tags": ["scape", "sunrise"],
+            "date": "2020-02-06T00:00:00",
+        },
     ]
 }
 
