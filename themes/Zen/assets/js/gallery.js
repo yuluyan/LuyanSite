@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function (event) {
 
-    var maxImageDim = 900.0
+    var maxImageDim = 1500.0
 
     var initPhotoSwipeFromDOM = function (gallerySelector) {
 
