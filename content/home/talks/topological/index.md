@@ -7,7 +7,7 @@ authors:
 - Gen Yin
 - Qinglin He
 - Kang L. Wang
-show_author: true
+show_author: false
 date: "2016-09-05T00:00:00Z"
 
 # Talk type. E.g.

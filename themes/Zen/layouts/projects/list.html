@@ -1,0 +1,13 @@
+{{ define "main" }}
+  {{ range .Pages }}
+    <div class="project-item">
+      <div class="project-thumbnail project-left">
+        <a href={{ .Permalink }}><img src="{{ .RelPermalink }}{{ .Params.thumbnail }}"></a>
+      </div>
+      <div class="project-text project-right">
+        <div class="project-title"><a class="link-normal" href={{ .Permalink }}>{{ .Title }}</a></div>
+        <div class="project-summary">{{ .Summary | markdownify }}</div>
+      </div>
+    </div>
+  {{ end }}
+{{ end }}

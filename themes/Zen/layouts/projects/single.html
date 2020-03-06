@@ -1,0 +1,15 @@
+{{ define "main" }}
+<div class="project-page">
+    <div class="project-title">{{ .Title }}</div>
+    <div class="project-thumbnail">
+        <img src="{{ .RelPermalink }}{{ .Params.thumbnail }}">
+    </div>
+    <div class="project-text markdown-body">
+        {{ .Content | markdownify}}
+    </div>
+</div>
+
+<div class="returnhome">
+    <a href="/" class="btn-normal has-icon"><i data-feather="arrow-left-circle"></i>Return to homepage</a>
+</div>
+{{ end }}

@@ -1,0 +1,8 @@
+{{- $id := .Get 0 -}}
+<div class="bibref" id="bibref{{- $id -}}">
+    <a href="#bibcite{{- $id -}}" class="bibref-enum">{{- .Get 0 -}}</a>
+    <span class="bibref-authors">{{- .Get 1 -}}.</span>
+    <span class="bibref-title"><a href="{{- .Get 5 -}}" target="_blank">{{- .Get 2 -}}.</a></span>
+    <span class="bibref-journal">{{- .Get 3 -}}</span>
+    <span class="bibref-series">{{- .Get 4 -}}</span>
+</div>
