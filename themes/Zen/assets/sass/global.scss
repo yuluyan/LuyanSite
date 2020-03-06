@@ -25,11 +25,10 @@
 /* General objects */
 
 .btn-reverse {
-  transition-property: background-color, color;
+  transition-property: background-color, border, color;
   transition-duration: 0.3s;
   transition-timing-function: ease-out;
   cursor: pointer;
-  background-color: var(--primary-color-light);
   color: var(--secondary-text-color);
   padding-left: 10px;
   padding-right: 10px;
@@ -37,14 +36,14 @@
   padding-bottom: 2.5px;
   border-radius: 20px;
   text-decoration: none;
+  border: 0.7px var(--secondary-color) solid;
+
   &:hover {
-    transition-property: background-color, color;
-    transition-duration: 0.3s;
-    transition-timing-function: ease-out;
     text-decoration: none;
     background-color: var(--primary-color);
     color: var(--primary-text-color);
-    border: 0;
+  border: 0.7px var(--primary-color) solid;
+
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
   }
 }
@@ -101,6 +100,7 @@ a {
 .badge-normal:hover {
   cursor: default;
   color: var(--secondary-text-color);
+  background-color: var(--secondary-color-light);
   border: 0.7px var(--secondary-color) solid;
   padding-left: 10px;
   padding-right: 10px;

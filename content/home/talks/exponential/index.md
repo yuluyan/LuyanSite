@@ -20,9 +20,10 @@ location: "Houston, Texas, USA"
 location_short: "HOU, TX"
 
 # links:
-url_title: https://www.gulfcoastconsortia.org/event/save-the-date-17th-annual-theoretical-and-computational-neuroscience-conference/
-url_poster: Yu_Luyan_TCN_2020_Poster.pdf
+url_title: ''
+#url_poster: Yu_Luyan_TCN_2020_Poster.pdf
+url_poster: ''
 url_slides: ''
 url_video: ''
-url_conference: ''
+url_conference: https://www.gulfcoastconsortia.org/event/save-the-date-17th-annual-theoretical-and-computational-neuroscience-conference/
 ---
