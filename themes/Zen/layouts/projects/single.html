@@ -2,7 +2,11 @@
 <div class="project-page">
     <div class="project-title">{{ .Title }}</div>
     <div class="project-thumbnail">
+        {{ if isset .Params "thumbnailsize" }}
+        <img src="{{ .RelPermalink }}{{ .Params.thumbnail }}" width="{{ .Params.thumbnailsize }}">
+        {{ else }}
         <img src="{{ .RelPermalink }}{{ .Params.thumbnail }}">
+        {{ end }}
     </div>
     <div class="project-text markdown-body">
         {{ .Content | markdownify}}

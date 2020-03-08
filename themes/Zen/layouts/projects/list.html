@@ -2,11 +2,30 @@
   {{ range .Pages }}
     <div class="project-item">
       <div class="project-thumbnail project-left">
+        {{ if .Params.singlepage }}
         <a href={{ .Permalink }}><img src="{{ .RelPermalink }}{{ .Params.thumbnail }}"></a>
+        {{ else }}
+        <a><img src="{{ .RelPermalink }}{{ .Params.thumbnail }}"></a>
+        {{ end }}
       </div>
       <div class="project-text project-right">
-        <div class="project-title"><a class="link-normal" href={{ .Permalink }}>{{ .Title }}</a></div>
+        <div class="project-title">
+          {{ if .Params.singlepage }}
+          <a class="link-normal" href={{ .Permalink }}>{{ .Title }}</a>
+          {{ else }}
+          {{ .Title }}
+          {{ end }}
+      </div>
         <div class="project-summary">{{ .Summary | markdownify }}</div>
+        {{ if .Params.singlepage }}
+        <div class="project-read-more">
+          <div class="cont-read has-icon">
+            <a href="{{ .Permalink }}" class="btn-normal">
+            Continue reading
+            <i data-feather="arrow-right-circle"></i></a>
+          </div>
+        </div>
+        {{ end }}
       </div>
     </div>
   {{ end }}

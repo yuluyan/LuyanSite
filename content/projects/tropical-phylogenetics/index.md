@@ -3,6 +3,7 @@ type: "projects"
 title: "Tropical Geometry of Phylogenetic Trees"
 date: 2020-03-05T00:00:00-00:00
 thumbnail: dog-phylo.svg
+singlepage: true
 ---
 
 [Phylogenetic tree](https://en.wikipedia.org/wiki/Phylogenetic_tree) is widely used in many fields especially bioinfomatics. The evolution history manifested in the trees are powerful tools in the study of the migration of animals, spread of viruses and so on.

@@ -299,6 +299,7 @@ body.modal-open .container {
       justify-content: space-between;
       .modal-title {
         font-size: var(--primary-font-size-big);
+        font-weight: var(--primary-font-weight-semibold);
         margin-left: 5%;
         margin-bottom: 0;
       }
@@ -312,9 +313,9 @@ body.modal-open .container {
       margin-right: 5%;
       resize: none;
       border-radius: 6px;
-      background-color: var(--secondary-color);
+      background-color: var(--secondary-color-light);
       &:hover {
-        color: var(--primary-color-light);
+        //color: var(--primary-color-light);
       }
       &:focus {
         color: var(--primary-color-dark);
@@ -376,20 +377,25 @@ body.modal-open .container {
     }
   }
   .project-text {
-    .project-title a {
+    .project-title {
       font-weight: var(--primary-font-weight-semibold);
     }
+    
   }
   .project-thumbnail {
     img {
       padding: -20px;
     }
   }
+
   // Large screen
   @media (min-width: 685px) {
     .project-text {
       .project-title {
         font-size: var(--primary-font-size-huge);
+      }
+      .project-read-more {
+        text-align: center;
       }
     }
     .project-thumbnail {
@@ -406,13 +412,19 @@ body.modal-open .container {
       .project-title {
         font-size: var(--primary-font-size-huge);
       }
+      .project-read-more {
+        visibility: hidden;
+      }
     }
   }
   // Small screen
   @media (max-width: 440px) {
     .project-text {
-      .project-title a {
+      .project-title {
         font-size: var(--primary-font-size-big);
+      }
+      .project-read-more {
+        visibility: hidden;
       }
     }
   }
