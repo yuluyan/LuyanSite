@@ -152,4 +152,4 @@ We find that it is possible to avoid local minima during the learning process wi
 
 {{< bibref 2 "Brian Sallans and Geoffrey E. Hinton" "Reinforcement learning with factored states and actions" "Journal of Machine Learning Research," "5(Aug): 1063-1088, 2004." "http://www.jmlr.org/papers/v5/sallans04a.html" >}}
 
-{{< bibref 3 "Daniel Crawford, Anna Levit, Navid Ghadermarzy, Jaspreet S. Oberoi and Pooya Ronagh" "Reinforcement Learning Using Quantum Boltzmann Machines" "arXiv preprint" "arXiv:1612.05695 (2016)." "https://arxiv.org/abs/1612.05695" >}}
+{{< bibref 3 "Daniel Crawford, Anna Levit, Navid Ghadermarzy, Jaspreet S. Oberoi and Pooya Ronagh" "Reinforcement Learning Using Quantum Boltzmann Machines" "arXiv preprint" "arXiv:1612.05695, 2016." "https://arxiv.org/abs/1612.05695" >}}
