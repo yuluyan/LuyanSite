@@ -12,6 +12,4 @@ To pave the way of gaining more understanding of such networks, this project foc
 
 <!--more--> 
 
-## Introduction
-
-<div class="more-to-come">More to come...</div>
+## Spiking
