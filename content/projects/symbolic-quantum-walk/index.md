@@ -131,3 +131,13 @@ H = SQHamiltonian @ (
 It is hard to visualize the probability in this case, but we can plot the correlations:
 
 {{< figure src="walkex2_boson_2D.gif#center" width="300" caption="2D nearest-neighbor interaction walker correlation plot">}}
+
+
+
+## References
+
+{{< bibref 1 "Andrew M. Childs" "Universal computation by quantum walk" "Physical Review Letters," "102(18), 180501, 2009." "https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.102.180501" >}}
+
+{{< bibref 2 "Neil B. Lovett, Sally Cooper, Matthew Everitt, Matthew Trevers and Viv Kendon" "Universal quantum computation using the discrete-time quantum walk" "Physical Review A," "81(4): 042330, 2010." "https://journals.aps.org/pra/abstract/10.1103/PhysRevA.81.042330" >}}
+
+{{< bibref 3 "Berazin F A" "The method of second quantization" "Elsevier," "2012." "https://books.google.com/books?hl=zh-CN&lr=&id=mF6e6XlqnXYC&oi=fnd&pg=PP1&dq=second+quantization&ots=vT0kryZ5Ht&sig=R3uyCpfD3t48XUOY0h6SyLjBQks#v=onepage&q=second%20quantization&f=false" >}}
