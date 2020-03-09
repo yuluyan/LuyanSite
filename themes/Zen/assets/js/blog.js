@@ -174,7 +174,8 @@ document.addEventListener('DOMContentLoaded', function (event) {
         ret += parseString(str.substring(stringStart), level + 1)
         return " <span>" + ret + "</span>"
     }
-    document.querySelector(".quote").innerHTML = parseString(quoteString, 1)
-
-    document.querySelector(".quote-name").innerHTML = "&mdash; " + quotes[quoteId][1]
+    if (document.querySelector(".quote")) {
+        document.querySelector(".quote").innerHTML = parseString(quoteString, 1)
+        document.querySelector(".quote-name").innerHTML = "&mdash; " + quotes[quoteId][1]
+    }
 })
