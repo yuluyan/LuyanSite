@@ -7,7 +7,7 @@ I'm currently a 3<sup>rd</sup> year Ph.D. student in physics at UT Austin receiv
 - to understand how the biological neural networks actually work; and
 - to inspire the development and improvement of neural-network-based machine learning algorithms.
     
-[**>> Here is a list of my past and ongoing projects.**]({{< ref "projects" >}})
+[**>> Here's a list of my past and ongoing projects.**]({{< ref "projects" >}})
 
 I use mathematical tools such as: stochastic calculus and functional differential equation to study the behavior and extract properties of neural networks; and tropical algebra to study problems in bioinformatics such as phylogenetic trees. Meanwhile, for the second part, I'm also looking into the optimization over tensor networks that has a wide range of applications emerging in machine learning.
  
