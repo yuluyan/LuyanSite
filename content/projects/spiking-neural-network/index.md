@@ -28,14 +28,17 @@ So a neuron looks like this. There are four basic building block:
 
 
 ### Leaky integrate and fire model
-You may have heard of the Nobel Prize winning model -- Hodgkin-Huxley mode. But here I will not introduce it. Instead let's look at a simpler model -- the leaky integrate and fire model. This model treats a neuron as just a capacitor who fires whenever it reaches a threshold voltage and leaks over time.
+You may have heard of the Nobel Prize winning model -- [Hodgkin-Huxley model](https://en.wikipedia.org/wiki/Hodgkin%E2%80%93Huxley_model). But here I will not introduce it. Instead let's look at a simpler model -- the leaky integrate and fire model. This model treats a neuron as just a capacitor who fires whenever it reaches a threshold voltage and leaks over time.
 {{< figure src="circuit.png#center" width="250" caption="Circuit diagram of leaky integrate and fire model">}}
 Mathematically, the membrane voltage $V_m(t)$ satisfies the ordinary differential equation
 $$
-C_m \frac{\text{d} V_m(t)}{\text{d} t} = -\frac{V_m(t)}{R_m}+ I(t)
+C_m \frac{\text{d} V_m(t)}{\text{d} t} = -\frac{V_m(t)-V\_{\text{rest}}}{R_m}+ I(t) 
 $$
-
-
+where $V\_{\text{rest}}$ is the resting voltage, $I(t)$ is the input current, $C_m$ is the capacitance and $R_m$ is the resistance.
+This is not enough, an important feature is the resetting of voltage to $V\_{\text{reset}}$ when it reaches a threshold value $V\_{\text{thres}}$:
+$$
+V_m(t^+) \rightarrow V\_{\text{reset}}\,\, \text{ if } \,\, V_m(t^-) = V\_{\text{thres}}
+$$
 
 ## Simulation of spiking neural networks
 Before dive into the theory, we really need a way to simulate the spiking neural network so that it can help us to gain insights and verify the theory. There are a lot of highly-developed simulation packages available such as [NEURON](https://neuron.yale.edu/neuron/), [Brain](https://briansimulator.org/), [GENESIS](http://genesis-sim.org/), [NEST](https://www.nest-simulator.org/) and so on. A comprehensive list can be found in this article {{< bibcite 2 >}} 
