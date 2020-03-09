@@ -3,7 +3,7 @@ type: "projects"
 title: "Stochastic Model of Spiking Neural Network"
 date: 2020-03-06T00:00:00-00:00
 thumbnail: gl-model-ani.gif
-singlepage: false
+singlepage: true
 ---
 
 The virtuosity of the [spiking neural networks](https://en.wikipedia.org/wiki/Spiking_neural_network) in biological brains have always been intriguing to people. Truly, a single neuron is easy to understand. However, when putting an astronomical amount of them together and they start to talk to each other, the complexity quickly go beyond control.
@@ -27,12 +27,13 @@ So a neuron looks like this. There are four basic building block:
 > **FUN FACT**: The yellow wraps on the axon are Meylin sheath. They are like the rubber layer of copper wires. They also help to increase the speed of transmission of the electrical signals in the axon. Meylin sheaths are formed by one of the glial cells. In this study{{< bibcite 1 >}} on Einstein's brain, it is showed that there are significantly more fraction of such cells in one region of Einstein's brain than other human brains they tested. This might be a reason for Einstein to be a genius. (**But no one is really sure**. Maybe without so many glial cells, Einstein would've already [unified quantum theory and gravitation](https://www.livescience.com/58861-unified-field-theory.html).)
 
 
-### Integrate and fire model
-
-
-
-### Stochastic intensity formulation
-
+### Leaky integrate and fire model
+You may have heard of the Nobel Prize winning model -- Hodgkin-Huxley mode. But here I will not introduce it. Instead let's look at a simpler model -- the leaky integrate and fire model. This model treats a neuron as just a capacitor who fires whenever it reaches a threshold voltage and leaks over time.
+{{< figure src="circuit.png#center" width="250" caption="Circuit diagram of leaky integrate and fire model">}}
+Mathematically, the membrane voltage $V_m(t)$ satisfies the ordinary differential equation
+$$
+C_m \frac{\text{d} V_m(t)}{\text{d} t} = -\frac{V_m(t)}{R_m}+ I(t)
+$$
 
 
 
@@ -40,6 +41,7 @@ So a neuron looks like this. There are four basic building block:
 Before dive into the theory, we really need a way to simulate the spiking neural network so that it can help us to gain insights and verify the theory. There are a lot of highly-developed simulation packages available such as [NEURON](https://neuron.yale.edu/neuron/), [Brain](https://briansimulator.org/), [GENESIS](http://genesis-sim.org/), [NEST](https://www.nest-simulator.org/) and so on. A comprehensive list can be found in this article {{< bibcite 2 >}} 
 
 
+<div class="more-to-come">More to come...</div>
 
 
 ## References
