@@ -112,7 +112,7 @@ class SNN_IaF(tf.Module):
             # ... other code omitted ...
 {{< /highlight >}}
 
-We can simulate a single neuron using the following code. It first defines a periodic square wave function and feed it into the model.
+We can simulate a single neuron using the following code. It first defines a periodic square wave function and then feeds it into the model.
 {{< highlight python "hl_lines=14" >}}
 n = 1
 # periodic square wave input current
@@ -130,7 +130,7 @@ single_neuron = SNN_IaF(n,
 single_neuron.Simulate(I_input, 900, dt=0.5)
 {{< /highlight >}}
 
-And make some plots
+Here are the code for making the plots.
 
 {{< highlight python "hl_lines=3 5" >}}
 plt.figure(figsize=(20, 6))
