@@ -40,12 +40,114 @@ $$
 V_m(t^+) \rightarrow V\_{\text{reset}}\,\, \text{ if } \,\, V_m(t^-) = V\_{\text{thres}}
 $$
 
+
+
 ## Simulation of spiking neural networks
-Before dive into the theory, we really need a way to simulate the spiking neural network so that it can help us to gain insights and verify the theory. There are a lot of highly-developed simulation packages available such as [NEURON](https://neuron.yale.edu/neuron/), [Brain](https://briansimulator.org/), [GENESIS](http://genesis-sim.org/), [NEST](https://www.nest-simulator.org/) and so on. A comprehensive list can be found in this article {{< bibcite 2 >}} 
+Before diving into the theory, we really need a way to simulate the spiking neural network so that it can help us to gain insights and verify the theory. There are a lot of highly-developed simulation packages available such as [NEURON](https://neuron.yale.edu/neuron/), [Brain](https://briansimulator.org/), [GENESIS](http://genesis-sim.org/), [NEST](https://www.nest-simulator.org/) and so on. A comprehensive list can be found in this article {{< bibcite 2 >}} 
 
+### Simulation with TensorFlow 2.0
+Using those packages we can simulate this model in several lines. However, to have a basic understanding of how things work, let's implement it using [TensorFlow](https://www.tensorflow.org/). But why not just a ODE solver? There are several reasons
 
-<div class="more-to-come">More to come...</div>
+- By using TensorFlow, we have access to the **high performance** infrastructure of arithmetic and linear algebra that abstract many acceleration hardwares (GPU), which are all we need; and
+- the coding is just as simple as implementing a finite difference ODE solver; and
+- at the same time, it becomes possible to integrate the powerful machine learning capability of TensorFlow into the post-processing of the simulation data; and
+- moreover, it also enables us to develop some sort of spiking neuron layers and use that in traditional deep learning tasks.
 
+This [blog post](http://www.kaizou.org/2018/07/simulating-spiking-neurons-with-tensorflow.html) implement the SNN using TensorFlow 1.0 and the code is rather complicated due to the conversion of differential equation into computational graph. But with the 2.0 update, everything is just way simpler.
+
+### Single neuron
+{{< f "SNN_Single_TensorFlow.ipynb" py "SNN_Single_TensorFlow.ipynb" >}} is the jupyter notebook for this section.
+
+Write the differential equation in its finite difference form
+$$
+ \Delta V_m(t) = \left[ -\frac{V_m(t)-V\_{\text{rest}}}{C_m R_m}+ \frac{1}{C_m} I(t) \right] \Delta t
+$$
+Also don't forget the firing rule
+$$
+V_m(t^+) \rightarrow V\_{\text{reset}}\,\, \text{ if } \,\, V_m(t^-) = V\_{\text{thres}}
+$$
+
+Translate this into python code, is just
+{{< highlight python "hl_lines=9-18" >}}
+import tensorflow as tf
+# Spiking Neural Network Module, inherited from tf.Module
+class SNN_IaF(tf.Module):
+    # ... other code omitted ...
+    # Voltage as tf.Variables
+    self.V = tf.Variable(self.V_resting, name='V')
+
+    # finite difference update step
+    @tf.function
+    def finite_diff_update(self, I, dt):
+        # finiate difference increment dV
+        dV = (I / self.C_m - (self.V - self.V_resting) / (self.C_m * self.R_m)) * dt
+        # determine the spike by checking voltage with threshold
+        will_fire = self.V + dV >= self.V_thres
+        # update the Voltage variable
+        self.V.assign(tf.where(will_fire, self.V_reset, self.V + dV))
+        # return the spike information
+        return will_fire
+{{< /highlight >}}
+
+Isn't it easy? This is because the introduce of {{< f "tf.function" py "https://www.tensorflow.org/api_docs/python/tf/function" >}} in TensorFlow 2.0 that simplifies everything we need to do before to construct the graph.
+
+Then the simulation is just straight-forward Euler's method:
+{{< highlight python "hl_lines=5-15" >}}
+class SNN_IaF(tf.Module):
+    # ... other code omitted ...
+    
+    # simulate a period of time (sim_time) given input current I_t
+    def Simulate(self, I_t, sim_time, dt=0.01, clear_history=False):
+        # ... other code omitted ...
+
+        # loop of finite difference solver
+        for step in range(1, total_step + 1):
+            # time of this step 
+            time = time + dt
+            # current of this steop
+            I = I_t(time)
+            # update voltage
+            firing = self.finite_diff_update(I, dt)
+
+            # ... other code omitted ...
+{{< /highlight >}}
+
+We can simulate a single neuron using the following code. It first defines a periodic square wave function and feed it into the model.
+{{< highlight python "hl_lines=14" >}}
+n = 1
+# periodic square wave input current
+@make_copy(n)
+def I_input(t):
+    if t % 300 < 150 and t % 300 > 50:
+        return 10.
+    else:
+        return 0.
+
+single_neuron = SNN_IaF(n, 
+                        C_m=1.2, R_m=60., 
+                        V_resting=-65., V_reset=-70., V_thres=35.)    
+
+single_neuron.Simulate(I_input, 900, dt=0.5)
+{{< /highlight >}}
+
+And make some plots
+
+{{< highlight python "hl_lines=3 5" >}}
+plt.figure(figsize=(20, 6))
+plt.subplot(1, 2, 1)
+single_neuron.plot_y_vs_x(0, 'I', 'time')
+plt.subplot(1, 2, 2)
+single_neuron.plot_y_vs_x(0, 'V', 'time', show_spikes=True)
+plt.tight_layout()
+plt.show()
+{{< /highlight >}}
+
+The spiking events are marked by vertical dashed line.
+{{< figure src="single-neuron.png#center" width="550" >}}
+
+### A network of neurons with connections
+
+{{< more-to-come "More to come ..." >}}
 
 ## References
 
