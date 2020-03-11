@@ -53,7 +53,7 @@ Using those packages we can simulate this model in several lines. However, to ha
 - at the same time, it becomes possible to integrate the powerful machine learning capability of TensorFlow into the post-processing of the simulation data; and
 - moreover, it also enables us to develop some sort of spiking neuron layers and use that in traditional deep learning tasks.
 
-This [blog post](http://www.kaizou.org/2018/07/simulating-spiking-neurons-with-tensorflow.html) implement the SNN using TensorFlow 1.0 and the code is rather complicated due to the conversion of differential equation into computational graph. But with the 2.0 update, everything is just way simpler.
+This [blog post](http://www.kaizou.org/2018/07/simulating-spiking-neurons-with-tensorflow.html) implemented the SNN using TensorFlow 1.0 and the code is rather complicated due to the conversion of differential equation into computational graph. But with the 2.0 update, everything is just way simpler.
 
 ### Single neuron
 {{< f "SNN_Single_TensorFlow.ipynb" py "SNN_Single_TensorFlow.ipynb" >}} is the jupyter notebook for this section.
