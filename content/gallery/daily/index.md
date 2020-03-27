@@ -160,6 +160,18 @@
             "tags": ["scape", "sunrise"],
             "date": "2020-02-06T00:00:00",
         },
+        {
+            "filename": "ar15-parts.jpg",
+            "caption": "First self-assembled AR15 - parts",
+            "tags": ["indoor", "abstract"],
+            "date": "2020-03-15T00:00:00",
+        },
+        {
+            "filename": "ar15-stand.jpg",
+            "caption": "First self-assembled AR15 - assembled",
+            "tags": ["indoor", "abstract"],
+            "date": "2020-03-15T00:00:00",
+        },
     ]
 }
 
