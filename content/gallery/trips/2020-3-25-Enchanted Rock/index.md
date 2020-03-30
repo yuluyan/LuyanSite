@@ -21,11 +21,6 @@
             "tags": ["sky", "night", "nature"],
         },
         {
-            "filename": "Stars-4.jpg",
-            "caption": "Night sky at Enchanted Rock",
-            "tags": ["sky", "night", "nature"],
-        },
-        {
             "filename": "Stars-5.jpg",
             "caption": "Friend's car in the night sky",
             "tags": ["sky", "night", "nature","car"],
