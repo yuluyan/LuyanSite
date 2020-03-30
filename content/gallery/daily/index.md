@@ -161,6 +161,12 @@
             "date": "2020-02-06T00:00:00",
         },
         {
+            "filename": "car-with-cross.jpeg",
+            "caption": "This is a believer.",
+            "tags": ["BW", "abstract", "car"],
+            "date": "2020-03-07T00:00:00",
+        },
+        {
             "filename": "ar15-parts.jpg",
             "caption": "First self-assembled AR15 - parts",
             "tags": ["indoor", "abstract"],

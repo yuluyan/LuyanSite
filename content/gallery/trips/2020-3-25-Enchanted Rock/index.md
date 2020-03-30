@@ -6,6 +6,16 @@
     "location": "Enchanted Rock, Texas",
     "images": [
         {
+            "filename": "other-2.jpeg",
+            "caption": "Night sky at Enchanted Rock",
+            "tags": ["abstract", "nature"],
+        },
+        {
+            "filename": "other-1.jpeg",
+            "caption": "Road sign",
+            "tags": ["scape", "sky", "nature"],
+        },
+        {
             "filename": "Stars-1.jpg",
             "caption": "Night sky at Enchanted Rock",
             "tags": ["sky", "night", "nature"],
