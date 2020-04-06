@@ -24,7 +24,7 @@ $min-ani-duration: 1s;
     img {
       width: 100% !important;
       height: auto !important;
-
+      border-radius: 7px;
       transition: transform 0.3s ease-in-out;
       &:hover {
         transform: scale(0.9);

@@ -343,7 +343,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
     }
 
     var calculateAfter = function (figures, figuresId) {
-        var margin = 2.5
+        var margin = 2
 
         var containerTop = figures['figures'][0].parentNode.offsetTop
         var containerLeft = figures['figures'][0].parentNode.offsetLeft
