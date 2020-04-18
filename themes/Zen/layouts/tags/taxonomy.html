@@ -32,7 +32,7 @@
             {{ if (eq $tag $this_tag)}}
             <span class="badge-reverse">{{ $tag }}</span>
             {{ else }}
-            <a href="{{ "tags/" | absURL}}{{ . | urlize }}" class="btn-normal">{{ $tag }}</a>
+            <a href="{{ "tags/" | absURL}}{{ . | urlize }}" class="link-normal">{{ $tag }}</a>
             {{ end }}
             {{ end }}
           </span>
