@@ -1,6 +1,6 @@
 ---
 type: posts
-draft: false
+draft: true
 
 title: "Test Post"
 subtitle: ""
