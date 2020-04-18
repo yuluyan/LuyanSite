@@ -216,8 +216,8 @@
   }
   & > a,
   & > p > a,
-  & > ol > a,
-  & > ul > a {
+  & > ol a:not(.inline-code),
+  & > ul a:not(.inline-code) {
     text-decoration: none;
     outline: 0;
     border-bottom: solid 0.7px transparent;
