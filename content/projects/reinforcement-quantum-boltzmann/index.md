@@ -3,6 +3,7 @@ type: "projects"
 title: "Reinforcement Learning with Quantum Restricted Boltzmann Machine"
 date: 2017-01-01T00:00:00-00:00
 thumbnail: robot_think.png
+thumbnaildark: robot_think-dark.png
 singlepage: true
 ---
 

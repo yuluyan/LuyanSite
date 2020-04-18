@@ -26,7 +26,7 @@ detectColorScheme()
 
 document.addEventListener('DOMContentLoaded', function (event) {
 
-
+    detectColorScheme()
 
     //identify the toggle switch HTML element
     const toggleSwitch = document.querySelector('#theme-switch input[type="checkbox"]')
