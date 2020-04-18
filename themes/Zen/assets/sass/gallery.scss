@@ -103,6 +103,9 @@ $ani-num: 8;
 
 .gallery-selector {
   user-select: none;
+  padding-top: 0px;
+  padding-bottom: 2px;
+  line-height: 18px;
   @media (max-width: 440px) {
     font-size: var(--primary-font-size-small);
   }
