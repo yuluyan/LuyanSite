@@ -3,7 +3,7 @@
 html[data-theme="dark"] {
   --background-color: #202020;
   --background-color-opacity: rgba(33, 33, 33, 0.001);
-  
+
   --primary-color: #4d9ee9;
   --primary-color-light: #164083;
   --primary-color-dark: #6cbdff;
@@ -17,23 +17,34 @@ html[data-theme="dark"] {
   --secondary-text-color: #c2c2c2;
   --secondary-text-color-light: #e5e5e5;
   --secondary-text-color-dark: #747474;
-  
+
   --github-text-color: #d3d3d3;
   --github-background-color: #292929;
   --github-border-color: #414141;
-  
+
   --mma-color: #ce4632;
 
   --codeblock-background-color: #272727;
   --codeblock-background-color-highlight: #555239;
   --codeblock-color: #b8b8b8;
-  
+
+  --inline-code-default-background: #383838;
+  --inline-code-default-color: #e5e5e5;
+  --inline-code-default-color-hover: #747474;
+
+  --inline-code-mma-background: #423937;
+  --inline-code-mma-color: #c2402c;
+  --inline-code-mma-color-hover: #ff391b;
+
+  --inline-code-python-background: #39383d;
+  --inline-code-python-color: #6966f5;
+  --inline-code-python-color-hover: #4842ff;
 }
 
 :root {
   --background-color: #fff;
   --background-color-opacity: rgba(255, 255, 255, 0.001);
-  
+
   --primary-color: #1976d2;
   --primary-color-light: #97c2ff6c;
   --primary-color-dark: #004ba0;
@@ -58,6 +69,18 @@ html[data-theme="dark"] {
   --codeblock-background-color-highlight: #fffcd9;
   --codeblock-color: #111111;
 
+  --inline-code-default-background: #f0f0f0;
+  --inline-code-default-color: #000;
+  --inline-code-default-color-hover: #969696;
+
+  --inline-code-mma-background: #fff5f3;
+  --inline-code-mma-color: #d21c00;
+  --inline-code-mma-color-hover: #ee8878;
+
+  --inline-code-python-background: #f6f5ff;
+  --inline-code-python-color: #4b49ff;
+  --inline-code-python-color-hover: #a9a7f1;
+  
   --primary-font: myriad-pro, sans-serif;
   --primary-font-weight-light: 300;
   --primary-font-weight: 400;

@@ -215,7 +215,9 @@
     padding-bottom: 0.3em;
   }
   & > a,
-  & > p > a {
+  & > p > a,
+  & > ol > a,
+  & > ul > a {
     text-decoration: none;
     outline: 0;
     border-bottom: solid 0.7px transparent;
@@ -312,7 +314,10 @@
     padding-top: 0px;
     border-radius: 4px;
     white-space: nowrap;
+    transition: color 0.9s ease-in-out, background-color 0.9s ease-in-out;
+
     a {
+      transition: color 0.3s ease-out;
       border: 0;
       text-decoration: none;
       cursor: pointer;
@@ -325,38 +330,39 @@
       }
     }
     &.inline-code-default {
-      background: #f0f0f0;
-      color: black;
+      background: var(--inline-code-default-background);
+      color: var(--inline-code-default-color);
       a {
-        color: black;
+        color: var(--inline-code-default-color);
         &:hover {
-          color: #969696;
+          color: var(--inline-code-default-color-hover);
         }
       }
     }
     &.inline-code-mma {
-      background: rgb(255, 245, 243);
-      color: #d21c00;
+      background: var(--inline-code-mma-background);
+      color: var(--inline-code-mma-color);
       a {
-        color: #d21c00;
+        color: var(--inline-code-mma-color);
         &:hover {
-          color: rgb(238, 136, 120);
+          color: var(--inline-code-mma-color-hover);
         }
       }
     }
     &.inline-code-python {
-      background: hsl(245, 100%, 98%);
-      color: rgb(75, 73, 255);
+      background: var(--inline-code-python-background);
+      color: var(--inline-code-python-color);
       a {
-        color: rgb(75, 73, 255);
+        color: var(--inline-code-python-color);
         &:hover {
-          color: #a9a8f1;
+          color: var(--inline-code-python-color-hover);
         }
       }
     }
   }
 
   .highlight {
+    transition: color 0.9s ease-in-out, background-color 0.9s ease-in-out; 
     font-size: var(--primary-font-size-small);
     background-color: var(--codeblock-background-color);
     max-height: 380px;
@@ -381,15 +387,17 @@
     position: relative;
   }
   .copy-code-button {
+    margin-right: 0.5em;
+    margin-top: 0.3em;
     position: absolute;
     top: 0px;
     right: 0px;
     z-index: 10;
-    width: 20px;
-    height: 20px;
+    width: 1.7em;
+    height: 1.7em;
     color: black;
-    background: var(--secondary-color);
-    opacity: 0.9;
+    background: var(--secondary-color-dark);
+    opacity: 0.8;
     border: 0;
     border-radius: 50%;
 
@@ -413,11 +421,11 @@
     }
 
     svg {
-      width: 12px;
-      height: 12px;
-      position: relative;
-      top: 2.2px;
-      left: -2.7px;
+      width: 1.2em;
+      height: 1.2em;
+      position: absolute;
+      top: 0.25em;
+      left: 0.25em;
     }
   }
 
