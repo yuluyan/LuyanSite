@@ -2,6 +2,7 @@
 
 html[data-theme="dark"] {
   --background-color: #202020;
+  --background-color-opacity: rgba(33, 33, 33, 0.001);
   
   --primary-color: #4d9ee9;
   --primary-color-light: #164083;
@@ -31,6 +32,8 @@ html[data-theme="dark"] {
 
 :root {
   --background-color: #fff;
+  --background-color-opacity: rgba(255, 255, 255, 0.001);
+  
   --primary-color: #1976d2;
   --primary-color-light: #97c2ff6c;
   --primary-color-dark: #004ba0;

@@ -245,7 +245,7 @@
     content: "";
     background-image: linear-gradient(
       to bottom,
-      rgba(255, 255, 255, 0.001) 0%,
+      var(--background-color-opacity) 0%,
       var(--background-color) 75%,
       var(--background-color) 100%
     );
@@ -404,7 +404,7 @@ body.modal-open .container {
         color: var(--primary-color);
         &:hover {
           text-decoration: none;
-          border-bottom: solid 0.7px;
+          border-bottom: solid 0.7px var(--primary-color);
           border-bottom-color: inherit;
         }
       }
