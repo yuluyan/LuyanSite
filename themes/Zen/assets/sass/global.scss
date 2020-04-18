@@ -280,6 +280,10 @@ html[data-theme="dark"] {
 /* Page body style */
 
 body {
+  transition-property: background-color;
+  transition-duration: 0.9s;
+  transition-timing-function: ease-in-out;
+
   background-color: var(--background-color);
   font-family: var(--primary-font);
   font-weight: var(--primary-font-weight);
