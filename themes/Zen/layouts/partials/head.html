@@ -37,6 +37,10 @@
 	{{ $style := $scss | resources.ToCSS | resources.PostCSS | resources.Minify}}
 	<link rel="stylesheet" href="{{ $style.Permalink }}">
 
+	{{ $js := resources.Get "js/theme.js" }}
+    {{ $js_min := $js | resources.Minify }}
+    <script src="{{ $js_min.Permalink }}"></script>
+
 	{{- if and (isset .Site.Params "social") (isset .Site.Params "feathericonscdn") (eq .Site.Params.featherIconsCDN true) -}}
 	<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 	{{- else if (isset .Site.Params "social") -}}

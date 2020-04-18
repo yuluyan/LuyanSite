@@ -3,6 +3,7 @@ type: "projects"
 title: "Tropical Geometry of Phylogenetic Trees"
 date: 2020-03-05T00:00:00-00:00
 thumbnail: dog-phylo.svg
+thumbnaildark: dog-phylo-dark.svg
 singlepage: true
 ---
 

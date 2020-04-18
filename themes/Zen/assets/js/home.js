@@ -8,14 +8,14 @@ document.addEventListener('DOMContentLoaded', function (event) {
     let copyButton = modal.getElementsByClassName('copy-bibtex')[0]
     let downloadButton = modal.getElementsByClassName('download-bibtex')[0]
     let modalError = modal.getElementsByClassName('modal-error')[0];
-  
+
     let modalCopied = document.querySelector('#modal-copied')
-  
+
     var bibtexButton = document.querySelectorAll('.bibtex-btn')
     for (var i = 0; i < bibtexButton.length; i++) {
       bibtexButton[i].addEventListener('click', function (e) {
         e.preventDefault()
-  
+
         let filename = this.getAttribute("data-filename")
         // load bibtex file content
         var request = new XMLHttpRequest()
@@ -30,14 +30,14 @@ document.addEventListener('DOMContentLoaded', function (event) {
           }
         }
         request.send()
-  
+
         // display modal dialog
         modal.classList.add('visible')
         document.querySelector('body').classList.add('modal-open')
       }
       )
     }
-  
+
     copyButton.onclick = function (e) {
       e.preventDefault()
       codeField.select()
@@ -53,12 +53,12 @@ document.addEventListener('DOMContentLoaded', function (event) {
         document.querySelector('body').classList.remove('modal-open')
       }, 700)
     }
-  
+
     closeButton.onclick = function () {
       modal.classList.remove('visible')
       document.querySelector('body').classList.remove('modal-open')
     }
-  
+
     document.querySelector('body').onclick = function (e) {
       if (e.target == document.querySelector('#modal .modal-dialog') || e.target == modal) {
         modal.classList.remove('visible')
@@ -76,19 +76,19 @@ document.addEventListener('DOMContentLoaded', function (event) {
         document.querySelector('body').classList.remove('modal-open')
       }
     })
-  
-  
+
+
     // Read more abstract functions
     var readmoreButton = document.querySelectorAll('.read-more-btn a')
     for (var i = 0; i < readmoreButton.length; i++) {
       readmoreButton[i].addEventListener('click', function (e) {
         e.preventDefault()
-  
+
         let box = e.target.parentNode.parentNode
         let absHeight = box.getAttribute('data-absHeight')
         let height = box.scrollHeight
         let mask = box.getElementsByClassName('read-more-mask')[0]
-  
+
         if (e.target.innerHTML == '+ Abstract') {
           box.setAttribute('style', 'height: ' + height + 'px; max-height: 9999px;')
           mask.setAttribute('style', 'opacity: 0')
@@ -105,12 +105,12 @@ document.addEventListener('DOMContentLoaded', function (event) {
           mask.setAttribute('style', 'opacity: 1')
           e.target.innerHTML = '+ Abstract'
         }
-  
+
       }
       )
     }
   }
-  
+
 
   // Set height of expanded abstract when change screen size
   window.addEventListener('resize', function () {
@@ -121,6 +121,5 @@ document.addEventListener('DOMContentLoaded', function (event) {
       }
     }
   })
-
 
 })

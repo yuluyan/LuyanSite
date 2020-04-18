@@ -3,6 +3,7 @@ type: "projects"
 title: "Localization in Quantum Random Walk"
 date: 2015-06-01T00:00:00-00:00
 thumbnail: localization.png
+thumbnaildark: localization-dark.png
 singlepage: false
 ---
 

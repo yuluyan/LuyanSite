@@ -16,7 +16,7 @@
     <span class="metaitem">
       {{ range $index, $author := .Params.tags }}
       {{ if $index }},{{ end }}
-      <a href="{{ "tags/" | absURL}}{{ . | urlize }}">{{ . }}</a>
+      <a href="{{ "tags/" | absURL}}{{ . | urlize }}" class="link-normal">{{ . }}</a>
       {{ end }}
     </span>
     <span class="metatext">
@@ -49,7 +49,7 @@
 
   <div class="license has-icon">
     <i data-feather="flag"></i>
-    This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons
+    This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/" class="link-normal">Creative Commons
       Attribution 4.0 International License</a>.
   </div>
 

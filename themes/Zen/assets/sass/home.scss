@@ -28,9 +28,9 @@
   }
   @media (max-width: 685px) {
     display: table;
-    width: 95%;
+    width: 100%;
     margin-bottom: 20px;
-    margin-right: 5%;
+    margin-right: 0%;
   }
 
   @media (max-width: 685px) {
@@ -243,7 +243,12 @@
     margin: 0;
     padding: 0 0 80px;
     content: "";
-    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.001) 0%, white 75%, white 100%);
+    background-image: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.001) 0%,
+      var(--background-color) 75%,
+      var(--background-color) 100%
+    );
     opacity: 1;
     transition-property: opacity;
     transition-duration: 0.5s;
@@ -289,8 +294,8 @@ body.modal-open .container {
   }
   .modal-content {
     display: float;
-    background-color: #fefefe;
-    border: 0px solid #888;
+    background-color: var(--background-color);
+    border: 0px solid var(--secondary-color-dark);
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
@@ -303,17 +308,26 @@ body.modal-open .container {
         margin-left: 5%;
         margin-bottom: 0;
       }
+      .close-bibtex {
+        color: var(--secondary-text-color);
+        margin-right: 3%;
+      }
     }
     .code-bibtex {
+      outline: none;
       font-size: var(--primary-font-size-small);
       font-family: var(--primary-font);
       margin-top: 0;
       margin-left: 5%;
-      width: 90%;
+      width: 84%;
       margin-right: 5%;
       resize: none;
       border-radius: 6px;
       background-color: var(--secondary-color-light);
+      color: var(--secondary-text-color);
+      padding-left: 3%;
+      padding-right: 3%;
+      padding-top: 10px;
       &:hover {
         //color: var(--primary-color-light);
       }
@@ -378,9 +392,23 @@ body.modal-open .container {
   }
   .project-text {
     .project-title {
+      color: var(--secondary-text-color-light);
       font-weight: var(--primary-font-weight-semibold);
     }
-    
+    .project-summary {
+      a {
+        text-decoration: none;
+        outline: 0;
+        border-bottom: solid 0.7px transparent;
+        transition: color 0.3s ease-out, border-bottom-color 0.3s ease-out;
+        color: var(--primary-color);
+        &:hover {
+          text-decoration: none;
+          border-bottom: solid 0.7px;
+          border-bottom-color: inherit;
+        }
+      }
+    }
   }
   .project-thumbnail {
     img {

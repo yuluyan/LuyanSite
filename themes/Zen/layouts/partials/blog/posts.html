@@ -19,7 +19,7 @@
 			<span class="metaitem">
 				{{ range $index, $author := .Params.tags }}
 				{{ if $index }},{{ end }}
-				<a href="{{ "tags/" | absURL}}{{ . | urlize }}">{{ . }}</a>
+				<a href="{{ "tags/" | absURL}}{{ . | urlize }}" class="link-normal">{{ . }}</a>
 				{{ end }}
 			</span>
 			<span class="metatext">
@@ -54,7 +54,7 @@
 		</div>
 
 		<div class="post-sep">
-			<img src="/post-sep.png" />
+			<img src="/post-sep-white.svg" />
 		</div>
 
 	</div>

@@ -3,9 +3,21 @@
     <div class="project-title">{{ .Title }}</div>
     <div class="project-thumbnail">
         {{ if isset .Params "thumbnailsize" }}
+        {{ if isset .Params "thumbnaildark" }}
+        <img src="{{ .RelPermalink }}{{ .Params.thumbnail }}" width="{{ .Params.thumbnailsize }}"
+            data-src-light="{{ .RelPermalink }}{{ .Params.thumbnail }}"
+            data-src-dark="{{ .RelPermalink }}{{ .Params.thumbnaildark }}">
+        {{ else}}
         <img src="{{ .RelPermalink }}{{ .Params.thumbnail }}" width="{{ .Params.thumbnailsize }}">
+        {{ end }}
         {{ else }}
+        {{ if isset .Params "thumbnaildark" }}
+        <img src="{{ .RelPermalink }}{{ .Params.thumbnail }}"
+            data-src-light="{{ .RelPermalink }}{{ .Params.thumbnail }}"
+            data-src-dark="{{ .RelPermalink }}{{ .Params.thumbnaildark }}">
+        {{ else}}
         <img src="{{ .RelPermalink }}{{ .Params.thumbnail }}">
+        {{ end }}
         {{ end }}
     </div>
     <div class="project-text markdown-body">

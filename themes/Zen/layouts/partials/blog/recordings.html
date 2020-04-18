@@ -32,7 +32,7 @@
 			<span class="meta-emph">
 				{{ range $index, $author := .genres }}
 				{{ if $index }},{{ end }}
-				<a href="{{ "genres/" | absURL}}{{ . | urlize }}">{{ . }}</a>
+				<a href="{{ "genres/" | absURL}}{{ . | urlize }}" class="link-normal">{{ . }}</a>
 				{{ end }}
 			</span>
 			<span class="meta-text">on</span>

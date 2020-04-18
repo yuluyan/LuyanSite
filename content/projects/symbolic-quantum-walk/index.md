@@ -3,6 +3,7 @@ type: "projects"
 title: "Symbolic Quantum Random Walk Simulation"
 date: 2015-01-01T00:00:00-00:00
 thumbnail: sqqw.png
+thumbnaildark: sqqw-dark.png
 singlepage: true
 ---
 

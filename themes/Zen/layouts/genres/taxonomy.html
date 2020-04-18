@@ -46,7 +46,7 @@
             {{ if (eq $genre $this_tag)}}
             <span class="badge-reverse">{{ $genre }}</span>
             {{ else }}
-            <a href="{{ "genres/" | absURL}}{{ . | urlize }}">{{ $genre }}</a>
+            <a href="{{ "genres/" | absURL}}{{ . | urlize }}" class="link-normal">{{ $genre }}</a>
             {{ end }}
             {{ end }}
           </span>

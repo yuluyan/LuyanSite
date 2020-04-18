@@ -3,6 +3,7 @@ type: "projects"
 title: "Secure Computation of Deep Networks"
 date: 2019-06-01T00:00:00-00:00
 thumbnail: network-lock.svg
+thumbnaildark: network-lock-dark.svg
 singlepage: false
 ---
 

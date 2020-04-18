@@ -70,9 +70,6 @@
     a,
     span {
       font-weight: var(--primary-font-weight);
-      svg {
-        top: 1.5px;
-      }
       @media (min-width: 440px) {
         font-size: var(--primary-font-size);
       }
@@ -186,7 +183,7 @@
   .post-sep {
     user-select: none;
     text-align: center;
-    margin-top: 5px;
+    margin-top: 10px;
     margin-bottom: 35px;
     img {
       width: 25px;
@@ -215,7 +212,22 @@
     border-bottom: 1px solid #eaecef;
     padding-bottom: 0.3em;
   }
+  & > a,
+  & > p > a {
+    text-decoration: none;
+    outline: 0;
+    border-bottom: solid 0.7px transparent;
+    transition: color 0.3s ease-out, border-bottom-color 0.3s ease-out;
+    color: var(--primary-color);
+    &:hover {
+      text-decoration: none;
+      border-bottom: solid 0.7px;
+      border-bottom-color: inherit;
+    }
+  }
   img {
+    background-color: white;
+    border-radius: 7px;
     @media (min-width: 800px) {
       &[src$="#center"] {
         display: block;
@@ -257,12 +269,24 @@
   }
 
   blockquote {
-    background: #f9f9f9;
+    background: var(--secondary-color-light);
     border-left: 5px solid var(--primary-color-light);
     margin: 1.5em 20px;
     padding: 0.5em 10px;
     quotes: "\201C""\201D""\2018""\2019";
     font-style: italic;
+    a {
+      text-decoration: none;
+      outline: 0;
+      border-bottom: solid 0.7px transparent;
+      transition: color 0.3s ease-out, border-bottom-color 0.3s ease-out;
+      color: var(--primary-color);
+      &:hover {
+        text-decoration: none;
+        border-bottom: solid 0.7px;
+        border-bottom-color: inherit;
+      }
+    }
   }
   blockquote:before {
     color: var(--primary-color-light);
@@ -332,15 +356,21 @@
 
   .highlight {
     font-size: var(--primary-font-size-small);
-    background-color: #fafafa;
+    background-color: var(--codeblock-background-color);
     max-height: 380px;
     overflow-y: scroll;
     white-space: nowrap;
+    border-radius: 7px;
+    margin-top: 5px;
+    
     pre {
       overflow: auto;
       display: block;
       position: relative;
-      margin: 0;
+      margin-top: 3px;
+      margin-bottom: 3px;
+      margin-left: 6px;
+      margin-right: 6px;
     }
     table {
       text-align: left;
@@ -399,6 +429,17 @@
 
   .bibcite {
     .bibref-enum {
+      text-decoration: none;
+      outline: 0;
+      border-bottom: solid 0.7px transparent;
+      transition: color 0.3s ease-out, border-bottom-color 0.3s ease-out;
+      color: var(--primary-color);
+      &:hover {
+        text-decoration: none;
+        border-bottom: solid 0.7px;
+        border-bottom-color: inherit;
+      }
+
       user-select: none;
       display: inline-block;
       font-size: 10px;
@@ -428,6 +469,17 @@
     margin-right: 10px;
     margin-bottom: 15px;
     .bibref-enum {
+      text-decoration: none;
+      outline: 0;
+      border-bottom: solid 0.7px transparent;
+      transition: color 0.3s ease-out, border-bottom-color 0.3s ease-out;
+      color: var(--primary-color);
+      &:hover {
+        text-decoration: none;
+        border-bottom: solid 0.7px;
+        border-bottom-color: inherit;
+      }
+
       user-select: none;
       display: inline-block;
       font-size: var(--primary-font-size-tiny);
@@ -460,7 +512,7 @@
       font-weight: var(--primary-font-weight-semibold);
     }
     .bibref-series {
-      color: var(--secondary-color-dark);
+      color: var(--secondary-text-color-dark);
       font-size: var(--primary-font-size-tiny);
     }
   }

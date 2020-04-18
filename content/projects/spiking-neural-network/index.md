@@ -3,6 +3,7 @@ type: "projects"
 title: "Stochastic Model of Spiking Neural Network"
 date: 2020-03-06T00:00:00-00:00
 thumbnail: gl-model-ani.gif
+thumbnaildark: gl-model-ani-dark.gif
 singlepage: true
 ---
 

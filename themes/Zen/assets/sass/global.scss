@@ -1,14 +1,60 @@
 /* Define global colors, fonts, etc. */
 
+html[data-theme="dark"] {
+  --background-color: #202020;
+  
+  --primary-color: #4d9ee9;
+  --primary-color-light: #164083;
+  --primary-color-dark: #6cbdff;
+  --secondary-color: #2c2c2c;
+  --secondary-color-light: #292929;
+  --secondary-color-dark: #c2c2c2;
+
+  --selection-color: #2a2d30;
+
+  --primary-text-color: #181818;
+  --secondary-text-color: #c2c2c2;
+  --secondary-text-color-light: #e5e5e5;
+  --secondary-text-color-dark: #747474;
+  
+  --github-text-color: #d3d3d3;
+  --github-background-color: #292929;
+  --github-border-color: #414141;
+  
+  --mma-color: #ce4632;
+
+  --codeblock-background-color: #272727;
+  --codeblock-background-color-highlight: #555239;
+  --codeblock-color: #b8b8b8;
+  
+}
+
 :root {
+  --background-color: #fff;
   --primary-color: #1976d2;
   --primary-color-light: #97c2ff6c;
   --primary-color-dark: #004ba0;
   --secondary-color: #cfd8dc;
   --secondary-color-light: #f4f4f4;
   --secondary-color-dark: #999;
+
+  --selection-color: #cfd8dc;
+
   --primary-text-color: #fff;
   --secondary-text-color: #000;
+  --secondary-text-color-light: #000;
+  --secondary-text-color-dark: #c2c2c2;
+
+  --github-text-color: #1976d2;
+  --github-background-color: #f6f8fa;
+  --github-border-color: #eaecef;
+
+  --mma-color: #d21c00;
+
+  --codeblock-background-color: #f1f3f4;
+  --codeblock-background-color-highlight: #fffcd9;
+  --codeblock-color: #111111;
+
   --primary-font: myriad-pro, sans-serif;
   --primary-font-weight-light: 300;
   --primary-font-weight: 400;
@@ -42,7 +88,7 @@
     text-decoration: none;
     background-color: var(--primary-color);
     color: var(--primary-text-color);
-  border: 0.7px var(--primary-color) solid;
+    border: 0.7px var(--primary-color) solid;
 
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
   }
@@ -69,8 +115,7 @@
   }
 }
 
-.link-normal,
-a {
+.link-normal {
   text-decoration: none;
   outline: 0;
   border-bottom: solid 0.7px transparent;
@@ -99,7 +144,7 @@ a {
 .badge-normal,
 .badge-normal:hover {
   cursor: default;
-  color: var(--secondary-text-color);
+  color: var(--secondary-text-color-light);
   background-color: var(--secondary-color-light);
   border: 0.7px var(--secondary-color) solid;
   padding-left: 10px;
@@ -154,7 +199,7 @@ a {
     min-width: 150px;
     max-width: 300px;
     padding: 5px 10px;
-    color: black;
+    color: var(--secondary-text-color);
     background-color: var(--secondary-color-light);
     font-weight: var(--primary-font-weight);
     font-size: var(--primary-font-size-small);
@@ -225,13 +270,14 @@ a {
 /* Selection style */
 
 ::selection {
-  background: var(--secondary-color);
+  background: var(--selection-color);
   text-shadow: none;
 }
 
 /* Page body style */
 
 body {
+  background-color: var(--background-color);
   font-family: var(--primary-font);
   font-weight: var(--primary-font-weight);
   font-style: normal;
@@ -254,14 +300,6 @@ body {
 }
 
 /* Page head style */
-
-.language-select {
-  display: block;
-  user-select: none;
-  a {
-    font-size: var(--primary-font-size-small);
-  }
-}
 
 .linksep {
   color: var(--secondary-color-dark);
@@ -320,7 +358,6 @@ body {
   @media (max-width: 600px) {
     width: 240px;
   }
-  
 }
 
 .text404 {
@@ -346,7 +383,7 @@ body {
 
 /* For mma */
 .mma {
-  color: #d21c00;
+  color: var(--mma-color);
 }
 
 .mma-notebook {
@@ -378,7 +415,7 @@ body {
       margin-left: 1.5px;
       font-size: var(--primary-font-size-small);
       &:hover {
-        color: rgb(216, 57, 32);
+        color: #d83920;
       }
     }
   }
@@ -391,15 +428,17 @@ body {
 
 .github-commit-sha {
   font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
-  color: var(--primary-color);
+  color: var(--github-text-color);
   padding: 0.1em 0.4em;
   font-size: 90%;
   font-weight: 400;
-  background-color: #f6f8fa;
-  border: 1px solid #eaecef;
+  background-color: var(--github-background-color);
+  border: 1px solid var(--github-border-color);
   border-radius: 0.2em;
+  outline: 0;
+  text-decoration: none;
   &:hover {
-    border: 1px solid #eaecef;
+    border: 1px solid var(--github-border-color);
   }
 }
 
@@ -411,4 +450,78 @@ body {
   opacity: 0.5;
   margin-top: 100px;
   margin-bottom: 100px;
+}
+
+// header toggles
+.header-toggles {
+  display: flex;
+  justify-content: space-between;
+}
+
+.language-select {
+  user-select: none;
+  a {
+    font-size: var(--primary-font-size-small);
+  }
+}
+
+// theme switcher
+
+.theme-switch-wrapper {
+  align-items: center;
+  margin-top: 2.5px;
+  em {
+    margin-left: 10px;
+    font-size: 1rem;
+  }
+}
+.theme-switch {
+  display: inline-block;
+  height: 22px;
+  position: relative;
+  width: 40px;
+}
+
+.theme-switch input {
+  display: none;
+}
+
+.slider {
+  background-color: #202020;
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: 0.3s;
+}
+
+.slider:before {
+  background-color: #f5f5f5;
+  bottom: 3px;
+  content: "";
+  height: 16px;
+  left: 4.5px;
+  position: absolute;
+  transition: 0.3s;
+  transition-timing-function: ease-in-out;
+  width: 16px;
+}
+
+input:checked + .slider {
+  background-color: var(--secondary-text-color);
+}
+
+input:checked + .slider:before {
+  background-color: var(--background-color);
+  transform: translateX(17px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
 }

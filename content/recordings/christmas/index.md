@@ -10,8 +10,8 @@ poster: "Merry Christmas Mr. Lawrence.png"
 title: "Merry Christmas Mr. Lawrence"
 subtitle: ""
 
-composer: "<a href=\"https://en.wikipedia.org/wiki/Ryuichi_Sakamoto\" target=\"_blank\">Ryuichi Sakamoto</a>"
-arranger: "<a href=\"https://www.youtube.com/channel/UCSmwOCqzjnQksFn0t7ARkkw\" target=\"_blank\">Jacob Koller</a>"
+composer: "<a href=\"https://en.wikipedia.org/wiki/Ryuichi_Sakamoto\" class=\"link-normal\" target=\"_blank\">Ryuichi Sakamoto</a>"
+arranger: "<a href=\"https://www.youtube.com/channel/UCSmwOCqzjnQksFn0t7ARkkw\" class=\"link-normal\" target=\"_blank\">Jacob Koller</a>"
 
 genres:
 - OST

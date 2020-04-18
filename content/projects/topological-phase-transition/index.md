@@ -2,7 +2,8 @@
 type: "projects"
 title: "Topological Transitions Induced by Antiferromagnetism in Topological Insulator"
 date: 2016-07-01T00:00:00-00:00
-thumbnail: flip_fig.gif
+thumbnail: flip_compress.gif
+thumbnaildark: flip_compress-dark.gif
 singlepage: false
 ---
 

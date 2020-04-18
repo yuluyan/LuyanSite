@@ -30,7 +30,7 @@
     <span class="meta-emph">
       {{ range $index, $author := .Params.genres }}
       {{ if $index }},{{ end }}
-      <a href="{{ "genres/" | absURL}}{{ . | urlize }}">{{ . }}</a>
+      <a href="{{ "genres/" | absURL}}{{ . | urlize }}" class="link-normal">{{ . }}</a>
       {{ end }}
     </span>
     <span class="meta-text">on</span>
@@ -75,7 +75,7 @@
 
   <div class="license has-icon">
     <i data-feather="flag"></i>
-    This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons
+    This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/" class="link-normal">Creative Commons
       Attribution 4.0 International License</a>.
   </div>
 
