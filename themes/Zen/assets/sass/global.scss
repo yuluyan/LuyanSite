@@ -370,6 +370,7 @@ body {
 }
 
 .footer-sep {
+  transition: border-top-color 0.9s ease-in-out;
   border-top: 1px solid var(--secondary-color-light);
   margin-top: 2px;
 }
@@ -460,6 +461,7 @@ body {
 }
 
 .github-commit-sha {
+  transition: background-color 0.9s ease-in-out, color 0.9s ease-in-out, border-color 0.9s ease-in-out;
   font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
   color: var(--github-text-color);
   padding: 0.1em 0.4em;
