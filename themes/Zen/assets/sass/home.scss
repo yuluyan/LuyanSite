@@ -49,14 +49,19 @@
 
   .site-title {
     .name {
+      
       display: inline;
       font-family: var(--secondary-font);
       font-weight: 600;
       font-style: normal;
       color: var(--primary-color);
       .initial {
+        transition: color 0.9s ease-in-out;
         text-transform: uppercase;
         color: var(--primary-color-dark);
+      }
+      .firstname, .lastname {
+        transition: color 0.9s ease-in-out;
       }
       @media (min-width: 685px) {
         font-size: 50px;
