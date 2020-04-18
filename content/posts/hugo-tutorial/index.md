@@ -18,7 +18,7 @@ tags:
 
 ## What is Hugo
 Hugo is a **static site generator** written in [Go](https://golang.org). As its name suggests, it can transform your structured content files into a full-fledged **static** website. 
-For example, this post, as well as all other posts, was originally {{< f ".md" >}} markdown notes. After going throught the Hugo pipeline, these content were parsed and assembled into this static webpage as you are seeing now. Hugo is not only a markdown renderer. It also has a powerful template system with the inherited Golang syntax that can reduce the amount of work on your side.
+For example, this post, as well as all other posts, was originally {{< f ".md" >}} markdown notes. After going through the Hugo pipeline, these content were parsed and assembled into this static webpage as you are seeing now. Hugo is not only a markdown renderer. It also has a powerful template system with the inherited Golang syntax that can reduce the amount of work on your side.
 
 Hugo also has hundreds of themes available contributed by the community. Basically, a theme is a collection of templates. You will only need to focus on the content of your website if you don't want to spend too much time on tweaking the style of your website. But if you are a person like me, you can dig into the theme folder and take full control of it.
 

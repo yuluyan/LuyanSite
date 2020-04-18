@@ -2,7 +2,7 @@
 type: posts
 draft: false
 
-title: "Deploying Hugo using GitHub webhook"
+title: "Deploying Hugo using GitHub Webhook"
 subtitle: "&mdash; Hugo static site generator walk-through (2)"
 date: 2019-12-20T18:00:00-06:00
 
@@ -23,7 +23,7 @@ tags:
 2. Build the site locally;
 3. Upload the {{< f "/public" >}} folder to your server.
 
-However, if updating the site is kind of a daily thing, you definitely don't want to do the FTP uploading every time. Let along the inconvenience it brings, you are uploading many redundant files to the server and it will take a long time if your site gets big. Using GitHub's [webhook](https://developer.github.com/webhooks/), we can achieve something like this:
+However, if updating the site is kind of a daily thing, you definitely don't want to do the FTP uploading every time. Let along the inconvenience it brings, you are uploading many redundant files to the server and it will take a long time if your site gets big. Using GitHub's [Webhook](https://developer.github.com/webhooks/), we can achieve something like this:
 {{< figure src="after_github.png#center" width="450">}}
 
 1. Create a GitHub repo for your Hugo site;
