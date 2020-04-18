@@ -211,13 +211,10 @@
   }
   h1,
   h2 {
-    border-bottom: 1px solid #eaecef;
+    border-bottom: 1px solid var(--secondary-color-dark);
     padding-bottom: 0.3em;
   }
-  & > a,
-  & > p > a,
-  & > ol a:not(.inline-code),
-  & > ul a:not(.inline-code) {
+  a {
     text-decoration: none;
     outline: 0;
     border-bottom: solid 0.7px transparent;
@@ -387,6 +384,7 @@
     position: relative;
   }
   .copy-code-button {
+    padding: 0px;
     margin-right: 0.5em;
     margin-top: 0.3em;
     position: absolute;
@@ -481,13 +479,11 @@
     .bibref-enum {
       text-decoration: none;
       outline: 0;
-      border-bottom: solid 0.7px transparent;
-      transition: color 0.3s ease-out, border-bottom-color 0.3s ease-out;
+      border: none;
       color: var(--primary-color);
       &:hover {
         text-decoration: none;
-        border-bottom: solid 0.7px;
-        border-bottom-color: inherit;
+        background-color: var(--primary-color);
       }
 
       user-select: none;
@@ -497,8 +493,9 @@
       background-color: var(--secondary-color-dark);
       color: var(--primary-text-color);
       border-radius: 50%;
-      width: 1.5em;
-      line-height: 1.5em;
+      width: 1.15em;
+      line-height: 1.2em;
+      padding: 0px;
       margin-right: 3px;
       text-align: center;
 
@@ -506,10 +503,6 @@
       transition-duration: 0.3s;
       transition-timing-function: ease-out;
       cursor: pointer;
-      border-bottom: none;
-      &:hover {
-        background-color: var(--primary-color);
-      }
     }
     .bibref-authors {
       font-size: var(--primary-font-size-small);
