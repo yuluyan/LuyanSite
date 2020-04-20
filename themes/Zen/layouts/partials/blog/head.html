@@ -16,4 +16,5 @@
     {{ $js_mma := resources.Get "js/mma.js" }}
     {{ $js_mma_min := $js_mma | resources.Minify}}
     <script src="{{ $js_mma_min.Permalink }}"></script>
+
 </head>
