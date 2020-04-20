@@ -2,9 +2,4 @@
 	{{ $scss := resources.Get "sass/home.scss" }}
     {{ $style := $scss | resources.ToCSS | resources.PostCSS | resources.Minify }}
     <link rel="stylesheet" href="{{ $style.Permalink }}"> 
-
-    {{ $js := resources.Get "js/home.js" }}
-    {{ $js_min := $js | resources.Minify }}
-    <script src="{{ $js_min.Permalink }}"></script>
-
 </head>

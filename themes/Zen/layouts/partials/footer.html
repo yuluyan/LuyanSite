@@ -2,8 +2,8 @@
 	<div>
 		{{ if (fileExists "commit_id.txt") }}
 		{{ $commit_id := trim (readFile "commit_id.txt") "\n" }}
-		Github commit: <a class="github-commit-sha"
-			href="{{- .Site.Params.githubRepo -}}/commit/{{- $commit_id -}}" target="_blank">{{ substr $commit_id 0 7 }}</a>
+		Github commit: <a class="github-commit-sha" href="{{- .Site.Params.githubRepo -}}/commit/{{- $commit_id -}}"
+			target="_blank">{{ substr $commit_id 0 7 }}</a>
 		{{ end }}
 		Updated on {{ now.Format "January 2, 2006"}}
 	</div>
@@ -15,6 +15,14 @@
 		Theme <a href="https://gohugo.io" class="link-normal" target="_blank">Zen</a> created by Luyan Yu
 	</div>
 </div>
+
+
+
+{{- if and (isset .Site.Params "social") (isset .Site.Params "feathericonscdn") (eq .Site.Params.featherIconsCDN true) -}}
+<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+{{- else if (isset .Site.Params "social") -}}
+<script src="{{ .Site.BaseURL }}js/feather.min.js"></script>
+{{- end -}}
 
 {{ if ne (printf "%v" $.Site.BaseURL) "http://localhost:1313/" }}
 {{ template "_internal/google_analytics_async.html" . }}
