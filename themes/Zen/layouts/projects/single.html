@@ -4,7 +4,7 @@
     <div class="project-thumbnail">
         {{ if isset .Params "thumbnailsize" }}
         {{ if isset .Params "thumbnaildark" }}
-        <img src="{{ .RelPermalink }}{{ .Params.thumbnail }}" width="{{ .Params.thumbnailsize }}"
+        <img style="visibility: hidden;"  src="" width="{{ .Params.thumbnailsize }}"
             data-src-light="{{ .RelPermalink }}{{ .Params.thumbnail }}"
             data-src-dark="{{ .RelPermalink }}{{ .Params.thumbnaildark }}">
         {{ else}}
@@ -12,7 +12,7 @@
         {{ end }}
         {{ else }}
         {{ if isset .Params "thumbnaildark" }}
-        <img src="{{ .RelPermalink }}{{ .Params.thumbnail }}"
+        <img style="visibility: hidden;"  src=""
             data-src-light="{{ .RelPermalink }}{{ .Params.thumbnail }}"
             data-src-dark="{{ .RelPermalink }}{{ .Params.thumbnaildark }}">
         {{ else}}

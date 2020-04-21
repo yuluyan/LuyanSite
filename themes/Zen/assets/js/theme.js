@@ -13,12 +13,40 @@ function detectColorScheme() {
         var theme = "dark"
     }
 
+    Array.from(document.querySelectorAll("[data-src-dark]")).forEach(img => {
+        img.style.visibility = "hidden"
+        img.style.opacity = 0
+        img.style.transition = "opacity 0.9s ease-in-out;"
+    })
+
     //dark theme preferred, set document with a `data-theme` attribute
     if (theme == "dark") {
         document.documentElement.setAttribute("data-theme", "dark")
         // change images with data-src-dark attribute
         Array.from(document.querySelectorAll("[data-src-dark]")).forEach(img => {
-            img.src = img.getAttribute('data-src-dark')
+            if (img.src != img.getAttribute('data-src-dark')) {
+                setTimeout(function () {
+                    img.src = img.getAttribute('data-src-dark')
+                    setTimeout(function () {
+                        img.style.visibility = "visible"
+                        img.style.opacity = 1
+                    }, 100);
+                }, 100);
+            }
+        })
+    } else if (theme == "light") {
+        document.documentElement.setAttribute("data-theme", "light")
+        // change images with data-src-light attribute
+        Array.from(document.querySelectorAll("[data-src-dark]")).forEach(img => {
+            if (img.src != img.getAttribute('data-src-light')) {
+                setTimeout(function () {
+                    img.src = img.getAttribute('data-src-light')
+                    setTimeout(function () {
+                        img.style.visibility = "visible"
+                        img.style.opacity = 1
+                    }, 100);
+                }, 100);
+            }
         })
     }
 }
@@ -39,7 +67,19 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
             // change images with data-src-dark attribute
             Array.from(document.querySelectorAll("[data-src-dark]")).forEach(img => {
-                img.src = img.getAttribute('data-src-dark')
+                if (img.src != img.getAttribute('data-src-dark')) {
+                    img.style.display = "none"
+                    img.style.transition = ""
+                    setTimeout(function () {
+                        img.style.opacity = 0
+                        img.src = img.getAttribute('data-src-dark')
+                        img.style.display = "inline-block"
+                        setTimeout(function () {
+                            img.style.transition = "opacity 0.9s ease-in-out;"
+                            img.style.opacity = 1
+                        }, 900);
+                    }, 100);
+                }
             })
 
             toggleSwitch.checked = true
@@ -49,7 +89,19 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
             // change images with data-src-dark attribute
             Array.from(document.querySelectorAll("[data-src-dark]")).forEach(img => {
-                img.src = img.getAttribute('data-src-light')
+                if (img.src != img.getAttribute('data-src-light')) {
+                    img.style.display = "none"
+                    img.style.transition = ""
+                    setTimeout(function () {
+                        img.style.opacity = 0
+                        img.src = img.getAttribute('data-src-light')
+                        img.style.display = "inline-block"
+                        setTimeout(function () {
+                            img.style.transition = "opacity 0.9s ease-in-out;"
+                            img.style.opacity = 1
+                        }, 900);
+                    }, 50);
+                }
             })
 
             toggleSwitch.checked = false
