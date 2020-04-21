@@ -2,7 +2,7 @@
 type: recordings
 draft: false
 
-date: 2019-10-11T00:00:00
+date: 2019-10-11T00:00:00-06:00
 
 filename: "Jinsei no Merry-go-round.mp4"
 poster: "jinsei-no-merry-go-round.jpg"

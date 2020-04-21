@@ -2,7 +2,7 @@
 type: recordings
 draft: false
 
-date: 2019-12-24T00:00:00
+date: 2019-12-24T00:00:00-06:00
 
 filename: "Merry Christmas Mr. Lawrence.mp4"
 poster: "Merry Christmas Mr. Lawrence.png"
