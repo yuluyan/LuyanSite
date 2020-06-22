@@ -7,7 +7,7 @@
     "images": [
         {
             "filename": "Galaxy.jpg",
-            "caption": "The galaxy observed at Llano",
+            "caption": "The galaxy observed at Llano.",
             "tags": ["sky", "night", "nature"],
         }
     ]
