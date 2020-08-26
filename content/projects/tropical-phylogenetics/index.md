@@ -105,7 +105,7 @@ The tangent hypergraph techniques proposed in {{< bibcite 5 >}} enables us to tr
 
 {{< bibref 4 "Diane Maclagan and Bernd Sturmfels" "Introduction to tropical geometry" "American Mathematical Soc.," "volume 161, 2015." "https://books.google.com/books?lr=&id=zFsoCAAAQBAJ&oi=fnd&pg=PR9&dq=Diane+Maclagan+and+Bernd+Sturmfels.+Introduction+to+tropical+geometry,+volume+161.+American+Mathematical+Soc.,+2015.&ots=tglRboqD1p&sig=4S3ybqL9P9O6MDbrZZONpaNRPaY#v=onepage&q=Diane%20Maclagan%20and%20Bernd%20Sturmfels.%20Introduction%20to%20tropical%20geometry%2C%20volume%20161.%20American%20Mathematical%20Soc.%2C%202015.&f=false" >}}
 
-{{< bibref 5 "Xavier Allamigeon, Stephane Gaubert and Eric Goubault" "Computing the vertices of tropical polyhedra using directed hypergraphs" "Discrete & Computational Geometry," "49(2):247-279, 2013." "https://link.springer.com/article/10.1007/s00454-012-9469-6" >}}
+{{< bibref 5 "Xavier Allamigeon, Stéphane Gaubert and Éric Goubault" "Computing the vertices of tropical polyhedra using directed hypergraphs" "Discrete & Computational Geometry," "49(2):247-279, 2013." "https://link.springer.com/article/10.1007/s00454-012-9469-6" >}}
 
 {{< bibref 6 "Federico Ardila and Caroline J Klivans" "The Bergman complex of a matroid and phylogenetic trees" "Journal of Combinatorial Theory, Series B," "96(1):38-49, 2006." "https://www.sciencedirect.com/science/article/pii/S0095895605000687" >}}
 
