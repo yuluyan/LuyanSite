@@ -2,7 +2,7 @@
 type: "introduction"
 ---
 
-I'm currently a 3<sup>rd</sup> year Ph.D. student in physics at UT Austin receiving <a href="https://ph.utexas.edu/graduate/prospective-graduate-students/financial-support" class="link-normal" target="_blank">Provost's graduate excellence fellowship</a>. Recently, I joined the <a href="https://ctcn.utexas.edu/" class="link-normal" target="_blank">center for theoretical and computational neuroscience</a> as a research assistant under the supervision of <a href="https://mathneuro.cns.utexas.edu/" class="link-normal" target="_blank">Dr. Thibaud Taillefumier</a>. The two main focuses of my interests in the field of computational neuroscience, broadly speaking, are: 
+I'm currently a 4<sup>th</sup> year Ph.D. student in physics at UT Austin receiving <a href="https://ph.utexas.edu/graduate/prospective-graduate-students/financial-support" class="link-normal" target="_blank">Provost's graduate excellence fellowship</a>. Recently, I joined the <a href="https://ctcn.utexas.edu/" class="link-normal" target="_blank">center for theoretical and computational neuroscience</a> as a research assistant under the supervision of <a href="https://mathneuro.cns.utexas.edu/" class="link-normal" target="_blank">Dr. Thibaud Taillefumier</a>. The two main focuses of my interests in the field of computational neuroscience, broadly speaking, are: 
 
 - to understand how the biological neural networks actually work; and
 - to inspire the development and improvement of neural-network-based machine learning algorithms.
