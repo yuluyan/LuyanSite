@@ -178,6 +178,12 @@
             "tags": ["indoor", "abstract"],
             "date": "2020-03-15T00:00:00",
         },
+        {
+            "filename": "halloween-pumpkins.jpg",
+            "caption": "Halloween pumpkins",
+            "tags": ["abstract", "indoor"],
+            "date": "2020-10-31T00:00:00",
+        },
     ]
 }
 
