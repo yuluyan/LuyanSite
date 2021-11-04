@@ -7,3 +7,4 @@ content/recordings/*/*.m4v
 content/recordings/*/*.mov
 resources/_gen/
 themes/Zen/assets/sass/*.css
+.hugo_build.lock

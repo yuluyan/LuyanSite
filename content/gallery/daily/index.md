@@ -184,6 +184,12 @@
             "tags": ["abstract", "indoor"],
             "date": "2020-10-31T00:00:00",
         },
+        {
+            "filename": "snow-6.jpg",
+            "caption": "Heavy snow and happy students",
+            "tags": ["scape"],
+            "date": "2021-02-15T00:00:00",
+        },
     ]
 }
 
