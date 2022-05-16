@@ -24,7 +24,7 @@ summary: ''
 
 # links:
 url_pdf: ''
-url_arxiv: 'https://arxiv.org/abs/2105.01223v2'
+url_arxiv: 'https://arxiv.org/abs/2105.01223'
 url_publisher: 
 url_code: ''
 url_dataset: ''
