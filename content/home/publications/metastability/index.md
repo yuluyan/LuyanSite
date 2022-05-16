@@ -5,7 +5,7 @@ title: "Metastable spiking networks in the replica-mean-field limit"
 authors:
 - me
 - Thibaud Taillefumier
-date: "2021-05-04T00:00:00Z"
+date: "2022-05-16T00:00:00Z"
 doi: ""
 
 # Publication type. E.g.
