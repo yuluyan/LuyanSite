@@ -190,6 +190,48 @@
             "tags": ["scape"],
             "date": "2021-02-15T00:00:00",
         },
+        {
+            "filename": "ny-buildings.jpeg",
+            "caption": "Building view in NY",
+            "tags": ["architecture", "city"],
+            "date": "2021-06-23T00:00:00",
+        },
+        {
+            "filename": "ny-street-sunset.jpeg",
+            "caption": "Sunset on NY street",
+            "tags": ["city", "sunset"],
+            "date": "2021-07-04T00:00:00",
+        },
+        {
+            "filename": "moon-shot.jpg",
+            "caption": "Moon",
+            "tags": ["nature", "moon"],
+            "date": "2021-09-16T00:00:00",
+        },
+        {
+            "filename": "mid-autumn-moon.jpg",
+            "caption": "Mid-autumn moon with UT tower",
+            "tags": ["architecture", "moon"],
+            "date": "2021-09-20T00:00:00",
+        },
+        {
+            "filename": "zilker-park-tree.jpeg",
+            "caption": "Zilker park",
+            "tags": ["nature"],
+            "date": "2021-10-17T00:00:00",
+        },
+        {
+            "filename": "oasis-view.jpeg",
+            "caption": "Oasis sunset view",
+            "tags": ["nature", "sunset"],
+            "date": "2021-10-17T00:00:00",
+        },
+        {
+            "filename": "masked-pikachu.jpeg",
+            "caption": "Pikachu with a mask",
+            "tags": ["city", "abstract"],
+            "date": "2021-11-14T00:00:00",
+        },
     ]
 }
 
