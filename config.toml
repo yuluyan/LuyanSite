@@ -10,7 +10,7 @@ pygmentsUseClasses = true
 PygmentsCodeFences = true
 
 [markup]
-  defaultMarkdownHandler = "blackfriday"
+  defaultMarkdownHandler = "goldmark"
 
 [params]
   abstractLength = 200
